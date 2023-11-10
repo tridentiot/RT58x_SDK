@@ -1,6 +1,4 @@
-# RT58x_SDK
-[![Rafael Micro](./rafael_docs/images/rafael_logo.jpg)](https://www.rafaelmicro.com/)
-## Rafael RT58x SDK
+# Rafael RT58x SDK
 
 Software Development Kit
 Rafael RT58x SDK is a complete software development kit for application development such as BLE, Zigbee, Mesh, and Sub-G.
