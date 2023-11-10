@@ -1,3 +1,5 @@
+# RT58x SDK Release Note
+[embed]http://example.com/file.pdf[/embed]
 # Rafael RT58x SDK
 
 Software Development Kit
@@ -6,5 +8,9 @@ Rafael RT58x SDK is specifically designed for Rafael’s SoC with the ability to
 It is easy to install the Rafael RT58x SDK package by unzipping the RT58x_SDK_version.rar to the specified development directory.
 
 ## SDK Software Architecture
-![SDKSWArchitecture]( https://github.com/RafaelMicro/RT58x_SDK/blob/main/SDK_SW_Architecture.jpg 'SDKSWArchitecture')
+![image](https://github.com/RafaelMicro/RT58x_SDK/blob/main/images/SDK_SW_Architecture.jpg)
+
+
+## Release Note
+
 
