@@ -7,6 +7,5 @@ It is easy to install the Rafael RT58x SDK package by unzipping the RT58x_SDK_ve
 
 ![The RT58x SDK repository structure](./rafael_docs/images/sdk_repo.png)
 
-
-
+## SDK Software Architecture
 
