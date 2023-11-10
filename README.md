@@ -1,5 +1,5 @@
 # RT58x SDK Release Note
-[Release Note]([http://dillinger.io/](https://github.com/RafaelMicro/RT58x_SDK/blob/main/doc/RT58x_SDK_Release_Notes.pdf) "link")
+[Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/doc/RT58x_SDK_Release_Notes.pdf "link")
 # Rafael RT58x SDK
 
 Software Development Kit
