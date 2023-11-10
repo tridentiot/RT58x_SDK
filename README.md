@@ -1,3 +1,5 @@
+# RT58x SDK Release Note
+[embed]http://example.com/file.pdf[/embed]
 # Rafael RT58x SDK
 
 Software Development Kit
