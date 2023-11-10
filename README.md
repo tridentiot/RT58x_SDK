@@ -1,5 +1,5 @@
 # RT58x SDK Release Note
-[embed](https://github.com/RafaelMicro/RT58x_SDK/blob/main/doc/RT58x_SDK_Release_Notes.pdf)[/embed]
+<https://github.com/RafaelMicro/RT58x_SDK/blob/main/doc/RT58x_SDK_Release_Notes.pdf)>
 # Rafael RT58x SDK
 
 Software Development Kit
