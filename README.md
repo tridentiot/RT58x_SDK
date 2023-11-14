@@ -1,13 +1,9 @@
-# RT58x_SDK Folder Struct
+# SDK Folder Struct
+  #DOCS
+  #Library
+  #Project
+  #Tool
   ## RT58x_SDK_v1.6.0
-    DOC
-    Tool
-      - iOS-APP
-      - Andriond-APP
-      - IOT_Evaluation_Tool
-      - Mass_Production_Tool
-      - Security_Boot_Tool
-      - Zigbee_Tool
 # RT58x SDK Release Note
 [RT58x SDK Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/RT58x_SDK_Release_Notes.pdf "link")
 # Rafael RT58x SDK
