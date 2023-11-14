@@ -1,0 +1,10 @@
+var searchData=
+[
+  ['read_20local_20supported_20commands_20command_2e_11473',['Read Local Supported Commands Command.',['../group__ble__hci__evt__info__return__read__local__supported__cmds.html',1,'']]],
+  ['read_20local_20supported_20features_20command_2e_11474',['Read Local Supported Features Command.',['../group__ble__hci__evt__info__return__read__bd__addr.html',1,'(Global Namespace)'],['../group__ble__hci__evt__info__return__read__local__supported__features.html',1,'(Global Namespace)']]],
+  ['read_20local_20version_20information_20command_2e_11475',['Read Local Version Information Command.',['../group__ble__hci__evt__info__return__read__ver.html',1,'']]],
+  ['read_20rssi_20command_11476',['Read RSSI command',['../group__ble__hci__evt__status__param__read__rssi.html',1,'']]],
+  ['retarget_11477',['Retarget',['../group___r_e_t_a_r_g_e_t___driver.html',1,'']]],
+  ['rtc_11478',['RTC',['../group___r_t_c___driver.html',1,'(Global Namespace)'],['../group___r_t_c__example__group.html',1,'(Global Namespace)']]],
+  ['rtc_5fdeep_5fsleep_11479',['RTC_Deep_Sleep',['../group___r_t_c___deep___sleep__example__group.html',1,'']]]
+];
