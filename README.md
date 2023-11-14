@@ -1,7 +1,7 @@
-# Folder
+# RT58x_SDK Folder Struct
   ## RT58x_SDK_v1.6.0
-    ### DOC
-    ### Tool
+    DOC
+    Tool
       - iOS-APP
       - Andriond-APP
       - IOT_Evaluation_Tool
