@@ -2,6 +2,8 @@
 [RT58x SDK Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/RT58x_SDK_Release_Notes.pdf "link")
 
 # RT58x SDK Folder
+   The following item shows the related files and directories in the Rafael RT58x SDK. 
+   These files and directories contain project, middleware, library, tools, and documents.
   - Docs
   - Library
   - Middleware
