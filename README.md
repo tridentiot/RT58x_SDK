@@ -1,10 +1,10 @@
-# SDK Folder Struct
-  # DOCS
-  # Library
-  # Middleware
-  # Project
-  # Tool
-  ## RT58x_SDK_v1.6.0
+# RT58x SDK Folder Struct
+  -DOCS
+  -Library
+  -Middleware
+  -Project
+  -Tool
+  
 # RT58x SDK Release Note
 [RT58x SDK Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/RT58x_SDK_Release_Notes.pdf "link")
 # Rafael RT58x SDK
