@@ -1,8 +1,16 @@
-#Folder
+# Folder
 ## DOC
+RT58x SDK
 ## Tool
+The folder include isp, mp, app tool for develog
+  iOS-APP
+  Andriond-APP
+  IOT_Evaluation_Tool
+  Mass_Production_Tool
+  Security_Boot_Tool
+  Zigbee_Tool
 # RT58x SDK Release Note
-[RT58x SDK Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/doc/RT58x_SDK_Release_Notes.pdf "link")
+[RT58x SDK Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/RT58x_SDK_Release_Notes.pdf "link")
 # Rafael RT58x SDK
 
 Software Development Kit
