@@ -1,0 +1,5 @@
+#ifndef __GIT_VERSION_H__
+#define __GIT_VERSION_H__
+#define LIB_VERSION "LIB_GIT_HASH:1808629a"
+#define BUILD_DATE "BDATE:2023/09/07  9:56:16"
+#endif

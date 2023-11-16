@@ -1,0 +1,83 @@
+{
+    "name": "SLEEP",
+    "target": "Target 1",
+    "toolchain": "GCC",
+    "showRepathOnLog": true,
+    "threadNum": 16,
+    "rootDir": "d:\\SDK_Release\\RT58x-lib\\Project\\Examples\\Sleep\\GCC",
+    "dumpPath": ".eide\\log",
+    "outDir": "build\\Target 1",
+    "builderDir": "c:\\Users\\M90t\\.vscode\\extensions\\cl.eide-2.15.0\\bin\\builder",
+    "incDirs": [
+        "..\\config",
+        "..\\..\\..\\..\\Library\\CMSIS\\Include",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\Include",
+        "..\\..\\..\\..\\Library\\RT58x\\PHY\\include",
+        "..\\..\\..\\..\\Library\\RT58x\\include",
+        ".eide\\deps"
+    ],
+    "libDirs": [],
+    "sourceList": [
+        "..\\..\\..\\..\\Library\\RT58x\\Device\\GCC\\gcc_startup_cm3_mcu.S",
+        "..\\..\\..\\..\\Library\\RT58x\\Device\\system_cm3_mcu.c",
+        "..\\..\\..\\..\\Library\\RT58x\\PHY\\comm_subsystem_drv.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\dma.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\flashctl.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\gpio.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\lpm.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\mp_sector.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\retarget_drv_keil.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\sysctrl.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\sysfun.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\timer.c",
+        "..\\..\\..\\..\\Library\\RT58x\\Peripheral\\uart_drv.c",
+        "..\\..\\..\\..\\Middleware\\Prebuild\\lib_rf_mcu.a",
+        "..\\main.c"
+    ],
+    "sourceParams": {},
+    "sourceParamsMtime": 1681782825926.1533,
+    "defines": [],
+    "options": {
+        "version": 4,
+        "beforeBuildTasks": [],
+        "afterBuildTasks": [],
+        "global": {
+            "$float-abi-type": "softfp",
+            "output-debug-info": "enable",
+            "toolPrefix": "arm-none-eabi-",
+            "microcontroller-cpu": "cortex-m3",
+            "microcontroller-fpu": "cortex-m3",
+            "microcontroller-float": "cortex-m3",
+            "target": "cortex-m3"
+        },
+        "c/cpp-compiler": {
+            "language-c": "c11",
+            "language-cpp": "c++11",
+            "optimization": "level-debug",
+            "warnings": "all-warnings",
+            "C_FLAGS": "-ffunction-sections -fdata-sections",
+            "CXX_FLAGS": "-ffunction-sections -fdata-sections"
+        },
+        "asm-compiler": {
+            "ASM_FLAGS": "-ffunction-sections -fdata-sections"
+        },
+        "linker": {
+            "output-format": "elf",
+            "LD_FLAGS": "--specs=nosys.specs --specs=nano.specs -Wl,--gc-sections",
+            "LIB_FLAGS": "-lm",
+            "link-scatter": [
+                "\"d:/SDK_Release/RT58x-lib/Library/RT58x/Device/GCC/app_gcc_cm3_mcu.ld\""
+            ]
+        }
+    },
+    "env": {},
+    "sha": {
+        "c/cpp-defines": "d751713988987e9331980363e24189ce",
+        "beforeBuildTasks": "d751713988987e9331980363e24189ce",
+        "afterBuildTasks": "d751713988987e9331980363e24189ce",
+        "global": "30aa8671b8ec650757758fe00f264e94",
+        "c/cpp-compiler": "9317d331875ffd7e709b8d3f9b43983b",
+        "asm-compiler": "4e936c1650c2f18609e37408d1cfbb9f",
+        "linker": "49a9460788e6c50bdd45476e6d2f1172"
+    }
+}
