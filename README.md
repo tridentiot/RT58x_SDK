@@ -1,15 +1,15 @@
 ![image](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Docs/RT58x_SDK_Reference_Guide/logo.JPG)
 
-# RT58x SDK Release Note
+## RT58x SDK Release Note
  About the content of Software Release Note
 [RT58x SDK Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/RT58x_SDK_Release_Notes.pdf "link")
 
-# Evaluation Kit Board
+## Evaluation Kit Board
 The RT58x EVK provides an SWD interface with connector for use with an ICE debugger (J-Link Adapter) via 20pin IDE cable.
 
 Reference [RT58x_SOC_Platform_Getting_Started_V1.4.pdf](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Docs/%5BSW_01%5DRT58x_SOC_Platform_Getting_Started_V1.4.pdf "link")
  
-# Software Development Kit
+## Software Development Kit
  Rafael RT58x SDK is a complete software development kit for application development such as BLE, Zigbee, Mesh, and Sub-G.
  Rafael RT58x SDK is specifically designed for Rafael’s SoC with the ability to perform high-performance Cortex-M microcontroller and support to driver powerful RF and peripheral features.
  
