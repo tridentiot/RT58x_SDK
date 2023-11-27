@@ -1,10 +1,10 @@
-# Development Board
+# # Rafael RT58x EVK
 The RT58x EVK provides an SWD interface with connector for use with an ICE debugger (J-Link Adapter) via 20pin IDE cable.
  Reference [RT58x_SOC_Platform_Getting_Started_V1.4.pdf](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Docs/%5BSW_01%5DRT58x_SOC_Platform_Getting_Started_V1.4.pdf "link")
 # Release Note
 [RT58x SDK Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/RT58x_SDK_Release_Notes.pdf "link")
 
-# Rafael RT58x EVK
+
 
 # RT58x SDK Folder
    The following item shows the related files and directories in the Rafael RT58x SDK. 
