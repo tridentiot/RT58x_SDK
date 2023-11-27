@@ -9,7 +9,6 @@ The RT58x EVK provides an SWD interface with connector for use with an ICE debug
  Reference [RT58x_SOC_Platform_Getting_Started_V1.4.pdf](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Docs/%5BSW_01%5DRT58x_SOC_Platform_Getting_Started_V1.4.pdf "link")
  
 # Software Development Kit
- Software Development Kit
  Rafael RT58x SDK is a complete software development kit for application development such as BLE, Zigbee, Mesh, and Sub-G.
  Rafael RT58x SDK is specifically designed for Rafael’s SoC with the ability to perform high-performance Cortex-M microcontroller and support to driver powerful RF and peripheral features.
  It is easy to install the Rafael RT58x SDK package by unzipping the RT58x_SDK_version.rar to the specified development directory.
