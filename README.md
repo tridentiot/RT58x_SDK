@@ -1,6 +1,7 @@
 # Rafael RT58x 
 
 # Release Note
+ About the content of Software Release Note
 [RT58x SDK Release Note](https://github.com/RafaelMicro/RT58x_SDK/blob/main/RT58x_SDK_Release_Notes.pdf "link")
 
 # Evaluation Kit Board
