@@ -19,8 +19,15 @@ git clone --recursive https://github.com/RafaelMicro/RT58x_SDK.git
 
  The following item shows the related files and directories in the Rafael RT58x SDK. 
  These files and directories contain project, middleware, library, tools, and documents.
+ ```bash
  - Docs
  - Library
  - Middleware
  - Project
  - Tool
+```
+ ## Folder Struct
+
+```bash
+Docs
+```
