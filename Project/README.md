@@ -18,15 +18,15 @@ Development Board
    |_KEIL
    |_GCC
 ```
-### KEIL Folder
- ```bash
+## KEIL Folder
+
   The uVision IDE and Debugger is the central part of the Keil development toolchain and has numerous features that help the programmer to develop embedded applications quickly and successfully. 
   uVision offer a Build Mode for creating applications and a Debug Mode for debugging applications.
- ```
 
-### GCC Folder
- ```bash
+
+## GCC Folder
+
   Rafael RT58x SDK also provides GCC projects by the Visual Studio Code corresponding to the Keil projects for applications and examples to meet various development requirements.
   Before opening the GCC project, users must setup the Visual Studio Code installer for Windows. For detailed installation of Visual Studio Code, please refer to VS Code User Setup Readme.
- ```
+
 
