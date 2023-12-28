@@ -1,6 +1,6 @@
 ![image](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Docs/RT58x_SDK_Reference_Guide/logo.JPG)
 
-## Software Sample Code
+## Project Struct
  ```bash
  - Application  BLE/BLE_Mesh/Zigbee/Thread/SubG
    |_KEIL
