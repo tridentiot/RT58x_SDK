@@ -37,6 +37,6 @@ SDK
  |__Docs       Ble/Ble mesh/multi protocol/Zigbee/Thread application document, development tool document
  |__Library    include RF,peripheral driver, startup document 
  |__Middleware zigbee/ble/fota/prebuild libary third party bsp file
- |__Project    Usage Application and Peripheral sample code.
- |__Tool       include Andrion,ios app for ble/zigbee application, MP Tool, ISP Tool, flash algorithm   
+ |__Project    usage Application and Peripheral sample code.
+ |__Tool       include Andrion/ios app ble/zigbee application, MP Tool, ISP Tool, flash algorithm   
 ```
