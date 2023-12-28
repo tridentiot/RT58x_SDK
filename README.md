@@ -34,9 +34,9 @@ git clone --recursive https://github.com/RafaelMicro/RT58x_SDK.git
 ```bash
 SDK
  |
- |__Docs       Ble/Ble mesh/multi protocol/Zigbee/Thread application document, development tool document
+ |__Docs       Ble/Ble mesh/multi protocol/Zigbee/Thread application, development tooldocument
  |__Library    include RF,peripheral driver, startup document 
- |__Middleware zigbee/ble/fota/prebuild libary third party bsp file
+ |__Middleware zigbee/ble/fota/prebuild libary/third party/ bsp/bootloader file
  |__Project    usage Application and Peripheral sample code.
- |__Tool       include Andrion/ios app ble/zigbee application, MP Tool, ISP Tool, flash algorithm   
+ |__Tool       ble/zigbee application app (android/ios) , MP Tool, ISP Tool, flash algorithm   
 ```
