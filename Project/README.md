@@ -2,10 +2,11 @@
 
 
 ## Project development document reference
- ```bash
+
 Reference [RT58x_SOC_Platform_Getting_Started_V1.4.pdf](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Docs/%5BSW_01%5DRT58x_SOC_Platform_Getting_Started_V1.4.pdf "link")
+
 Reference [VS_Code_User_Setup_Readme_V1.3.pdf](https://github.com/RafaelMicro/RT58x_SDK/blob/main/Docs/%5BTool_08%5DVS_Code_User_Setup_Readme_V1.3.pdf "link")
-```
+
 
 ## Software Sample Code
  ```bash
