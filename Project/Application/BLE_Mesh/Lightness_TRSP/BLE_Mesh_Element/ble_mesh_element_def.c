@@ -22,7 +22,6 @@ light_lightness_state_t     el0_light_lightness_state = {0xFFFF, 0xFFFF, 0xFFFF,
 publication_info_t          el0_light_lightness_model_publish_entry;
 uint16_t                    el0_light_lightness_subscribe_list[RAF_BLE_MESH_SUBSCRIPTION_LIST_SIZE];
 
-
 ble_mesh_model_param_t      el0_light_lightness_model =
 {
     MMDL_LIGHT_LIGHTNESS_SR_MDL_ID,                     //model ID
@@ -34,8 +33,6 @@ ble_mesh_model_param_t      el0_light_lightness_model =
     (void *)NULL,                                       //upper callback
     (void *)app_process_element_lightness_model_state       //call back
 };
-
-
 
 ble_mesh_model_param_t      el0_light_lightness_setup_model =
 {
@@ -52,6 +49,7 @@ ble_mesh_model_param_t      el0_light_lightness_setup_model =
 /* extended models and models variables */
 gen_level_state_t           el0_gen_level_state = {0x7FFF, 0x7FFF, 0x7FFF, 0, 0, 0, 0, 0}; /*default state: 0x7FFF*/
 publication_info_t          el0_gen_level_model_publish_entry;
+uint16_t                    el0_gen_level_model_subscribe_list[RAF_BLE_MESH_SUBSCRIPTION_LIST_SIZE];
 
 ble_mesh_model_param_t      el0_gen_level_model =
 {
@@ -60,7 +58,7 @@ ble_mesh_model_param_t      el0_gen_level_model =
     TRUE,
     &el0_gen_level_state,
     &el0_gen_level_model_publish_entry,                 //publish ptr
-    el0_light_lightness_subscribe_list,                 //subscript list ptr
+    el0_gen_level_model_subscribe_list,                 //subscript list ptr
     (void *)mmdl_light_lightness_ex_cb,
     (void *)NULL
 };
@@ -68,6 +66,7 @@ ble_mesh_model_param_t      el0_gen_level_model =
 
 gen_on_off_state_t          el0_gen_on_off_state = {0x01, 0x01, 0x01};   /*default state: on*/
 publication_info_t          el0_gen_on_off_model_publish_entry;
+uint16_t                    el0_gen_on_off_model_subscribe_list[RAF_BLE_MESH_SUBSCRIPTION_LIST_SIZE];
 
 ble_mesh_model_param_t      el0_gen_on_off_model =
 {
@@ -76,7 +75,7 @@ ble_mesh_model_param_t      el0_gen_on_off_model =
     TRUE,
     &el0_gen_on_off_state,
     &el0_gen_on_off_model_publish_entry,                 //publish ptr
-    el0_light_lightness_subscribe_list,                  //subscript list ptr
+    el0_gen_on_off_model_subscribe_list,                 //subscript list ptr
     (void *)mmdl_light_lightness_ex_cb,
     (void *)NULL
 };

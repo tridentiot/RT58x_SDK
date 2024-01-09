@@ -73,18 +73,11 @@
 
 #else // OPENTHREAD_CONFIG_PLATFORM_ASSERT_MANAGEMENT
 
-#include "openthread/logging.h"
-
-#ifndef FILE_NAME
-#define FILE_NAME __FILE__
-#endif
-
 #define OT_ASSERT(cond) \
     do                  \
     {                   \
         if (!(cond))    \
         {               \
-            otLogCritPlat("assert failed at %s:%d", FILE_NAME, __LINE__);\
             while (1)   \
             {           \
             }           \
@@ -100,7 +93,7 @@
 #endif // OPENTHREAD_CONFIG_ASSERT_ENABLE
 
 /**
- * This macro checks a given status (which is expected to be successful) against zero (0) which indicates success,
+ * Checks a given status (which is expected to be successful) against zero (0) which indicates success,
  * and `OT_ASSERT()` if it is not.
  *
  * @param[in]  aStatus     A scalar status to be evaluated against zero (0).
@@ -118,7 +111,7 @@
 /**
  * @def AssertPointerIsNotNull
  *
- * This macro asserts that a given pointer (API input parameter) is not `nullptr`. This macro checks the pointer only
+ * Asserts that a given pointer (API input parameter) is not `nullptr`. This macro checks the pointer only
  * when `OPENTHREAD_CONFIG_ASSERT_CHECK_API_POINTER_PARAM_FOR_NULL` is enabled. Otherwise it is an empty macro.
  *
  * @param[in]  aPointer   The pointer variable (API input parameter) to check.

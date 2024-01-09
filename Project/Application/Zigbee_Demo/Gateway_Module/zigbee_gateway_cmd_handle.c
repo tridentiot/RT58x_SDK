@@ -104,6 +104,12 @@ static void _cmd_common_gen_req(uint32_t cmd_id, uint8_t *pkt)
     do
     {
         pd_len = ((gateway_cmd_hdr *)(pkt))->len - 7;
+
+        if (pd_len == 0)
+        {
+            pd_len = 1;
+        }
+
         pt_req_pd = sys_malloc(pd_len);
 
         if (!pt_req_pd)

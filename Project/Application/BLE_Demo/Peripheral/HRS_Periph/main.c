@@ -29,7 +29,7 @@ static void bsp_btn_event_handle(bsp_event_t event)
     switch (event)
     {
     case BSP_EVENT_BUTTONS_0:
-        // diable sleep mode
+        // disable sleep mode
         Lpm_Low_Power_Mask(LOW_POWER_MASK_BIT_TASK_BLE_APP);
         break;
 

@@ -932,6 +932,7 @@ static ble_err_t adv_init(void)
         DEVICE_NAME,                        // the name is shown on scan list
     };
 
+    ble_cmd_device_addr_get(&addr_param);
     do
     {
         adv_param.adv_type = ADV_TYPE_ADV_IND;

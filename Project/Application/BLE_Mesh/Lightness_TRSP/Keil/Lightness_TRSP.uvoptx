@@ -152,18 +152,50 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>182</LineNumber>
+          <LineNumber>545</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>71328</Address>
+          <Address>133430</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>D:\git_codebase\rt58x_3\rt58x\Middleware\BLE_Mesh\model\mmdl_common.c</Filename>
+          <Filename>..\..\..\..\..\Middleware\BLE\BLE_Service\TRSPS\ble_service_trsps.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Lightness_TRSP\../../../../../Middleware/BLE_Mesh/model/mmdl_common.c\182</Expression>
+          <Expression>\\Lightness_TRSP\../../../../../Middleware/BLE/BLE_Service/TRSPS/ble_service_trsps.c\545</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
+          <LineNumber>595</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>133630</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\..\..\..\..\Middleware\BLE\BLE_Service\TRSPS\ble_service_trsps.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\Lightness_TRSP\../../../../../Middleware/BLE/BLE_Service/TRSPS/ble_service_trsps.c\595</Expression>
+        </Bp>
+        <Bp>
+          <Number>2</Number>
+          <Type>0</Type>
+          <LineNumber>376</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>71256</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\mesh_app.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\Lightness_TRSP\../mesh_app.c\376</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -246,7 +278,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>0</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -1228,6 +1260,18 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\..\..\..\Middleware\BLE\BLE_Service\FOTAS\ble_service_fotas.c</PathWithFileName>
       <FilenameWithoutPath>ble_service_fotas.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>72</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\..\..\..\Middleware\BLE_Mesh\BLE_App_Profile\ble_profile_def.c</PathWithFileName>
+      <FilenameWithoutPath>ble_profile_def.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

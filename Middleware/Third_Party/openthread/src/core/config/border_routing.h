@@ -104,4 +104,29 @@
 #define OPENTHREAD_CONFIG_BORDER_ROUTING_ROUTER_ACTIVE_CHECK_TIMEOUT (60 * 1000) // (in msec).
 #endif
 
+/**
+ * @def OPENTHREAD_CONFIG_BORDER_ROUTING_DHCP6_PD_ENABLE
+ *
+ * Specifies whether to support handling platform generated ND messages.
+ *
+ * The desired use case is the prefix will be allocated by other software on the interface, and they will advertise the
+ * assigned prefix to the thread interface via router advertisement messages.
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_BORDER_ROUTING_DHCP6_PD_ENABLE
+#define OPENTHREAD_CONFIG_BORDER_ROUTING_DHCP6_PD_ENABLE 0
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_BORDER_ROUTING_MOCK_PLAT_APIS_ENABLE
+ *
+ * Define to 1 to add mock (empty) implementation of infra-if platform APIs.
+ *
+ * This is intended for generating code size report only and should not be used otherwise.
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_BORDER_ROUTING_MOCK_PLAT_APIS_ENABLE
+#define OPENTHREAD_CONFIG_BORDER_ROUTING_MOCK_PLAT_APIS_ENABLE 0
+#endif
+
 #endif // CONFIG_BORDER_ROUTING_H_

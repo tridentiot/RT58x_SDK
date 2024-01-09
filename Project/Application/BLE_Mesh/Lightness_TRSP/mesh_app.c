@@ -370,12 +370,31 @@ static uint8_t app_uart_handler(uint32_t data, mesh_tlv_t *p_mesh_tlv)
     return memory_free;
 }
 
+static void ble_trsps_evt_msg_handler(uint16_t len, uint8_t *p_trsps_data)
+{
+    uint16_t i;
+    bool tx_success;
+
+    info("Receive BLE TRSPS data:\n");
+    for (i = 0; i < len ; i++)
+    {
+        info("%02x ", p_trsps_data[i]);
+    }
+    info("\n");
+
+    tx_success = ble_trsps_data_set(len, p_trsps_data);
+
+    info("Loopback received BLE TRSPS data %d:\n", tx_success);
+}
+
 static uint8_t app_mesh_event_handler(uint32_t data, mesh_tlv_t *p_mesh_tlv)
 {
     mesh_prov_start_cfm_t *p_start_cfm;
     uint8_t memory_free = true, i;
 
-    if (p_mesh_tlv->type == TYPE_MESH_PROV_START_CFM)
+    switch (p_mesh_tlv->type)
+    {
+    case TYPE_MESH_PROV_START_CFM:
     {
         p_start_cfm = (mesh_prov_start_cfm_t *)p_mesh_tlv->value;
         if (p_start_cfm->status != 0)
@@ -393,17 +412,29 @@ static uint8_t app_mesh_event_handler(uint32_t data, mesh_tlv_t *p_mesh_tlv)
             app_main_event = APP_PROVISION_DONE_EVT;
         }
     }
-    else if (p_mesh_tlv->type == TYPE_MESH_NODE_RESET_IDC)
+    break;
+
+    case TYPE_MESH_NODE_RESET_IDC:
     {
         info_color(LOG_GREEN, "Recv CfgNodeRest ... \n");
         element_info_init();
         app_main_event = APP_GATT_PROVISION_EVT;
     }
-    else if (p_mesh_tlv->type == TYPE_MESH_APP_MDL_EVT_MSG_IDC)
+    break;
+
+    case TYPE_MESH_BLE_SVC_TRSPS_WRITE_IDC:
+    {
+        ble_trsps_evt_msg_handler(p_mesh_tlv->length, p_mesh_tlv->value);
+    }
+    break;
+
+    case TYPE_MESH_APP_MDL_EVT_MSG_IDC:
     {
         mmdl_evt_msg_cb((mesh_app_mdl_evt_msg_idc_t *)p_mesh_tlv->value);
     }
-    else if (p_mesh_tlv->type ==  TYPE_MESH_CFG_MDL_APP_BIND_IDC)
+    break;
+
+    case TYPE_MESH_CFG_MDL_APP_BIND_IDC:
     {
         mesh_cfg_mdl_app_bind_idc_t *p_app_bind_idc;
         p_app_bind_idc = (mesh_cfg_mdl_app_bind_idc_t *)p_mesh_tlv->value;
@@ -418,7 +449,9 @@ static uint8_t app_mesh_event_handler(uint32_t data, mesh_tlv_t *p_mesh_tlv)
             user_data_appkey_idx = p_app_bind_idc->appkey_index;
         }
     }
-    else if (p_mesh_tlv->type == TYPE_MESH_PROVISION_COMPLETE_IDC)
+    break;
+
+    case TYPE_MESH_PROVISION_COMPLETE_IDC:
     {
         mesh_prov_complete_idc_t *p_prov_device;
 
@@ -427,6 +460,27 @@ static uint8_t app_mesh_event_handler(uint32_t data, mesh_tlv_t *p_mesh_tlv)
         {
             info_color(LOG_RED, "Device provision fail  ... \n");
         }
+    }
+    break;
+
+    case TYPE_MESH_PROV_ADV_ENABLED_IDC:
+    {
+        mesh_prov_adv_enable_idc_t *p_adv_enable_status;
+        p_adv_enable_status = (mesh_prov_adv_enable_idc_t *)p_mesh_tlv->value;
+        info_color(LOG_YELLOW, "Provision ADV enable result: %d\n", p_adv_enable_status->status);
+    }
+    break;
+
+    case TYPE_MESH_PROXY_ENABLE_IDC:
+    {
+        //mesh_proxy_adv_enable_idc_t *p_adv_enable_status;
+        //p_adv_enable_status = (mesh_proxy_adv_enable_idc_t *)p_mesh_tlv->value;
+        //info_color(LOG_YELLOW, "Proxy ADV enable result: %d\n", p_adv_enable_status->status);
+    }
+    break;
+
+    default:
+        break;
     }
     return memory_free;
 }

@@ -29,6 +29,7 @@
 #ifndef POSIX_PLATFORM_RESOLVER_HPP_
 #define POSIX_PLATFORM_RESOLVER_HPP_
 
+#include <openthread/openthread-system.h>
 #include <openthread/platform/dns.h>
 
 #include <arpa/inet.h>
@@ -47,7 +48,7 @@ public:
     constexpr static ssize_t kMaxUpstreamServerCount      = 3;
 
     /**
-     * This method initialize the upstream DNS resolver.
+     * Initialize the upstream DNS resolver.
      *
      */
     void Init(void);
@@ -78,7 +79,7 @@ public:
      * @param[in,out]  aTimeout     A reference to the timeout.
      *
      */
-    void UpdateFdSet(fd_set *aReadFdSet, fd_set *aErrorFdSet, int *aMaxFd);
+    void UpdateFdSet(otSysMainloopContext &aContext);
 
     /**
      * Handles the result of select.
@@ -87,9 +88,12 @@ public:
      * @param[in]  aErrorFdSet  A reference to the error file descriptors.
      *
      */
-    void Process(const fd_set *aReadFdSet, const fd_set *aErrorFdSet);
+    void Process(const otSysMainloopContext &aContext);
 
 private:
+    static constexpr uint64_t kDnsServerListNullCacheTimeoutMs = 1 * 60 * 1000;  // 1 minute
+    static constexpr uint64_t kDnsServerListCacheTimeoutMs     = 10 * 60 * 1000; // 10 minutes
+
     struct Transaction
     {
         otPlatDnsUpstreamQuery *mThreadTxn;
@@ -103,10 +107,12 @@ private:
     void ForwardResponse(Transaction *aTxn);
     void CloseTransaction(Transaction *aTxn);
     void FinishTransaction(int aFd);
+    void TryRefreshDnsServerList(void);
     void LoadDnsServerListFromConf(void);
 
     int       mUpstreamDnsServerCount = 0;
     in_addr_t mUpstreamDnsServerList[kMaxUpstreamServerCount];
+    uint64_t  mUpstreamDnsServerListFreshness = 0;
 
     Transaction mUpstreamTransaction[kMaxUpstreamTransactionCount];
 };

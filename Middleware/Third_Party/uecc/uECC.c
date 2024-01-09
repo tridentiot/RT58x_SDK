@@ -2030,6 +2030,23 @@ int uECC_make_key(uint8_t public_key[uECC_BYTES*2], uint8_t private_key[uECC_BYT
     return 0;
 }
 
+int uECC_generate_public_key(uint8_t public_key[uECC_BYTES*2], uint8_t private_key[uECC_BYTES]) {
+    uECC_word_t private[uECC_WORDS];
+    EccPoint public;
+    uECC_word_t tries;
+    
+    memcpy(private, private_key, uECC_BYTES);
+    for (tries = 0; tries < MAX_TRIES; ++tries) {
+        if (EccPoint_compute_public_key(&public, private)) {
+            vli_nativeToBytes(private_key, private);
+            vli_nativeToBytes(public_key, public.x);
+            vli_nativeToBytes(public_key + uECC_BYTES, public.y);
+            return 1;
+        }
+    }
+    return 0;
+}
+
 int uECC_shared_secret(const uint8_t public_key[uECC_BYTES*2],
                        const uint8_t private_key[uECC_BYTES],
                        uint8_t secret[uECC_BYTES]) {

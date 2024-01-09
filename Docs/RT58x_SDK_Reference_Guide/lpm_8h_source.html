@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.BMP"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Rafael RT58x  SDK
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
   </td>
  </tr>
@@ -220,23 +220,23 @@ $(function() {
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;} <a class="code" href="lpm_8h.html#a7a1aaceeb5e3a4c2542f0363910a70ee">low_power_wakeup_cfg_t</a>;</div>
 <div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Low_Power_Mask(uint32_t mask);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Low_Power_Unmask(uint32_t unmask);</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="keyword">extern</span> uint32_t Lpm_Get_Low_Power_Mask_Status(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keywordtype">void</span> Lpm_Low_Power_Mask(uint32_t mask);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keywordtype">void</span> Lpm_Low_Power_Unmask(uint32_t unmask);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;uint32_t Lpm_Get_Low_Power_Mask_Status(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Comm_Subsystem_Wakeup_Mask(uint32_t mask);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Comm_Subsystem_Wakeup_Unmask(uint32_t unmask);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">extern</span> uint32_t Lpm_Get_Comm_Subsystem_Wakeup_Mask_Status(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keywordtype">void</span> Lpm_Comm_Subsystem_Wakeup_Mask(uint32_t mask);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="keywordtype">void</span> Lpm_Comm_Subsystem_Wakeup_Unmask(uint32_t unmask);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;uint32_t Lpm_Get_Comm_Subsystem_Wakeup_Mask_Status(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160; </div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Set_Low_Power_Level(<a class="code" href="lpm_8h.html#ad1efa23b690648273038ad7564170f5b">low_power_level_cfg_t</a> low_power_level_cfg);</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Enable_Low_Power_Wakeup(<a class="code" href="lpm_8h.html#a7a1aaceeb5e3a4c2542f0363910a70ee">low_power_wakeup_cfg_t</a> low_power_wakeup_cfg);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Disable_Low_Power_Wakeup(<a class="code" href="lpm_8h.html#a7a1aaceeb5e3a4c2542f0363910a70ee">low_power_wakeup_cfg_t</a> low_power_wakeup_cfg);</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Set_GPIO_Deepsleep_Wakeup_Invert(uint32_t value);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Set_Comparator_Deepsleep_Wakeup_Invert(uint32_t value);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Set_Sram_Normal_Shutdown(uint32_t value);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Set_Sram_Sleep_Deepsleep_Shutdown(uint32_t value);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Enter_Low_Power_Mode(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Lpm_Comm_Subsystem_Disable_LDO_Mode(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="keywordtype">void</span> Lpm_Set_Low_Power_Level(<a class="code" href="lpm_8h.html#ad1efa23b690648273038ad7564170f5b">low_power_level_cfg_t</a> low_power_level_cfg);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keywordtype">void</span> Lpm_Enable_Low_Power_Wakeup(<a class="code" href="lpm_8h.html#a7a1aaceeb5e3a4c2542f0363910a70ee">low_power_wakeup_cfg_t</a> low_power_wakeup_cfg);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keywordtype">void</span> Lpm_Disable_Low_Power_Wakeup(<a class="code" href="lpm_8h.html#a7a1aaceeb5e3a4c2542f0363910a70ee">low_power_wakeup_cfg_t</a> low_power_wakeup_cfg);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="keywordtype">void</span> Lpm_Set_GPIO_Deepsleep_Wakeup_Invert(uint32_t value);</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="keywordtype">void</span> Lpm_Set_Comparator_Deepsleep_Wakeup_Invert(uint32_t value);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keywordtype">void</span> Lpm_Set_Sram_Normal_Shutdown(uint32_t value);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keywordtype">void</span> Lpm_Set_Sram_Sleep_Deepsleep_Shutdown(uint32_t value);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keywordtype">void</span> Lpm_Enter_Low_Power_Mode(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keywordtype">void</span> Lpm_Comm_Subsystem_Disable_LDO_Mode(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keywordtype">void</span> Lpm_Comm_Subsystem_Check_System_Ready(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;<span class="keywordtype">void</span> Lpm_Comm_Subsystem_Disable_Wait_32k_Done(<span class="keywordtype">void</span>);</div>

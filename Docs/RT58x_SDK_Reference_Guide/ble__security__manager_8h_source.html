@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.BMP"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Rafael RT58x  SDK
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
   </td>
  </tr>
@@ -119,135 +119,159 @@ $(function() {
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    uint32_t  passkey;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;} <a class="code" href="structble__sm__passkey__param__t.html">ble_sm_passkey_param_t</a>;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="structble__sm__io__cap__param__t.html">  106</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;{</div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="structble__sm__io__cap__param__t.html#ac952f411ee47275301774437ff37e568">  108</a></span>&#160;    io_caps_t          <a class="code" href="structble__sm__io__cap__param__t.html#ac952f411ee47275301774437ff37e568">io_caps_param</a>;           </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;} <a class="code" href="structble__sm__io__cap__param__t.html">ble_sm_io_cap_param_t</a>;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="structble__sm__bonding__flag__param__t.html">  117</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;{</div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="structble__sm__bonding__flag__param__t.html#a597a9b4d683ad51e1d7d66bd40dd5298">  119</a></span>&#160;    bonding_flag_t     <a class="code" href="structble__sm__bonding__flag__param__t.html#a597a9b4d683ad51e1d7d66bd40dd5298">bonding_flag</a>;            </div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;} <a class="code" href="structble__sm__bonding__flag__param__t.html">ble_sm_bonding_flag_param_t</a>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
-<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="structble__sm__irk__param__t.html">  128</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;{</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    uint8_t   irk[16];</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;} <a class="code" href="structble__sm__irk__param__t.html">ble_sm_irk_param_t</a>;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="structble__sm__numeric__comp__result__param__t.html">  105</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    uint8_t   host_id;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    uint8_t   same_numeric;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;} <a class="code" href="structble__sm__numeric__comp__result__param__t.html">ble_sm_numeric_comp_result_param_t</a>;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="structble__sm__io__cap__param__t.html">  115</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;{</div>
+<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="structble__sm__io__cap__param__t.html#ac952f411ee47275301774437ff37e568">  117</a></span>&#160;    io_caps_t          <a class="code" href="structble__sm__io__cap__param__t.html#ac952f411ee47275301774437ff37e568">io_caps_param</a>;           </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;} <a class="code" href="structble__sm__io__cap__param__t.html">ble_sm_io_cap_param_t</a>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno"><a class="line" href="structble__sm__bonding__flag__param__t.html">  126</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;{</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="structble__sm__bonding__flag__param__t.html#a597a9b4d683ad51e1d7d66bd40dd5298">  128</a></span>&#160;    bonding_flag_t     <a class="code" href="structble__sm__bonding__flag__param__t.html#a597a9b4d683ad51e1d7d66bd40dd5298">bonding_flag</a>;            </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;} <a class="code" href="structble__sm__bonding__flag__param__t.html">ble_sm_bonding_flag_param_t</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_stk_gen_method_s</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;{</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    uint8_t                   host_id;          </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    ble_sm_key_gen_method_t   key_gen_method;   </div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;} ble_evt_sm_stk_gen_method_t;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_passkey_confirm_param_s</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;{</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    uint8_t      host_id;               </div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;} ble_evt_sm_passkey_confirm_param_t;</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="structble__sm__irk__param__t.html">  137</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct</span></div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    uint8_t   irk[16];</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;} <a class="code" href="structble__sm__irk__param__t.html">ble_sm_irk_param_t</a>;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160; </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_stk_gen_method_s</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    uint8_t                   host_id;          </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    ble_sm_key_gen_method_t   key_gen_method;   </div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;} ble_evt_sm_stk_gen_method_t;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_auth_status_s</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;{</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    uint8_t      host_id;               </div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    uint8_t      status;                </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;} ble_evt_sm_auth_status_t;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_irk_resolving_fail_s</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;{</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    uint8_t      host_id;               </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;} ble_evt_sm_irk_resolving_fail_t;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_io_cap_s</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;{</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    io_caps_t          io_caps_param;           </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;} ble_evt_sm_io_cap_t;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_passkey_confirm_param_s</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;{</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    uint8_t      host_id;               </div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;} ble_evt_sm_passkey_confirm_param_t;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_numeric_comparison_param_t</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;{</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    uint8_t      host_id;               </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    uint32_t     comparison_value;      </div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;} ble_evt_sm_numeric_comparison_param_t;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_auth_status_s</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;{</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    uint8_t      host_id;               </div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    uint8_t      status;                </div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    uint8_t      lesc: 1;               </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    uint8_t      reserved: 7;           </div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;} ble_evt_sm_auth_status_t;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_bonding_flag_s</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;{</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    bonding_flag_t     bonding_flag;            </div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;} ble_evt_sm_bonding_flag_t;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_irk_resolving_fail_s</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    uint8_t      host_id;               </div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;} ble_evt_sm_irk_resolving_fail_t;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html">  200</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structble__evt__sm__s.html">ble_evt_sm_s</a></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_io_cap_s</div>
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">union</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    {</div>
-<div class="line"><a name="l00204"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#ab67ae666271f37be31bba212d8339f79">  204</a></span>&#160;        ble_evt_sm_stk_gen_method_t          <a class="code" href="structble__evt__sm__s.html#ab67ae666271f37be31bba212d8339f79">evt_stk_gen_method</a>;         </div>
-<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a407a7f237b65d0086f44bd51b00dcd28">  205</a></span>&#160;        ble_evt_sm_passkey_confirm_param_t   <a class="code" href="structble__evt__sm__s.html#a407a7f237b65d0086f44bd51b00dcd28">evt_passkey_confirm_param</a>;  </div>
-<div class="line"><a name="l00206"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a45ea0295f25daf168c4e500cb57207c4">  206</a></span>&#160;        ble_evt_sm_auth_status_t             <a class="code" href="structble__evt__sm__s.html#a45ea0295f25daf168c4e500cb57207c4">evt_auth_status</a>;            </div>
-<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a43caf028e81d8da0835a92498c690f6f">  207</a></span>&#160;        ble_evt_sm_irk_resolving_fail_t      <a class="code" href="structble__evt__sm__s.html#a43caf028e81d8da0835a92498c690f6f">evt_irk_resolving_fail</a>;     </div>
-<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a4cdf4c85f7a920d4253a3e71a5e8932d">  208</a></span>&#160;        ble_evt_sm_io_cap_t                  <a class="code" href="structble__evt__sm__s.html#a4cdf4c85f7a920d4253a3e71a5e8932d">evt_io_caps</a>;                </div>
-<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#aa832a2ff22685b10f1a988db8f2bd81a">  209</a></span>&#160;        ble_evt_sm_bonding_flag_t            <a class="code" href="structble__evt__sm__s.html#aa832a2ff22685b10f1a988db8f2bd81a">evt_bonding_flag</a>;           </div>
-<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#aadc7a2d554e4af088525fa8e4b736905">  210</a></span>&#160;    } <a class="code" href="structble__evt__sm__s.html#aadc7a2d554e4af088525fa8e4b736905">param</a>;                                                          </div>
-<div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="group__ble__sec.html#ga7e5176cfb56670f8fc1c2b23e85ce5cc">  212</a></span>&#160;} <a class="code" href="group__ble__sec.html#ga7e5176cfb56670f8fc1c2b23e85ce5cc">ble_evt_sm_t</a>;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160; </div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment"> *    MACROS</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment"> *************************************************************************************************/</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160; </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160; </div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment"> *    GLOBAL PROTOTYPES</span></div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment"> *************************************************************************************************/</span></div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#gae5d0ddf3da4292eddc2bad27f866bebf">ble_cmd_security_request_set</a>(uint8_t host_id);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; </div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga59de130e7f4841ddae89537600d6b06f">ble_cmd_passkey_set</a>(<a class="code" href="structble__sm__passkey__param__t.html">ble_sm_passkey_param_t</a> *p_param);</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160; </div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    io_caps_t          io_caps_param;           </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;} ble_evt_sm_io_cap_t;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160; </div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160; </div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a>((packed)) ble_evt_sm_bonding_flag_s</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;{</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    bonding_flag_t     bonding_flag;            </div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;} ble_evt_sm_bonding_flag_t;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160; </div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160; </div>
+<div class="line"><a name="l00221"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html">  221</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structble__evt__sm__s.html">ble_evt_sm_s</a></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;{</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    <span class="keyword">union</span></div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    {</div>
+<div class="line"><a name="l00225"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#ab67ae666271f37be31bba212d8339f79">  225</a></span>&#160;        ble_evt_sm_stk_gen_method_t           <a class="code" href="structble__evt__sm__s.html#ab67ae666271f37be31bba212d8339f79">evt_stk_gen_method</a>;           </div>
+<div class="line"><a name="l00226"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a407a7f237b65d0086f44bd51b00dcd28">  226</a></span>&#160;        ble_evt_sm_passkey_confirm_param_t    <a class="code" href="structble__evt__sm__s.html#a407a7f237b65d0086f44bd51b00dcd28">evt_passkey_confirm_param</a>;    </div>
+<div class="line"><a name="l00227"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a77bf63ffcb00b0998d72237e9b912cd6">  227</a></span>&#160;        ble_evt_sm_numeric_comparison_param_t <a class="code" href="structble__evt__sm__s.html#a77bf63ffcb00b0998d72237e9b912cd6">evt_numeric_comparison_param</a>; </div>
+<div class="line"><a name="l00228"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a45ea0295f25daf168c4e500cb57207c4">  228</a></span>&#160;        ble_evt_sm_auth_status_t              <a class="code" href="structble__evt__sm__s.html#a45ea0295f25daf168c4e500cb57207c4">evt_auth_status</a>;              </div>
+<div class="line"><a name="l00229"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a43caf028e81d8da0835a92498c690f6f">  229</a></span>&#160;        ble_evt_sm_irk_resolving_fail_t       <a class="code" href="structble__evt__sm__s.html#a43caf028e81d8da0835a92498c690f6f">evt_irk_resolving_fail</a>;       </div>
+<div class="line"><a name="l00230"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#a4cdf4c85f7a920d4253a3e71a5e8932d">  230</a></span>&#160;        ble_evt_sm_io_cap_t                   <a class="code" href="structble__evt__sm__s.html#a4cdf4c85f7a920d4253a3e71a5e8932d">evt_io_caps</a>;                  </div>
+<div class="line"><a name="l00231"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#aa832a2ff22685b10f1a988db8f2bd81a">  231</a></span>&#160;        ble_evt_sm_bonding_flag_t             <a class="code" href="structble__evt__sm__s.html#aa832a2ff22685b10f1a988db8f2bd81a">evt_bonding_flag</a>;             </div>
+<div class="line"><a name="l00232"></a><span class="lineno"><a class="line" href="structble__evt__sm__s.html#aadc7a2d554e4af088525fa8e4b736905">  232</a></span>&#160;    } <a class="code" href="structble__evt__sm__s.html#aadc7a2d554e4af088525fa8e4b736905">param</a>;                                                                </div>
+<div class="line"><a name="l00234"></a><span class="lineno"><a class="line" href="group__ble__sec.html#ga7e5176cfb56670f8fc1c2b23e85ce5cc">  234</a></span>&#160;} <a class="code" href="group__ble__sec.html#ga7e5176cfb56670f8fc1c2b23e85ce5cc">ble_evt_sm_t</a>;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; </div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment"> *    MACROS</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment"> *************************************************************************************************/</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="comment"> *    GLOBAL PROTOTYPES</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="comment"> *************************************************************************************************/</span></div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160; </div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga9db7569f45f780018ec8bf80b74c6eb4">ble_cmd_io_capability_set</a>(<a class="code" href="structble__sm__io__cap__param__t.html">ble_sm_io_cap_param_t</a> *p_param);</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#gae5d0ddf3da4292eddc2bad27f866bebf">ble_cmd_security_request_set</a>(uint8_t host_id);</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160; </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga88e845f440e05a26823b245216d87aa9">ble_cmd_bonding_flag_set</a>(<a class="code" href="structble__sm__bonding__flag__param__t.html">ble_sm_bonding_flag_param_t</a> *p_param);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga59de130e7f4841ddae89537600d6b06f">ble_cmd_passkey_set</a>(<a class="code" href="structble__sm__passkey__param__t.html">ble_sm_passkey_param_t</a> *p_param);</div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga2012502d5a46eaa7eaf5ed45d698c0cb">ble_cmd_cccd_restore</a>(uint8_t host_id);</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga2c1b47e9754b040e56503da2abd9c26d">ble_cmd_numeric_comp_result_set</a>(<a class="code" href="structble__sm__numeric__comp__result__param__t.html">ble_sm_numeric_comp_result_param_t</a> *p_param);</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160; </div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#gae35613238cf4c85fb7b57faa10829c32">ble_cmd_bonding_space_init</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160; </div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160; </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga7f0f96d08a4f6d0ee4d2ccaa5fce7a83">ble_cmd_write_identity_resolving_key</a>(<a class="code" href="structble__sm__irk__param__t.html">ble_sm_irk_param_t</a> *p_param);</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160; </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160; </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;};</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga9db7569f45f780018ec8bf80b74c6eb4">ble_cmd_io_capability_set</a>(<a class="code" href="structble__sm__io__cap__param__t.html">ble_sm_io_cap_param_t</a> *p_param);</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160; </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga88e845f440e05a26823b245216d87aa9">ble_cmd_bonding_flag_set</a>(<a class="code" href="structble__sm__bonding__flag__param__t.html">ble_sm_bonding_flag_param_t</a> *p_param);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160; </div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160; </div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __BLE_SECURITY_MANAGER_H__*/</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga2012502d5a46eaa7eaf5ed45d698c0cb">ble_cmd_cccd_restore</a>(uint8_t host_id);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160; </div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#gae35613238cf4c85fb7b57faa10829c32">ble_cmd_bonding_space_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga7f0f96d08a4f6d0ee4d2ccaa5fce7a83">ble_cmd_write_identity_resolving_key</a>(<a class="code" href="structble__sm__irk__param__t.html">ble_sm_irk_param_t</a> *p_param);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160; </div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<a class="code" href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a> <a class="code" href="group__ble__sec.html#ga325a06dc6589d6b133796c4ab13e7453">ble_cmd_lesc_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160; </div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;};</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __BLE_SECURITY_MANAGER_H__*/</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
 <div class="ttc" id="able__api_8h_html"><div class="ttname"><a href="ble__api_8h.html">ble_api.h</a></div><div class="ttdoc">BLE API header file.</div></div>
 <div class="ttc" id="agroup__ble__api_html_gaaa9cdbd64916ccb5402e05efce579d05"><div class="ttname"><a href="group__ble__api.html#gaaa9cdbd64916ccb5402e05efce579d05">ble_err_t</a></div><div class="ttdeci">ble_err_t</div><div class="ttdoc">BLE api retrun parameter definition.</div><div class="ttdef"><b>Definition:</b> ble_api.h:40</div></div>
-<div class="ttc" id="agroup__ble__sec_html_ga2012502d5a46eaa7eaf5ed45d698c0cb"><div class="ttname"><a href="group__ble__sec.html#ga2012502d5a46eaa7eaf5ed45d698c0cb">ble_cmd_cccd_restore</a></div><div class="ttdeci">ble_err_t ble_cmd_cccd_restore(uint8_t host_id)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:160</div></div>
-<div class="ttc" id="agroup__ble__sec_html_ga39e87ad193ffa1f44400efdb9ab3171d"><div class="ttname"><a href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a></div><div class="ttdeci">struct __attribute__((packed)) ble_evt_sm_stk_gen_method_s</div><div class="ttdoc">STK Generator Method Event Parameters.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:138</div></div>
+<div class="ttc" id="agroup__ble__sec_html_ga2012502d5a46eaa7eaf5ed45d698c0cb"><div class="ttname"><a href="group__ble__sec.html#ga2012502d5a46eaa7eaf5ed45d698c0cb">ble_cmd_cccd_restore</a></div><div class="ttdeci">ble_err_t ble_cmd_cccd_restore(uint8_t host_id)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:195</div></div>
+<div class="ttc" id="agroup__ble__sec_html_ga2c1b47e9754b040e56503da2abd9c26d"><div class="ttname"><a href="group__ble__sec.html#ga2c1b47e9754b040e56503da2abd9c26d">ble_cmd_numeric_comp_result_set</a></div><div class="ttdeci">ble_err_t ble_cmd_numeric_comp_result_set(ble_sm_numeric_comp_result_param_t *p_param)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:92</div></div>
+<div class="ttc" id="agroup__ble__sec_html_ga325a06dc6589d6b133796c4ab13e7453"><div class="ttname"><a href="group__ble__sec.html#ga325a06dc6589d6b133796c4ab13e7453">ble_cmd_lesc_init</a></div><div class="ttdeci">ble_err_t ble_cmd_lesc_init(void)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:294</div></div>
+<div class="ttc" id="agroup__ble__sec_html_ga39e87ad193ffa1f44400efdb9ab3171d"><div class="ttname"><a href="group__ble__sec.html#ga39e87ad193ffa1f44400efdb9ab3171d">__attribute__</a></div><div class="ttdeci">struct __attribute__((packed)) ble_evt_sm_stk_gen_method_s</div><div class="ttdoc">STK Generator Method Event Parameters.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:147</div></div>
 <div class="ttc" id="agroup__ble__sec_html_ga59de130e7f4841ddae89537600d6b06f"><div class="ttname"><a href="group__ble__sec.html#ga59de130e7f4841ddae89537600d6b06f">ble_cmd_passkey_set</a></div><div class="ttdeci">ble_err_t ble_cmd_passkey_set(ble_sm_passkey_param_t *p_param)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:57</div></div>
 <div class="ttc" id="agroup__ble__sec_html_ga7e5176cfb56670f8fc1c2b23e85ce5cc"><div class="ttname"><a href="group__ble__sec.html#ga7e5176cfb56670f8fc1c2b23e85ce5cc">ble_evt_sm_t</a></div><div class="ttdeci">struct ble_evt_sm_s ble_evt_sm_t</div><div class="ttdoc">BLE Security Manager Event Parameters.</div></div>
-<div class="ttc" id="agroup__ble__sec_html_ga7f0f96d08a4f6d0ee4d2ccaa5fce7a83"><div class="ttname"><a href="group__ble__sec.html#ga7f0f96d08a4f6d0ee4d2ccaa5fce7a83">ble_cmd_write_identity_resolving_key</a></div><div class="ttdeci">ble_err_t ble_cmd_write_identity_resolving_key(ble_sm_irk_param_t *p_param)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:225</div></div>
-<div class="ttc" id="agroup__ble__sec_html_ga88e845f440e05a26823b245216d87aa9"><div class="ttname"><a href="group__ble__sec.html#ga88e845f440e05a26823b245216d87aa9">ble_cmd_bonding_flag_set</a></div><div class="ttdeci">ble_err_t ble_cmd_bonding_flag_set(ble_sm_bonding_flag_param_t *p_param)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:126</div></div>
-<div class="ttc" id="agroup__ble__sec_html_ga9db7569f45f780018ec8bf80b74c6eb4"><div class="ttname"><a href="group__ble__sec.html#ga9db7569f45f780018ec8bf80b74c6eb4">ble_cmd_io_capability_set</a></div><div class="ttdeci">ble_err_t ble_cmd_io_capability_set(ble_sm_io_cap_param_t *p_param)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:92</div></div>
-<div class="ttc" id="agroup__ble__sec_html_gae35613238cf4c85fb7b57faa10829c32"><div class="ttname"><a href="group__ble__sec.html#gae35613238cf4c85fb7b57faa10829c32">ble_cmd_bonding_space_init</a></div><div class="ttdeci">ble_err_t ble_cmd_bonding_space_init(void)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:194</div></div>
+<div class="ttc" id="agroup__ble__sec_html_ga7f0f96d08a4f6d0ee4d2ccaa5fce7a83"><div class="ttname"><a href="group__ble__sec.html#ga7f0f96d08a4f6d0ee4d2ccaa5fce7a83">ble_cmd_write_identity_resolving_key</a></div><div class="ttdeci">ble_err_t ble_cmd_write_identity_resolving_key(ble_sm_irk_param_t *p_param)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:260</div></div>
+<div class="ttc" id="agroup__ble__sec_html_ga88e845f440e05a26823b245216d87aa9"><div class="ttname"><a href="group__ble__sec.html#ga88e845f440e05a26823b245216d87aa9">ble_cmd_bonding_flag_set</a></div><div class="ttdeci">ble_err_t ble_cmd_bonding_flag_set(ble_sm_bonding_flag_param_t *p_param)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:161</div></div>
+<div class="ttc" id="agroup__ble__sec_html_ga9db7569f45f780018ec8bf80b74c6eb4"><div class="ttname"><a href="group__ble__sec.html#ga9db7569f45f780018ec8bf80b74c6eb4">ble_cmd_io_capability_set</a></div><div class="ttdeci">ble_err_t ble_cmd_io_capability_set(ble_sm_io_cap_param_t *p_param)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:127</div></div>
+<div class="ttc" id="agroup__ble__sec_html_gae35613238cf4c85fb7b57faa10829c32"><div class="ttname"><a href="group__ble__sec.html#gae35613238cf4c85fb7b57faa10829c32">ble_cmd_bonding_space_init</a></div><div class="ttdeci">ble_err_t ble_cmd_bonding_space_init(void)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:229</div></div>
 <div class="ttc" id="agroup__ble__sec_html_gae5d0ddf3da4292eddc2bad27f866bebf"><div class="ttname"><a href="group__ble__sec.html#gae5d0ddf3da4292eddc2bad27f866bebf">ble_cmd_security_request_set</a></div><div class="ttdeci">ble_err_t ble_cmd_security_request_set(uint8_t host_id)</div><div class="ttdef"><b>Definition:</b> ble_cmd_security_manager.c:23</div></div>
-<div class="ttc" id="astructble__evt__sm__s_html"><div class="ttname"><a href="structble__evt__sm__s.html">ble_evt_sm_s</a></div><div class="ttdoc">BLE Security Manager Event Parameters.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:201</div></div>
-<div class="ttc" id="astructble__evt__sm__s_html_a407a7f237b65d0086f44bd51b00dcd28"><div class="ttname"><a href="structble__evt__sm__s.html#a407a7f237b65d0086f44bd51b00dcd28">ble_evt_sm_s::evt_passkey_confirm_param</a></div><div class="ttdeci">ble_evt_sm_passkey_confirm_param_t evt_passkey_confirm_param</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:205</div></div>
-<div class="ttc" id="astructble__evt__sm__s_html_a43caf028e81d8da0835a92498c690f6f"><div class="ttname"><a href="structble__evt__sm__s.html#a43caf028e81d8da0835a92498c690f6f">ble_evt_sm_s::evt_irk_resolving_fail</a></div><div class="ttdeci">ble_evt_sm_irk_resolving_fail_t evt_irk_resolving_fail</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:207</div></div>
-<div class="ttc" id="astructble__evt__sm__s_html_a45ea0295f25daf168c4e500cb57207c4"><div class="ttname"><a href="structble__evt__sm__s.html#a45ea0295f25daf168c4e500cb57207c4">ble_evt_sm_s::evt_auth_status</a></div><div class="ttdeci">ble_evt_sm_auth_status_t evt_auth_status</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:206</div></div>
-<div class="ttc" id="astructble__evt__sm__s_html_a4cdf4c85f7a920d4253a3e71a5e8932d"><div class="ttname"><a href="structble__evt__sm__s.html#a4cdf4c85f7a920d4253a3e71a5e8932d">ble_evt_sm_s::evt_io_caps</a></div><div class="ttdeci">ble_evt_sm_io_cap_t evt_io_caps</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:208</div></div>
-<div class="ttc" id="astructble__evt__sm__s_html_aa832a2ff22685b10f1a988db8f2bd81a"><div class="ttname"><a href="structble__evt__sm__s.html#aa832a2ff22685b10f1a988db8f2bd81a">ble_evt_sm_s::evt_bonding_flag</a></div><div class="ttdeci">ble_evt_sm_bonding_flag_t evt_bonding_flag</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:209</div></div>
+<div class="ttc" id="astructble__evt__sm__s_html"><div class="ttname"><a href="structble__evt__sm__s.html">ble_evt_sm_s</a></div><div class="ttdoc">BLE Security Manager Event Parameters.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:222</div></div>
+<div class="ttc" id="astructble__evt__sm__s_html_a407a7f237b65d0086f44bd51b00dcd28"><div class="ttname"><a href="structble__evt__sm__s.html#a407a7f237b65d0086f44bd51b00dcd28">ble_evt_sm_s::evt_passkey_confirm_param</a></div><div class="ttdeci">ble_evt_sm_passkey_confirm_param_t evt_passkey_confirm_param</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:226</div></div>
+<div class="ttc" id="astructble__evt__sm__s_html_a43caf028e81d8da0835a92498c690f6f"><div class="ttname"><a href="structble__evt__sm__s.html#a43caf028e81d8da0835a92498c690f6f">ble_evt_sm_s::evt_irk_resolving_fail</a></div><div class="ttdeci">ble_evt_sm_irk_resolving_fail_t evt_irk_resolving_fail</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:229</div></div>
+<div class="ttc" id="astructble__evt__sm__s_html_a45ea0295f25daf168c4e500cb57207c4"><div class="ttname"><a href="structble__evt__sm__s.html#a45ea0295f25daf168c4e500cb57207c4">ble_evt_sm_s::evt_auth_status</a></div><div class="ttdeci">ble_evt_sm_auth_status_t evt_auth_status</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:228</div></div>
+<div class="ttc" id="astructble__evt__sm__s_html_a4cdf4c85f7a920d4253a3e71a5e8932d"><div class="ttname"><a href="structble__evt__sm__s.html#a4cdf4c85f7a920d4253a3e71a5e8932d">ble_evt_sm_s::evt_io_caps</a></div><div class="ttdeci">ble_evt_sm_io_cap_t evt_io_caps</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:230</div></div>
+<div class="ttc" id="astructble__evt__sm__s_html_a77bf63ffcb00b0998d72237e9b912cd6"><div class="ttname"><a href="structble__evt__sm__s.html#a77bf63ffcb00b0998d72237e9b912cd6">ble_evt_sm_s::evt_numeric_comparison_param</a></div><div class="ttdeci">ble_evt_sm_numeric_comparison_param_t evt_numeric_comparison_param</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:227</div></div>
+<div class="ttc" id="astructble__evt__sm__s_html_aa832a2ff22685b10f1a988db8f2bd81a"><div class="ttname"><a href="structble__evt__sm__s.html#aa832a2ff22685b10f1a988db8f2bd81a">ble_evt_sm_s::evt_bonding_flag</a></div><div class="ttdeci">ble_evt_sm_bonding_flag_t evt_bonding_flag</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:231</div></div>
 <div class="ttc" id="astructble__evt__sm__s_html_aadc7a2d554e4af088525fa8e4b736905"><div class="ttname"><a href="structble__evt__sm__s.html#aadc7a2d554e4af088525fa8e4b736905">ble_evt_sm_s::param</a></div><div class="ttdeci">union ble_evt_sm_s::@8 param</div></div>
-<div class="ttc" id="astructble__evt__sm__s_html_ab67ae666271f37be31bba212d8339f79"><div class="ttname"><a href="structble__evt__sm__s.html#ab67ae666271f37be31bba212d8339f79">ble_evt_sm_s::evt_stk_gen_method</a></div><div class="ttdeci">ble_evt_sm_stk_gen_method_t evt_stk_gen_method</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:204</div></div>
-<div class="ttc" id="astructble__sm__bonding__flag__param__t_html"><div class="ttname"><a href="structble__sm__bonding__flag__param__t.html">ble_sm_bonding_flag_param_t</a></div><div class="ttdoc">BLE bonding flag parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:118</div></div>
-<div class="ttc" id="astructble__sm__bonding__flag__param__t_html_a597a9b4d683ad51e1d7d66bd40dd5298"><div class="ttname"><a href="structble__sm__bonding__flag__param__t.html#a597a9b4d683ad51e1d7d66bd40dd5298">ble_sm_bonding_flag_param_t::bonding_flag</a></div><div class="ttdeci">bonding_flag_t bonding_flag</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:119</div></div>
-<div class="ttc" id="astructble__sm__io__cap__param__t_html"><div class="ttname"><a href="structble__sm__io__cap__param__t.html">ble_sm_io_cap_param_t</a></div><div class="ttdoc">BLE io capabilities parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:107</div></div>
-<div class="ttc" id="astructble__sm__io__cap__param__t_html_ac952f411ee47275301774437ff37e568"><div class="ttname"><a href="structble__sm__io__cap__param__t.html#ac952f411ee47275301774437ff37e568">ble_sm_io_cap_param_t::io_caps_param</a></div><div class="ttdeci">io_caps_t io_caps_param</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:108</div></div>
-<div class="ttc" id="astructble__sm__irk__param__t_html"><div class="ttname"><a href="structble__sm__irk__param__t.html">ble_sm_irk_param_t</a></div><div class="ttdoc">BLE identity resolving key parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:129</div></div>
+<div class="ttc" id="astructble__evt__sm__s_html_ab67ae666271f37be31bba212d8339f79"><div class="ttname"><a href="structble__evt__sm__s.html#ab67ae666271f37be31bba212d8339f79">ble_evt_sm_s::evt_stk_gen_method</a></div><div class="ttdeci">ble_evt_sm_stk_gen_method_t evt_stk_gen_method</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:225</div></div>
+<div class="ttc" id="astructble__sm__bonding__flag__param__t_html"><div class="ttname"><a href="structble__sm__bonding__flag__param__t.html">ble_sm_bonding_flag_param_t</a></div><div class="ttdoc">BLE bonding flag parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:127</div></div>
+<div class="ttc" id="astructble__sm__bonding__flag__param__t_html_a597a9b4d683ad51e1d7d66bd40dd5298"><div class="ttname"><a href="structble__sm__bonding__flag__param__t.html#a597a9b4d683ad51e1d7d66bd40dd5298">ble_sm_bonding_flag_param_t::bonding_flag</a></div><div class="ttdeci">bonding_flag_t bonding_flag</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:128</div></div>
+<div class="ttc" id="astructble__sm__io__cap__param__t_html"><div class="ttname"><a href="structble__sm__io__cap__param__t.html">ble_sm_io_cap_param_t</a></div><div class="ttdoc">BLE io capabilities parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:116</div></div>
+<div class="ttc" id="astructble__sm__io__cap__param__t_html_ac952f411ee47275301774437ff37e568"><div class="ttname"><a href="structble__sm__io__cap__param__t.html#ac952f411ee47275301774437ff37e568">ble_sm_io_cap_param_t::io_caps_param</a></div><div class="ttdeci">io_caps_t io_caps_param</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:117</div></div>
+<div class="ttc" id="astructble__sm__irk__param__t_html"><div class="ttname"><a href="structble__sm__irk__param__t.html">ble_sm_irk_param_t</a></div><div class="ttdoc">BLE identity resolving key parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:138</div></div>
+<div class="ttc" id="astructble__sm__numeric__comp__result__param__t_html"><div class="ttname"><a href="structble__sm__numeric__comp__result__param__t.html">ble_sm_numeric_comp_result_param_t</a></div><div class="ttdoc">BLE numeric comparison parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:106</div></div>
 <div class="ttc" id="astructble__sm__passkey__param__t_html"><div class="ttname"><a href="structble__sm__passkey__param__t.html">ble_sm_passkey_param_t</a></div><div class="ttdoc">BLE passkey parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:96</div></div>
 <div class="ttc" id="astructble__sm__restore__cccd__param__t_html"><div class="ttname"><a href="structble__sm__restore__cccd__param__t.html">ble_sm_restore_cccd_param_t</a></div><div class="ttdoc">BLE restore cccd parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:86</div></div>
 <div class="ttc" id="astructble__sm__security__request__param__t_html"><div class="ttname"><a href="structble__sm__security__request__param__t.html">ble_sm_security_request_param_t</a></div><div class="ttdoc">BLE bonding flags parameter.</div><div class="ttdef"><b>Definition:</b> ble_security_manager.h:76</div></div>

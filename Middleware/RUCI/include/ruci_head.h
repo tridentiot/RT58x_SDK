@@ -2,8 +2,8 @@
 *
 * @File         ruci_head.h
 * @Version
-* $Revision: 5942
-* $Date: 2023-07-13
+* $Revision: 6351
+* $Date: 2023-11-17
 * @Brief
 * @Note
 * Copyright (C) 2023 Rafael Microelectronics Inc. All rights reserved.
@@ -62,6 +62,7 @@
 #define RUCI_SUBTYPE_PCI_EVENT                              (0x6)
 #define RUCI_SUBTYPE_PCI_DATA                               (0x7)
 #define RUCI_SUBTYPE_PCI_ZWAVE_CMD                          (0x8)
+#define RUCI_SUBTYPE_PCI_OOK_CMD                            (0x9)
 #define RUCI_SUBTYPE_CMN_SYS_CMD                            (0x0)
 #define RUCI_SUBTYPE_CMN_HAL_CMD                            (0x1)
 #define RUCI_SUBTYPE_CMN_EVENT                              (0xf)

@@ -507,6 +507,13 @@ typedef enum
      */
     TYPE_BLE_SM_PASSKEY_SET,
 
+    /** @brief Set BLE numeric comparison result.
+     *  @par   none
+     *
+     *  @param @ref ble_sm_passkey_param_t
+     */
+    TYPE_BLE_SM_NUMERIC_COMP_RESULT_SET,
+
     /** @brief BLE send security request.
      *  @par   none
      *
@@ -527,6 +534,13 @@ typedef enum
      *  @param ble_sm_irk_param_t
      */
     TYPE_BLE_SM_IDENTITY_RESOLVING_KEY_SET,
+
+    /** @brief BLE LESC init.
+     *  @par   none
+     *
+     *  @param none
+     */
+    TYPE_BLE_LESC_INIT,
 
     //====================================================================
     //     BLE VENDOR API

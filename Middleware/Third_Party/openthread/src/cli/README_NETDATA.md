@@ -47,7 +47,7 @@ Border Router and service information may be stable or temporary. Stable Thread 
    Done
    ```
 
-4. Observe IPv6 addresses assigned to the Thread inteface.
+4. Observe IPv6 addresses assigned to the Thread interface.
 
    ```bash
    > ipaddr
@@ -142,6 +142,7 @@ After the device successfully attaches to a Thread network, the device will retr
 ## Command List
 
 - [help](#help)
+- [full](#full)
 - [length](#length)
 - [maxlength](#maxlength)
 - [publish](#publish)
@@ -160,6 +161,7 @@ Print netdata help menu.
 
 ```bash
 > netdata help
+full
 length
 maxlength
 publish
@@ -167,6 +169,39 @@ register
 show
 steeringdata
 unpublish
+Done
+```
+
+### full
+
+Usage: `netdata full`
+
+Print "yes" or "no" flag tracking whether or not the "net data full" callback has been invoked since start of Thread operation or since the last time `netdata full reset` was used to reset the flag.
+
+This command requires `OPENTHREAD_CONFIG_BORDER_ROUTER_SIGNAL_NETWORK_DATA_FULL`.
+
+The "net data full" callback is invoked whenever:
+
+- The device is acting as a leader and receives a Network Data registration from a Border Router (BR) that it cannot add to Network Data (running out of space).
+- The device is acting as a BR and new entries cannot be added to its local Network Data.
+- The device is acting as a BR and tries to register its local Network Data entries with the leader, but determines that its local entries will not fit.
+
+```
+> netdata full
+no
+Done
+```
+
+### full reset
+
+Usage: `netdata full reset`
+
+Reset the flag tracking whether "net data full" callback was invoked.
+
+This command requires `OPENTHREAD_CONFIG_BORDER_ROUTER_SIGNAL_NETWORK_DATA_FULL`.
+
+```
+> netdata full reset
 Done
 ```
 
@@ -262,10 +297,27 @@ Publish an external route entry.
 
 - s: Stable flag
 - n: NAT64 flag
+- a: Advertising PIO (AP) flag
 - prf: Preference, which may be: 'high', 'med', or 'low'.
 
 ```bash
 > netdata publish route fd00:1234:5678::/64 s high
+Done
+```
+
+### publish replace \<old prefix\> \<prefix\> [sn][prf]
+
+Replace a previously published external route entry.
+
+If there is no previously published external route matching old prefix, this command behaves similarly to `netdata publish route`. If there is a previously published route entry, it will be replaced with the new prefix. In particular, if the old prefix was already added in the Network Data, the change to the new prefix is immediately reflected in the Network Data (i.e., old prefix is removed and the new prefix is added in the same Network Data registration request to leader). This ensures that route entries in the Network Data are not abruptly removed.
+
+- s: Stable flag
+- n: NAT64 flag
+- a: Advertising PIO (AP) flag
+- prf: Preference, which may be: 'high', 'med', or 'low'.
+
+```bash
+> netdata publish replace ::/0 fd00:1234:5678::/64 s high
 Done
 ```
 
@@ -308,6 +360,7 @@ External Routes are listed under `Routes` header:
 - Flags
   - s: Stable flag
   - n: NAT64 flag
+  - a: Advertising PIO (AP) flag
 - Preference `high`, `med`, or `low`
 - RLOC16 of device which added the route prefix
 

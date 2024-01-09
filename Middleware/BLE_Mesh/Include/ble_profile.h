@@ -35,7 +35,7 @@
 #define MAX_NUM_CONN_FOTAS          3
 
 /** Define the maximum number of BLE UDF01 service link. */
-#define MAX_NUM_CONN_TRSPS          1
+#define MAX_NUM_CONN_TRSPS          3
 /**************************************************************************
  * Profile Application LINK HOST ID = 0 Public Definitions and Functions
  **************************************************************************/
@@ -46,6 +46,7 @@ typedef struct ble_info_link0_s
     uint8_t                     host_id;                  /**< Host id. */
     uint8_t                     state;                    /**< Current state. */
     ble_svcs_mesh_prov_info_t   svcs_info_mesh_prov_s;    /**< mesh provisioning service information (server). */
+    ble_svcs_trsps_info_t       svcs_info_trsps;           /**< TRSPS information (server). */
     ble_svcs_fotas_info_t       svcs_info_fotas;          /**< FOTAS information (server). */
 } ble_info_link0_t;
 
@@ -54,6 +55,7 @@ typedef struct ble_info_link1_s
     uint8_t                     host_id;                   /**< Host id. */
     uint8_t                     state;                     /**< Current state. */
     ble_svcs_mesh_proxy_info_t  svcs_info_mesh_proxy_s;    /**< mesh proxy service information (server). */
+    ble_svcs_trsps_info_t       svcs_info_trsps;           /**< TRSPS information (server). */
     ble_svcs_fotas_info_t       svcs_info_fotas;           /**< FOTAS information (server). */
 } ble_info_link1_t;
 

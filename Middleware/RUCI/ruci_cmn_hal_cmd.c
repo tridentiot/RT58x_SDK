@@ -2,8 +2,8 @@
 *
 * @File         ruci_cmn_hal_cmd.c
 * @Version
-* $Revision:5942
-* $Date: 2023-07-13
+* $Revision:6351
+* $Date: 2023-11-17
 * @Brief
 * @Note
 * Copyright (C) 2023 Rafael Microelectronics Inc. All rights reserved.
@@ -94,31 +94,31 @@ const uint8_t ruci_elmt_num_set_rssi_offset[] =
 // RUCI: set_tx_power_compensation ---------------------------------------------
 const uint8_t ruci_elmt_type_set_tx_power_compensation[] =
 {
-    1, 1, 1, 1, 1, 1
+    1, 1, 1, 1, 1, 1, 1
 };
 const uint8_t ruci_elmt_num_set_tx_power_compensation[] =
 {
-    1, 1, 1, 1, 1, 1
+    1, 1, 1, 1, 1, 1, 1
 };
 
 // RUCI: set_tx_power_channel_compensation -------------------------------------
 const uint8_t ruci_elmt_type_set_tx_power_channel_compensation[] =
 {
-    1, 1, 1, 1, 1, 1, 1
+    1, 1, 1, 1, 1, 1, 1, 1
 };
 const uint8_t ruci_elmt_num_set_tx_power_channel_compensation[] =
 {
-    1, 1, 1, 1, 1, 1, 1
+    1, 1, 1, 1, 1, 1, 1, 1
 };
 
 // RUCI: set_tx_power_channel_segment ------------------------------------------
 const uint8_t ruci_elmt_type_set_tx_power_channel_segment[] =
 {
-    1, 1, 1, 1, 1, 1
+    1, 1, 1, 1, 1, 1, 1
 };
 const uint8_t ruci_elmt_num_set_tx_power_channel_segment[] =
 {
-    1, 1, 1, 1, 1, 1
+    1, 1, 1, 1, 1, 1, 1
 };
 
 // RUCI: set_pmu_mpk_setting ---------------------------------------------------

@@ -28,14 +28,14 @@ static void bsp_btn_event_handle(bsp_event_t event)
     switch (event)
     {
     case BSP_EVENT_BUTTONS_0:
-        // diable sleep mode
+        // disable sleep mode
         Lpm_Low_Power_Mask(LOW_POWER_MASK_BIT_TASK_BLE_APP);
         break;
 
     case BSP_EVENT_UART_RX_RECV:
     case BSP_EVENT_UART_RX_DONE:
     {
-#if (IO_CAPABILITY_SETTING == KEYBOARD_ONLY)
+#if ((IO_CAPABILITY_SETTING == KEYBOARD_ONLY) || (IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY) || (IO_CAPABILITY_SETTING == DISPLAY_YESNO) )
         static uint8_t rx_buffer[6];
         static uint8_t index = 0;
         char ch;

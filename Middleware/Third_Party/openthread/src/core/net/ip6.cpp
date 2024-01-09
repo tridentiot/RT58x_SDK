@@ -81,15 +81,31 @@ Ip6::Ip6(Instance &aInstance)
 #endif
 }
 
+Message *Ip6::NewMessage(void) { return NewMessage(0); }
+
+Message *Ip6::NewMessage(uint16_t aReserved) { return NewMessage(aReserved, Message::Settings::GetDefault()); }
+
 Message *Ip6::NewMessage(uint16_t aReserved, const Message::Settings &aSettings)
 {
     return Get<MessagePool>().Allocate(
         Message::kTypeIp6, sizeof(Header) + sizeof(HopByHopHeader) + sizeof(MplOption) + aReserved, aSettings);
 }
 
-Message *Ip6::NewMessage(const uint8_t *aData, uint16_t aDataLength, const Message::Settings &aSettings)
+Message *Ip6::NewMessageFromData(const uint8_t *aData, uint16_t aDataLength, const Message::Settings &aSettings)
 {
-    Message *message = Get<MessagePool>().Allocate(Message::kTypeIp6, /* aReserveHeader */ 0, aSettings);
+    Message          *message  = nullptr;
+    Message::Settings settings = aSettings;
+    const Header     *header;
+
+    VerifyOrExit((aData != nullptr) && (aDataLength >= sizeof(Header)));
+
+    // Determine priority from IPv6 header
+    header = reinterpret_cast<const Header *>(aData);
+    VerifyOrExit(header->IsValid());
+    VerifyOrExit(sizeof(Header) + header->GetPayloadLength() == aDataLength);
+    settings.mPriority = DscpToPriority(header->GetDscp());
+
+    message = Get<MessagePool>().Allocate(Message::kTypeIp6, /* aReserveHeader */ 0, settings);
 
     VerifyOrExit(message != nullptr);
 
@@ -98,18 +114,6 @@ Message *Ip6::NewMessage(const uint8_t *aData, uint16_t aDataLength, const Messa
         message->Free();
         message = nullptr;
     }
-
-exit:
-    return message;
-}
-
-Message *Ip6::NewMessage(const uint8_t *aData, uint16_t aDataLength)
-{
-    Message          *message = nullptr;
-    Message::Priority priority;
-
-    SuccessOrExit(GetDatagramPriority(aData, aDataLength, priority));
-    message = NewMessage(aData, aDataLength, Message::Settings(Message::kWithLinkSecurity, priority));
 
 exit:
     return message;
@@ -168,23 +172,6 @@ uint8_t Ip6::PriorityToDscp(Message::Priority aPriority)
     }
 
     return dscp;
-}
-
-Error Ip6::GetDatagramPriority(const uint8_t *aData, uint16_t aDataLen, Message::Priority &aPriority)
-{
-    Error         error = kErrorNone;
-    const Header *header;
-
-    VerifyOrExit((aData != nullptr) && (aDataLen >= sizeof(Header)), error = kErrorInvalidArgs);
-
-    header = reinterpret_cast<const Header *>(aData);
-    VerifyOrExit(header->IsValid(), error = kErrorParse);
-    VerifyOrExit(sizeof(Header) + header->GetPayloadLength() == aDataLen, error = kErrorParse);
-
-    aPriority = DscpToPriority(header->GetDscp());
-
-exit:
-    return error;
 }
 
 Error Ip6::AddMplOption(Message &aMessage, Header &aHeader)
@@ -611,7 +598,7 @@ Error Ip6::FragmentDatagram(Message &aMessage, uint8_t aIpProto)
         offset = fragmentCnt * FragmentHeader::BytesToFragmentOffset(maxPayloadFragment);
         fragmentHeader.SetOffset(offset);
 
-        VerifyOrExit((fragment = NewMessage(0)) != nullptr, error = kErrorNoBufs);
+        VerifyOrExit((fragment = NewMessage()) != nullptr, error = kErrorNoBufs);
         IgnoreError(fragment->SetPriority(aMessage.GetPriority()));
         SuccessOrExit(error = fragment->SetLength(aMessage.GetOffset() + sizeof(fragmentHeader) + payloadFragment));
 
@@ -694,7 +681,7 @@ Error Ip6::HandleFragment(Message &aMessage, MessageOrigin aOrigin, MessageInfo 
     if (message == nullptr)
     {
         LogDebg("start reassembly");
-        VerifyOrExit((message = NewMessage(0)) != nullptr, error = kErrorNoBufs);
+        VerifyOrExit((message = NewMessage()) != nullptr, error = kErrorNoBufs);
         mReassemblyList.Enqueue(*message);
 
         message->SetTimestampToNow();

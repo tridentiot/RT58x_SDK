@@ -97,6 +97,7 @@ typedef uint8_t ble_module_evt_t;
 #define BLE_SM_EVT_PASSKEY_CONFIRM                              (BLE_SM_EVT_BASE + 0x01)        /**< Security module event: passkey comfirmation event. */
 #define BLE_SM_EVT_AUTH_STATUS                                  (BLE_SM_EVT_BASE + 0x02)        /**< Security module event: authentication status event. */
 #define BLE_SM_EVT_IRK_RESOLVING_FAIL                           (BLE_SM_EVT_BASE + 0x03)        /**< Security module event: resolving private address status event. */
+#define BLE_SM_EVT_NUMERIC_COMPARISON                           (BLE_SM_EVT_BASE + 0x04)        /**< Security module event: numeric comparison event. */
 
 #define BLE_VENDOR_EVT_BASE                                     0x80                            /**< vendor event.*/
 #define BLE_VENDOR_EVT_SCAN_REQ_REPORT                          (BLE_VENDOR_EVT_BASE + 0x00)    /**< vendor event: scan request report event. */

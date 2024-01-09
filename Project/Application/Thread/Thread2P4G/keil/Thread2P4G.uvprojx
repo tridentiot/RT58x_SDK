@@ -339,7 +339,7 @@
               <MiscControls> -fno-exceptions -fdata-sections -ffunction-sections</MiscControls>
               <Define>NDEBUG,OPENTHREAD_FTD, OPENTHREAD_PROJECT_CORE_CONFIG_FILE='\"openthread-core-RT58x-config.h\"' ,OPENTHREAD_CONFIG_FILE='\"openthread-core-RT58x-config.h\"', OPENTHREAD_CORE_CONFIG_PLATFORM_CHECK_FILE='\"openthread-core-RT58x-config-check.h\"', MBEDTLS_CONFIG_FILE='\"openthread-mbedtls-config.h\"',PACKAGE_NAME='\"Rafael\"',PACKAGE_VERSION='\"1.3.0\"'</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Thread2P4G;..\config;..\..\..\..\..\Middleware\Thread\Source;..\..\..\..\..\Middleware\Third_Party\openthread\examples\platforms;..\..\..\..\..\Middleware\Third_Party\openthread\examples\platforms\utils;..\..\..\..\..\Middleware\Third_Party\openthread\include;..\..\..\..\..\Middleware\Third_Party\openthread\include\openthread;..\..\..\..\..\Middleware\Third_Party\openthread\src;..\..\..\..\..\Middleware\Third_Party\openthread\src\cli;..\..\..\..\..\Middleware\Third_Party\openthread\src\core;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\api;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\backbone_router;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\border_router;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\coap;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\common;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\config;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\crypto;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\diags;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\mac;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\meshcop;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\net;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\radio;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\utils;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls\repo\include;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls\repo\include\mbedtls;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls\repo\include\psa;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls\repo\library;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\tcplp;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\tcplp\lib;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\tcplp\bsdtcp;..\..\..\..\..\Middleware\MemoryMgmt\Include;..\..\..\..\..\Middleware\Portable\bsp\Include;..\..\..\..\..\Middleware\Portable\Utility\include;..\..\..\..\..\Middleware\RFB\include;..\..\..\..\..\Middleware\RUCI\include;..\..\..\..\..\Library\RT58x\Include;..\..\..\..\..\Library\RT58x\Crypto\include;..\..\..\..\..\Library\RT58x\Peripheral\Include;..\..\..\..\..\Library\RT58x\PHY\include;..\..\..\..\..\Library\RT58x\PHY\rt569mp\include</IncludePath>
+              <IncludePath>..\Include;..\..\..\..\..\Middleware\Thread\Config\NoOs\2p4g;..\..\..\..\..\Middleware\Thread\Source\Include;..\..\..\..\..\Middleware\Third_Party\openthread\examples\platforms;..\..\..\..\..\Middleware\Third_Party\openthread\examples\platforms\utils;..\..\..\..\..\Middleware\Third_Party\openthread\include;..\..\..\..\..\Middleware\Third_Party\openthread\include\openthread;..\..\..\..\..\Middleware\Third_Party\openthread\src;..\..\..\..\..\Middleware\Third_Party\openthread\src\cli;..\..\..\..\..\Middleware\Third_Party\openthread\src\core;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\api;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\backbone_router;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\border_router;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\coap;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\common;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\config;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\crypto;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\diags;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\mac;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\meshcop;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\net;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\radio;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread;..\..\..\..\..\Middleware\Third_Party\openthread\src\core\utils;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls\repo\include;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls\repo\include\mbedtls;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls\repo\include\psa;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\mbedtls\repo\library;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\tcplp;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\tcplp\lib;..\..\..\..\..\Middleware\Third_Party\openthread\third_party\tcplp\bsdtcp;..\..\..\..\..\Middleware\MemoryMgmt\Include;..\..\..\..\..\Middleware\Portable\bsp_for_ref_design\bsp_for_thread\Include;..\..\..\..\..\Middleware\Portable\Utility\include;..\..\..\..\..\Middleware\Portable\Uart\Include;..\..\..\..\..\Middleware\RFB\include;..\..\..\..\..\Middleware\RUCI\include;..\..\..\..\..\Library\RT58x\Include;..\..\..\..\..\Library\RT58x\Crypto\include;..\..\..\..\..\Library\RT58x\Peripheral\Include;..\..\..\..\..\Library\RT58x\PHY\include;..\..\..\..\..\Library\RT58x\PHY\rt569mp\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -577,6 +577,11 @@
               <FileName>ping_sender_api.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\api\ping_sender_api.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>radio_stats_api.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\api\radio_stats_api.cpp</FilePath>
             </File>
             <File>
               <FileName>random_crypto_api.cpp</FileName>
@@ -1310,6 +1315,11 @@
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\anycast_locator.cpp</FilePath>
             </File>
             <File>
+              <FileName>child.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\child.cpp</FilePath>
+            </File>
+            <File>
               <FileName>child_supervision.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\child_supervision.cpp</FilePath>
@@ -1410,6 +1420,11 @@
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\mlr_manager.cpp</FilePath>
             </File>
             <File>
+              <FileName>neighbor.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\neighbor.cpp</FilePath>
+            </File>
+            <File>
               <FileName>neighbor_table.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\neighbor_table.cpp</FilePath>
@@ -1465,6 +1480,11 @@
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\network_diagnostic.cpp</FilePath>
             </File>
             <File>
+              <FileName>network_diagnostic_tlvs.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\network_diagnostic_tlvs.cpp</FilePath>
+            </File>
+            <File>
               <FileName>panid_query_server.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\panid_query_server.cpp</FilePath>
@@ -1473,6 +1493,11 @@
               <FileName>radio_selector.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\radio_selector.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>router.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\router.cpp</FilePath>
             </File>
             <File>
               <FileName>router_table.cpp</FileName>
@@ -1498,11 +1523,6 @@
               <FileName>tmf.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\tmf.cpp</FilePath>
-            </File>
-            <File>
-              <FileName>topology.cpp</FileName>
-              <FileType>8</FileType>
-              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\core\thread\topology.cpp</FilePath>
             </File>
             <File>
               <FileName>uri_paths.cpp</FileName>
@@ -1585,9 +1605,19 @@
           <GroupName>OT-CLI</GroupName>
           <Files>
             <File>
+              <FileName>cli_extension_example.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\cli\cli_extension_example.c</FilePath>
+            </File>
+            <File>
               <FileName>cli.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\cli\cli.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>cli_bbr.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\cli\cli_bbr.cpp</FilePath>
             </File>
             <File>
               <FileName>cli_br.cpp</FileName>
@@ -1615,6 +1645,11 @@
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\cli\cli_dataset.cpp</FilePath>
             </File>
             <File>
+              <FileName>cli_dns.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\cli\cli_dns.cpp</FilePath>
+            </File>
+            <File>
               <FileName>cli_history.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\cli\cli_history.cpp</FilePath>
@@ -1623,6 +1658,11 @@
               <FileName>cli_joiner.cpp</FileName>
               <FileType>8</FileType>
               <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\cli\cli_joiner.cpp</FilePath>
+            </File>
+            <File>
+              <FileName>cli_mac_filter.cpp</FileName>
+              <FileType>8</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Third_Party\openthread\src\cli\cli_mac_filter.cpp</FilePath>
             </File>
             <File>
               <FileName>cli_network_data.cpp</FileName>
@@ -4490,6 +4530,11 @@
           <GroupName>SDK-Driver</GroupName>
           <Files>
             <File>
+              <FileName>comparator.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\Library\RT58x\Peripheral\comparator.c</FilePath>
+            </File>
+            <File>
               <FileName>dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\Library\RT58x\Peripheral\dma.c</FilePath>
@@ -4503,6 +4548,11 @@
               <FileName>flashds.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\Library\RT58x\Peripheral\flashds.c</FilePath>
+            </File>
+            <File>
+              <FileName>flash_protect.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\Library\RT58x\Peripheral\flash_protect.c</FilePath>
             </File>
             <File>
               <FileName>gpio.c</FileName>
@@ -4720,32 +4770,17 @@
             <File>
               <FileName>bsp.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\Middleware\Portable\bsp\bsp.c</FilePath>
+              <FilePath>..\..\..\..\..\Middleware\Portable\bsp_for_ref_design\bsp_for_thread\bsp.c</FilePath>
             </File>
             <File>
               <FileName>bsp_button.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\Middleware\Portable\bsp\bsp_button.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_console.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\Middleware\Portable\bsp\bsp_console.c</FilePath>
+              <FilePath>..\..\..\..\..\Middleware\Portable\bsp_for_ref_design\bsp_for_thread\bsp_button.c</FilePath>
             </File>
             <File>
               <FileName>bsp_led.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\Middleware\Portable\bsp\bsp_led.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_uart.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\Middleware\Portable\bsp\bsp_uart.c</FilePath>
-            </File>
-            <File>
-              <FileName>bsp_uart_drv.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\..\..\..\Middleware\Portable\bsp\bsp_uart_drv.c</FilePath>
+              <FilePath>..\..\..\..\..\Middleware\Portable\bsp_for_ref_design\bsp_for_thread\bsp_led.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -4805,6 +4840,21 @@
           </Files>
         </Group>
         <Group>
+          <GroupName>SDK-Uart</GroupName>
+          <Files>
+            <File>
+              <FileName>hosal_uart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Portable\Uart\hosal_uart.c</FilePath>
+            </File>
+            <File>
+              <FileName>uart_stdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\Middleware\Portable\Uart\uart_stdio.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
           <GroupName>Application</GroupName>
           <Files>
             <File>
@@ -4822,6 +4872,16 @@
               <FileType>8</FileType>
               <FilePath>..\cli_uart.cpp</FilePath>
             </File>
+            <File>
+              <FileName>app_uart_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\app_uart_handler.c</FilePath>
+            </File>
+            <File>
+              <FileName>ota_download_cmd_handler.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\ota_download_cmd_handler.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -4830,17 +4890,12 @@
             <File>
               <FileName>openthread-core-RT58x-config.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\config\openthread-core-RT58x-config.h</FilePath>
-            </File>
-            <File>
-              <FileName>openthread-core-RT58x-config-check.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\config\openthread-core-RT58x-config-check.h</FilePath>
+              <FilePath>..\..\..\..\..\Middleware\Thread\Config\NoOs\2p4g\openthread-core-RT58x-config.h</FilePath>
             </File>
             <File>
               <FileName>project_config.h</FileName>
               <FileType>5</FileType>
-              <FilePath>..\config\project_config.h</FilePath>
+              <FilePath>..\..\..\..\..\Middleware\Thread\Config\NoOs\2p4g\project_config.h</FilePath>
             </File>
           </Files>
         </Group>

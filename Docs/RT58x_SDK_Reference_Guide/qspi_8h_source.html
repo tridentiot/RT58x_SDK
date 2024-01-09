@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.BMP"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Rafael RT58x  SDK
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
   </td>
  </tr>
@@ -167,17 +167,17 @@ $(function() {
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;<span class="comment">*    GLOBAL PROTOTYPES</span></div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="comment">*************************************************************************************************/</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga1ae1131e5b504290e2771f9eb407c48e">qspi_init</a>(uint32_t qspi_id, <span class="keyword">const</span> <a class="code" href="structqspi__transfer__mode__t.html">qspi_transfer_mode_t</a> *spi_mode);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga1ae1131e5b504290e2771f9eb407c48e">qspi_init</a>(uint32_t qspi_id, <span class="keyword">const</span> <a class="code" href="structqspi__transfer__mode__t.html">qspi_transfer_mode_t</a> *spi_mode);</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160; </div>
 <div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#if (MODULE_ENABLE(SUPPORT_QSPI0_MULTI_CS))</span></div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="keyword">extern</span> uint32_t qspi0_set_device_polarity(uint32_t slave_id, uint32_t slave_polarity);</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;uint32_t qspi0_set_device_polarity(uint32_t slave_id, uint32_t slave_polarity);</div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160; </div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160; </div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160; </div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga4663966d32a2cae589c71f1cbe6de6a7">qspi_transfer</a>(uint32_t qspi_id, <span class="keyword">const</span> <a class="code" href="structqspi__block__request__t.html">qspi_block_request_t</a> *req);</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga4663966d32a2cae589c71f1cbe6de6a7">qspi_transfer</a>(uint32_t qspi_id, <span class="keyword">const</span> <a class="code" href="structqspi__block__request__t.html">qspi_block_request_t</a> *req);</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160; </div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="comment">/*</span></div>
@@ -199,38 +199,38 @@ $(function() {
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="comment"> *     multiple spi devices, with different operation speed, connected with QSPI0.</span></div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;<span class="keyword">extern</span> uint32_t qspi_change_clk(uint32_t qspi_id, uint16_t   SPI_CLK);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;uint32_t qspi_change_clk(uint32_t qspi_id, uint16_t   SPI_CLK);</div>
 <div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
 <div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga97fff8045d0388838f78ad6864e65e1c">qspi_write_dma</a>(</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga97fff8045d0388838f78ad6864e65e1c">qspi_write_dma</a>(</div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    uint32_t qspi_id,</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;    <span class="keyword">const</span> <a class="code" href="structqspi__block__request__t.html">qspi_block_request_t</a> *req,</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;    <a class="code" href="group___q_s_p_i___driver.html#gae42691e4de130ae9463ebe25a7b03013">qspi_proc_cb_t</a> finish_proc_cb</div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;);</div>
 <div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160; </div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___q_s_p_i___driver.html#gad39327a1759d43396b335b375784d147">qspi_read_dma</a>(</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;uint32_t <a class="code" href="group___q_s_p_i___driver.html#gad39327a1759d43396b335b375784d147">qspi_read_dma</a>(</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    uint32_t qspi_id,</div>
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keyword">const</span> <a class="code" href="structqspi__block__request__t.html">qspi_block_request_t</a> *req,</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    <a class="code" href="group___q_s_p_i___driver.html#gae42691e4de130ae9463ebe25a7b03013">qspi_proc_cb_t</a> finish_proc_cb</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;);</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160; </div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga8a69197d7bad63e5b4c1dcdf7036d1dd">spi_transfer</a>(</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga8a69197d7bad63e5b4c1dcdf7036d1dd">spi_transfer</a>(</div>
 <div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;    uint32_t qspi_id,</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    <span class="keyword">const</span> <a class="code" href="structspi__block__request__t.html">spi_block_request_t</a> *req,</div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <a class="code" href="group___q_s_p_i___driver.html#gae42691e4de130ae9463ebe25a7b03013">qspi_proc_cb_t</a> finish_proc_cb</div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;);</div>
 <div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
 <div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160; </div>
-<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___q_s_p_i___driver.html#gac2e21c12ab0ce02c68a808d9f8849ead">spi_transfer_pio</a>(</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;uint32_t <a class="code" href="group___q_s_p_i___driver.html#gac2e21c12ab0ce02c68a808d9f8849ead">spi_transfer_pio</a>(</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;    uint32_t qspi_id,</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;    <span class="keyword">const</span> <a class="code" href="structspi__block__request__t.html">spi_block_request_t</a> *req</div>
 <div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;);</div>
 <div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160; </div>
-<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;<span class="keyword">extern</span> uint16_t <a class="code" href="group___q_s_p_i___driver.html#ga7743ea3149ba3530561c33b82e20c47e">get_qspi_state</a>(uint32_t qspi_id);</div>
+<div class="line"><a name="l00516"></a><span class="lineno">  516</span>&#160;uint16_t <a class="code" href="group___q_s_p_i___driver.html#ga7743ea3149ba3530561c33b82e20c47e">get_qspi_state</a>(uint32_t qspi_id);</div>
 <div class="line"><a name="l00517"></a><span class="lineno">  517</span>&#160; </div>
-<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga858b51e5f0a94f16b35e35a3682bb1c3">spi_transfer_slave_abort</a>(uint32_t qspi_id);</div>
+<div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;uint32_t <a class="code" href="group___q_s_p_i___driver.html#ga858b51e5f0a94f16b35e35a3682bb1c3">spi_transfer_slave_abort</a>(uint32_t qspi_id);</div>
 <div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160; </div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___q_s_p_i___driver.html#ga627550581f0f2326fb3df0364b6957f5">qspi_FIFO_clear</a>(uint32_t qspi_id);</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___q_s_p_i___driver.html#ga627550581f0f2326fb3df0364b6957f5">qspi_FIFO_clear</a>(uint32_t qspi_id);</div>
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160; </div>
 <div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160; </div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>

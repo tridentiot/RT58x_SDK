@@ -393,6 +393,7 @@ static ble_err_t adv_init(void)
     ble_adv_param_t adv_param;
     ble_adv_data_param_t adv_data_param;
     ble_adv_data_param_t adv_scan_data_param;
+    ble_gap_addr_t addr_param;
     const uint8_t   SCANRSP_ADLENGTH  = (1) + sizeof(DEVICE_NAME_STR); //  1 byte data type
 
     // adv data
@@ -409,9 +410,11 @@ static ble_err_t adv_init(void)
         DEVICE_NAME,                        // the name is shown on scan list
     };
 
+    ble_cmd_device_addr_get(&addr_param);
     do
     {
         adv_param.adv_type = ADV_TYPE_ADV_IND;
+        adv_param.own_addr_type = addr_param.addr_type;
         adv_param.adv_interval_min = APP_ADV_INTERVAL_MIN;
         adv_param.adv_interval_max = APP_ADV_INTERVAL_MAX;
         adv_param.adv_channel_map = ADV_CHANNEL_ALL;
@@ -671,6 +674,13 @@ ble_err_t ble_init(void)
                 break;
             }
         }
+
+        status = ble_cmd_resolvable_address_init();
+        if (status != BLE_ERR_OK)
+        {
+            break;
+        }
+
         status = ble_cmd_suggest_data_len_set(BLE_GATT_DATA_LENGTH_MAX);
         if (status != BLE_ERR_OK)
         {

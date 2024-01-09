@@ -615,7 +615,7 @@ static void _zcl_group_process(uint16_t cmd, uint16_t datalen, uint8_t *pdata)
 {
     do
     {
-        if (cmd == ZB_ZCL_CMD_GROUPS_ADD_GROUP)
+        if (cmd == ZB_ZCL_CMD_GROUPS_ADD_GROUP || (cmd == ZB_ZCL_CMD_GROUPS_ADD_GROUP_IF_IDENTIFYING && get_identify_time() > 0))
         {
             int valid_idx;
             uint16_t group_id;

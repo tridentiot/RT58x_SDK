@@ -28,12 +28,13 @@
                 "${workspaceFolder}\\..\\..\\Config",
                 "${workspaceFolder}\\..\\..\\Control_Cmd\\Include",
                 "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\Middleware\\Third_Party\\FreeRTOS\\Source\\portable\\GCC\\ARM_CM3",
-                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\c++\\10.3.1",
-                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\c++\\10.3.1\\arm-none-eabi",
-                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\c++\\10.3.1\\backward",
-                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include",
-                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include-fixed",
-                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include"
+                "${workspaceFolder}\\.eide\\deps",
+                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\c++\\10.3.1",
+                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\c++\\10.3.1\\arm-none-eabi",
+                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include\\c++\\10.3.1\\backward",
+                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include",
+                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\lib\\gcc\\arm-none-eabi\\10.3.1\\include-fixed",
+                "${workspaceFolder}\\..\\..\\..\\..\\..\\..\\..\\..\\..\\..\\gnu arm embedded toolchain\\10 2021.10\\arm-none-eabi\\include"
             ],
             "defines": [
                 "${default}",
@@ -444,7 +445,7 @@
                 "databaseFilename": "${default}"
             },
             "forcedInclude": [
-                "c:\\Users\\M920t\\.vscode\\extensions\\cl.eide-2.15.0\\bin\\include\\internal_headers\\gcc_intr.h"
+                "c:\\Users\\M720t\\.vscode\\extensions\\cl.eide-2.15.0\\bin\\include\\internal_headers\\gcc_intr.h"
             ]
         }
     ],

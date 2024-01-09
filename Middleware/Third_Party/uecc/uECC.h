@@ -106,6 +106,9 @@ Returns 1 if the key pair was generated successfully, 0 if an error occurred.
 */
 int uECC_make_key(uint8_t public_key[uECC_BYTES*2], uint8_t private_key[uECC_BYTES]);
 
+
+int uECC_generate_public_key(uint8_t public_key[uECC_BYTES*2], uint8_t private_key[uECC_BYTES]);
+
 /* uECC_shared_secret() function.
 Compute a shared secret given your secret key and someone else's public key.
 Note: It is recommended that you hash the result of uECC_shared_secret() before using it for

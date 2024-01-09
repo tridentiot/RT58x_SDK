@@ -189,8 +189,11 @@ Instance::Instance(void)
 #if OPENTHREAD_CONFIG_TIME_SYNC_ENABLE
     , mTimeSync(*this)
 #endif
-#if OPENTHREAD_CONFIG_MLE_LINK_METRICS_INITIATOR_ENABLE || OPENTHREAD_CONFIG_MLE_LINK_METRICS_SUBJECT_ENABLE
-    , mLinkMetrics(*this)
+#if OPENTHREAD_CONFIG_MLE_LINK_METRICS_INITIATOR_ENABLE
+    , mInitiator(*this)
+#endif
+#if OPENTHREAD_CONFIG_MLE_LINK_METRICS_SUBJECT_ENABLE
+    , mSubject(*this)
 #endif
 #if OPENTHREAD_CONFIG_COAP_API_ENABLE
     , mApplicationCoap(*this)
@@ -212,6 +215,9 @@ Instance::Instance(void)
 #endif
 #if OPENTHREAD_CONFIG_HISTORY_TRACKER_ENABLE
     , mHistoryTracker(*this)
+#endif
+#if OPENTHREAD_CONFIG_LINK_METRICS_MANAGER_ENABLE
+    , mLinkMetricsManager(*this)
 #endif
 #if (OPENTHREAD_CONFIG_DATASET_UPDATER_ENABLE || OPENTHREAD_CONFIG_CHANNEL_MANAGER_ENABLE) && OPENTHREAD_FTD
     , mDatasetUpdater(*this)
@@ -242,6 +248,7 @@ Instance::Instance(void)
     , mPowerCalibration(*this)
 #endif
     , mIsInitialized(false)
+    , mId(Random::NonCrypto::GetUint32())
 {
 }
 

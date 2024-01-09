@@ -411,6 +411,7 @@ typedef enum RAF_CMD
     RAF_CMD_NETWORK_UPDATE_REQUEST                      = 0x00000038,
     RAF_CMD_NETWORK_START_REQUEST,
     RAF_CMD_DEVICE_RESET_REQUEST                      = 0x00000040,
+    RAF_CMD_GATEWAY_EXT_ADDRESS_REQUEST                 = 0x00000041,
     RAF_CMD_FINISH,
 } raf_cmd_t;
 

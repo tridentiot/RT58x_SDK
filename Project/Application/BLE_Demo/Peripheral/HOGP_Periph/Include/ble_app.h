@@ -15,7 +15,7 @@ extern "C" {
 /**************************************************************************************************
  *    CONSTANTS AND DEFINES
  *************************************************************************************************/
-#define IO_CAPABILITY_SETTING       KEYBOARD_ONLY   //selected IO Capability: KEYBOARD_ONLY / DISPLAY_ONLY
+#define IO_CAPABILITY_SETTING       KEYBOARD_DISPLAY   //selected IO Capability: KEYBOARD_ONLY / NOINPUT_NOOUTPUT / KEYBOARD_DISPLAY / DISPLAY_ONLY
 
 /**************************************************************************************************
  *    TYPEDEFS
@@ -28,10 +28,11 @@ typedef enum
 
 typedef enum
 {
-    APP_REQUEST_IDLE,               /**< Application request event: idle.*/
-    APP_REQUEST_ADV_START,          /**< Application request event: advertising start.*/
-    APP_REQUEST_HIDS_PASSKEY_ENTRY, /**< Application request event: passkey entry.*/
-    APP_REQUEST_HIDS_NTF,           /**< Application request event: HID notification.*/
+    APP_REQUEST_IDLE,                    /**< Application request event: idle.*/
+    APP_REQUEST_ADV_START,               /**< Application request event: advertising start.*/
+    APP_REQUEST_HIDS_PASSKEY_ENTRY,      /**< Application request event: passkey entry.*/
+    APP_REQUEST_HIDS_NUMERIC_COMP_ENTRY, /**< Application request event: numeric comparison entry.*/
+    APP_REQUEST_HIDS_NTF,                /**< Application request event: HID notification.*/
 } app_request_t;
 
 typedef enum

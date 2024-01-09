@@ -232,6 +232,18 @@ typedef struct MESH_UNPROVISION_DEVICE_IDC
     int8_t       rssi;
 } mesh_unprov_device_idc_t;
 
+typedef struct __attribute__((packed))
+{
+    uint8_t    status;
+}
+mesh_prov_adv_enable_idc_t;
+
+typedef struct __attribute__((packed))
+{
+    uint8_t    status;
+}
+mesh_proxy_adv_enable_idc_t;
+
 typedef struct MESH_MDL_REGIST_REQ
 {
     bool        is_sig;

@@ -30,7 +30,6 @@ set(COMMON_INCLUDES
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/src
     ${PROJECT_SOURCE_DIR}/src/core
-    ${PROJECT_SOURCE_DIR}/examples/platforms/simulation
 )
 
 set(COMMON_COMPILE_OPTIONS
@@ -538,6 +537,27 @@ target_link_libraries(ot-test-ip-address
 )
 
 add_test(NAME ot-test-ip-address COMMAND ot-test-ip-address)
+
+add_executable(ot-test-link-metrics-manager
+    test_link_metrics_manager.cpp
+)
+
+target_include_directories(ot-test-link-metrics-manager
+    PRIVATE
+        ${COMMON_INCLUDES}
+)
+
+target_compile_options(ot-test-link-metrics-manager
+    PRIVATE
+        ${COMMON_COMPILE_OPTIONS}
+)
+
+target_link_libraries(ot-test-link-metrics-manager
+    PRIVATE
+        ${COMMON_LIBS}
+)
+
+add_test(NAME ot-test-link-metrics-manager COMMAND ot-test-link-metrics-manager)
 
 add_executable(ot-test-link-quality
     test_link_quality.cpp
@@ -1053,10 +1073,17 @@ add_executable(ot-test-timer
 add_executable(ot-test-toolchain
     test_toolchain.cpp test_toolchain_c.c
 )
+
 target_include_directories(ot-test-toolchain
     PRIVATE
         ${COMMON_INCLUDES}
 )
+
+target_link_libraries(ot-test-toolchain
+    PRIVATE
+        ${COMMON_LIBS}
+)
+
 add_test(NAME ot-test-toolchain COMMAND ot-test-toolchain)
 
 target_include_directories(ot-test-timer
@@ -1075,6 +1102,27 @@ target_link_libraries(ot-test-timer
 )
 
 add_test(NAME ot-test-timer COMMAND ot-test-timer)
+
+add_executable(ot-test-trickle-timer
+    test_trickle_timer.cpp
+)
+
+target_include_directories(ot-test-trickle-timer
+    PRIVATE
+        ${COMMON_INCLUDES}
+)
+
+target_compile_options(ot-test-trickle-timer
+    PRIVATE
+        ${COMMON_COMPILE_OPTIONS}
+)
+
+target_link_libraries(ot-test-trickle-timer
+    PRIVATE
+        ${COMMON_LIBS}
+)
+
+add_test(NAME ot-test-trickle-timer COMMAND ot-test-trickle-timer)
 
 add_executable(ot-test-tlv
     test_tlv.cpp

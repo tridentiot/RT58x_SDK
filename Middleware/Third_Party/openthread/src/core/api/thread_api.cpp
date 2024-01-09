@@ -40,6 +40,7 @@
 #include "common/as_core_type.hpp"
 #include "common/debug.hpp"
 #include "common/locator_getters.hpp"
+#include "common/uptime.hpp"
 #include "thread/version.hpp"
 
 using namespace ot;
@@ -429,6 +430,26 @@ const otIpCounters *otThreadGetIp6Counters(otInstance *aInstance)
 
 void otThreadResetIp6Counters(otInstance *aInstance) { AsCoreType(aInstance).Get<MeshForwarder>().ResetCounters(); }
 
+#if OPENTHREAD_CONFIG_TX_QUEUE_STATISTICS_ENABLE
+const uint32_t *otThreadGetTimeInQueueHistogram(otInstance *aInstance, uint16_t *aNumBins, uint32_t *aBinInterval)
+{
+    AssertPointerIsNotNull(aNumBins);
+    AssertPointerIsNotNull(aBinInterval);
+
+    return AsCoreType(aInstance).Get<MeshForwarder>().GetTimeInQueueHistogram(*aNumBins, *aBinInterval);
+}
+
+uint32_t otThreadGetMaxTimeInQueue(otInstance *aInstance)
+{
+    return AsCoreType(aInstance).Get<MeshForwarder>().GetMaxTimeInQueue();
+}
+
+void otThreadResetTimeInQueueStat(otInstance *aInstance)
+{
+    return AsCoreType(aInstance).Get<MeshForwarder>().ResetTimeInQueueStat();
+}
+#endif
+
 const otMleCounters *otThreadGetMleCounters(otInstance *aInstance)
 {
     return &AsCoreType(aInstance).Get<Mle::MleRouter>().GetCounters();
@@ -466,3 +487,12 @@ otError otThreadDetachGracefully(otInstance *aInstance, otDetachGracefullyCallba
 }
 
 #endif // OPENTHREAD_FTD || OPENTHREAD_MTD
+
+#if OPENTHREAD_CONFIG_UPTIME_ENABLE
+void otConvertDurationInSecondsToString(uint32_t aDuration, char *aBuffer, uint16_t aSize)
+{
+    StringWriter writer(aBuffer, aSize);
+
+    Uptime::UptimeToString(Uptime::SecToMsec(aDuration), writer, /* aIncludeMsec */ false);
+}
+#endif

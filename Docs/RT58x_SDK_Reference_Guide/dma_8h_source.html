@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.BMP"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Rafael RT58x  SDK
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
   </td>
  </tr>
@@ -147,39 +147,39 @@ $(function() {
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;} <a class="code" href="structdma__linklist__entry__t.html">dma_linklist_entry_t</a>;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___d_m_a___driver.html#ga68d23633fcd37c7a412c5c26ddb253a4">dma_register_isr</a>(</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___d_m_a___driver.html#ga68d23633fcd37c7a412c5c26ddb253a4">dma_register_isr</a>(</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    uint32_t  dma_channel_id,</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <a class="code" href="group___d_m_a___driver.html#ga3520096c5a0a4994ad4a715824bf006e">dma_proc_cb_t</a>  app_dma_callback</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;);</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___d_m_a___driver.html#ga5410f56d39db9e94076e0a787a24ed1a">dma_config</a>(</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;uint32_t <a class="code" href="group___d_m_a___driver.html#ga5410f56d39db9e94076e0a787a24ed1a">dma_config</a>(</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    uint32_t  dma_channel_id,</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keyword">const</span> <a class="code" href="structdma__config__t.html">dma_config_t</a> *mode</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160; </div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___d_m_a___driver.html#ga5b723666ff7ba600ea9fc805627e2f28">dma_enable</a>(uint32_t  dma_channel_id);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;uint32_t <a class="code" href="group___d_m_a___driver.html#ga5b723666ff7ba600ea9fc805627e2f28">dma_enable</a>(uint32_t  dma_channel_id);</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___d_m_a___driver.html#ga55e541951ff97ae5bc54f7e150d7e65d">dma_get_status</a>(uint32_t  dma_channel_id, uint32_t *status);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;uint32_t <a class="code" href="group___d_m_a___driver.html#ga55e541951ff97ae5bc54f7e150d7e65d">dma_get_status</a>(uint32_t  dma_channel_id, uint32_t *status);</div>
 <div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160; </div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___d_m_a___driver.html#ga6e5168c35dc09654626f73749e1125c2">dma_get_repeatstatus</a>(uint32_t  dma_channel_id, uint32_t *repeat_status);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;uint32_t <a class="code" href="group___d_m_a___driver.html#ga6e5168c35dc09654626f73749e1125c2">dma_get_repeatstatus</a>(uint32_t  dma_channel_id, uint32_t *repeat_status);</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160; </div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___d_m_a___driver.html#ga5ba677de94dc42515113c810fa8adc98">dma_finish</a>(uint32_t  dma_channel_id);</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;uint32_t <a class="code" href="group___d_m_a___driver.html#ga5ba677de94dc42515113c810fa8adc98">dma_finish</a>(uint32_t  dma_channel_id);</div>
 <div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160; </div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___d_m_a___driver.html#gabaf08b70ab79970ba159322004e4a88b">dma_set_link_list</a>(</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;uint32_t <a class="code" href="group___d_m_a___driver.html#gabaf08b70ab79970ba159322004e4a88b">dma_set_link_list</a>(</div>
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    uint32_t dma_channel_id,</div>
 <div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    <a class="code" href="structdma__linklist__entry__t.html">dma_linklist_entry_t</a> *dma_lli,</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    uint32_t dma_int_enable);</div>
 <div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160; </div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___d_m_a___driver.html#gabd7fdef2fb4e5d746db131b758006127">create_dma_link_list</a>(</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;uint32_t <a class="code" href="group___d_m_a___driver.html#gabd7fdef2fb4e5d746db131b758006127">create_dma_link_list</a>(</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    dma_linklist_request_t  *dma_linklist_request,</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    uint32_t                entry_number,</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <a class="code" href="structdma__linklist__entry__t.html">dma_linklist_entry_t</a>    *dma_link_list,</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    uint32_t                control_mode</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;);</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160; </div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___d_m_a___driver.html#ga536617b2f1c337459e609c198b11595c">dma_init</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;uint32_t <a class="code" href="group___d_m_a___driver.html#ga536617b2f1c337459e609c198b11595c">dma_init</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160; </div>
 <div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160; <span class="comment">/* end of group DMA_Driver */</span></div>
 <div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>

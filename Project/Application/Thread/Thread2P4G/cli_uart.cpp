@@ -90,6 +90,7 @@ enum
 
 char     sRxBuffer[kRxBufferSize];
 uint16_t sRxLength;
+char     sLefcount;
 
 char     sTxBuffer[kTxBufferSize];
 uint16_t sTxHead;
@@ -205,6 +206,8 @@ static char* Pop_History(int *index)
 static void ReceiveTask(const uint8_t *aBuf, uint16_t aBufLength)
 {
     static const char sEraseString[] = {'\b', ' ', '\b'};
+    static const char sEscRighString[] = "\x1b[C";
+    static const char sEscLeftString[] = "\x1b[D";
     static const char CRNL[]         = {'\r', '\n'};
     static uint8_t    sLastChar      = '\0';
     const uint8_t *   end;
@@ -228,6 +231,7 @@ static void ReceiveTask(const uint8_t *aBuf, uint16_t aBufLength)
         case '\r':
             Output(CRNL, sizeof(CRNL));
             sRxBuffer[sRxLength] = '\0';
+            sLefcount = 0;
             Push_To_History(sRxBuffer, sRxLength);
             IgnoreError(ProcessCommand());
             break;
@@ -256,7 +260,6 @@ static void ReceiveTask(const uint8_t *aBuf, uint16_t aBufLength)
                 move = 0;
             }
             break;
-        
         case 65:
         case 66:
             if(move == 2)
@@ -293,13 +296,54 @@ static void ReceiveTask(const uint8_t *aBuf, uint16_t aBufLength)
             }
             move = 0;
             break;
-            
+        case 67:
+            if(move == 2)
+            {
+                if(sRxBuffer[sRxLength-sLefcount] != '\0')
+                {
+                    Output(sEscRighString,strlen(sEscRighString));
+                    if(sLefcount > 0)
+                    {
+                        sLefcount--;
+                    }
+                }
+            }
+            move = 0;
+            break;
+        case 68:
+            if(move == 2)
+            {
+                if (sLefcount < sRxLength)
+                {
+                    Output(sEscLeftString,strlen(sEscLeftString));
+                    sLefcount++;
+                }
+            }
+            move = 0;
+            break;
+        
         case '\b':
         case 127:
             if (sRxLength > 0)
             {
-                Output(sEraseString, sizeof(sEraseString));
-                sRxBuffer[--sRxLength] = '\0';
+                if(sLefcount > 0)
+                {
+                    Output(sEraseString, sizeof(sEraseString));
+                    memcpy(&sRxBuffer[sRxLength-sLefcount-1],&sRxBuffer[sRxLength-sLefcount],sLefcount);
+                    sRxBuffer[--sRxLength] = '\0';
+                    Output(&sRxBuffer[sRxLength-sLefcount], sLefcount);
+                    Output(sEscRighString,strlen(sEscRighString));
+                    Output(sEraseString, sizeof(sEraseString));
+                    for(i = 0; i < sLefcount; i++)
+                    {
+                        Output(sEscLeftString,strlen(sEscLeftString));
+                    }
+                }
+                else
+                {
+					Output(sEraseString, sizeof(sEraseString));
+                    sRxBuffer[--sRxLength] = '\0';
+                }
             }
 
             break;
@@ -307,8 +351,22 @@ static void ReceiveTask(const uint8_t *aBuf, uint16_t aBufLength)
         default:
             if (sRxLength < kRxBufferSize - 1)
             {
-                Output(reinterpret_cast<const char *>(aBuf), 1);
-                sRxBuffer[sRxLength++] = static_cast<char>(*aBuf);
+                if(sLefcount > 0)
+                {
+                    memcpy(&sRxBuffer[sRxLength-sLefcount+1],&sRxBuffer[sRxLength-sLefcount],sLefcount);
+                    sRxBuffer[sRxLength-sLefcount] = static_cast<char>(*aBuf);
+                    Output(&sRxBuffer[sRxLength-sLefcount], (sLefcount+1)); 
+                    sRxLength++;
+                    for(i = 0; i < sLefcount; i++)
+                    {
+                        Output(sEscLeftString,strlen(sEscLeftString));
+                    }
+                }
+                else
+                {
+                    Output(reinterpret_cast<const char *>(aBuf), 1);
+                    sRxBuffer[sRxLength++] = static_cast<char>(*aBuf);
+                }                
             }
 
             break;
@@ -509,7 +567,7 @@ extern "C" void otAppCliInit(otInstance *aInstance)
     sTxHead     = 0;
     sTxLength   = 0;
     sSendLength = 0;
-
+    sLefcount   = 0;
     IgnoreError(otPlatUartEnable());
 
     otCliInit(aInstance, CliUartOutput, aInstance);

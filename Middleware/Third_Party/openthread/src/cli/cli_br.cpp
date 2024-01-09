@@ -45,6 +45,32 @@ namespace ot {
 namespace Cli {
 
 /**
+ * @cli br init
+ * @code
+ * br init 2 1
+ * Done
+ * @endcode
+ * @cparam br init @ca{infrastructure-network-index} @ca{is-running}
+ * @par
+ * Initializes the Border Routing Manager.
+ * @sa otBorderRoutingInit
+ */
+template <> otError Br::Process<Cmd("init")>(Arg aArgs[])
+{
+    otError  error = OT_ERROR_NONE;
+    uint32_t ifIndex;
+    bool     isRunning;
+
+    SuccessOrExit(error = aArgs[0].ParseAsUint32(ifIndex));
+    SuccessOrExit(error = aArgs[1].ParseAsBool(isRunning));
+    VerifyOrExit(aArgs[2].IsEmpty(), error = OT_ERROR_INVALID_ARGS);
+    error = otBorderRoutingInit(GetInstancePtr(), ifIndex, isRunning);
+
+exit:
+    return error;
+}
+
+/**
  * @cli br enable
  * @code
  * br enable
@@ -119,27 +145,25 @@ exit:
     return error;
 }
 
-otError Br::ParsePrefixTypeArgs(Arg aArgs[], bool &aOutputLocal, bool &aOutputFavored)
+otError Br::ParsePrefixTypeArgs(Arg aArgs[], PrefixType &aFlags)
 {
     otError error = OT_ERROR_NONE;
 
-    aOutputLocal   = false;
-    aOutputFavored = false;
+    aFlags = 0;
 
     if (aArgs[0].IsEmpty())
     {
-        aOutputLocal   = true;
-        aOutputFavored = true;
+        aFlags = kPrefixTypeFavored | kPrefixTypeLocal;
         ExitNow();
     }
 
     if (aArgs[0] == "local")
     {
-        aOutputLocal = true;
+        aFlags = kPrefixTypeLocal;
     }
     else if (aArgs[0] == "favored")
     {
-        aOutputFavored = true;
+        aFlags = kPrefixTypeFavored;
     }
     else
     {
@@ -167,11 +191,10 @@ exit:
  */
 template <> otError Br::Process<Cmd("omrprefix")>(Arg aArgs[])
 {
-    otError error = OT_ERROR_NONE;
-    bool    outputLocal;
-    bool    outputFavored;
+    otError    error = OT_ERROR_NONE;
+    PrefixType outputPrefixTypes;
 
-    SuccessOrExit(error = ParsePrefixTypeArgs(aArgs, outputLocal, outputFavored));
+    SuccessOrExit(error = ParsePrefixTypeArgs(aArgs, outputPrefixTypes));
 
     /**
      * @cli br omrprefix local
@@ -183,13 +206,13 @@ template <> otError Br::Process<Cmd("omrprefix")>(Arg aArgs[])
      * @par api_copy
      * #otBorderRoutingGetOmrPrefix
      */
-    if (outputLocal)
+    if (outputPrefixTypes & kPrefixTypeLocal)
     {
         otIp6Prefix local;
 
         SuccessOrExit(error = otBorderRoutingGetOmrPrefix(GetInstancePtr(), &local));
 
-        OutputFormat("%s", outputFavored ? "Local: " : "");
+        OutputFormat("%s", outputPrefixTypes == kPrefixTypeLocal ? "" : "Local: ");
         OutputIp6PrefixLine(local);
     }
 
@@ -203,14 +226,14 @@ template <> otError Br::Process<Cmd("omrprefix")>(Arg aArgs[])
      * @par api_copy
      * #otBorderRoutingGetFavoredOmrPrefix
      */
-    if (outputFavored)
+    if (outputPrefixTypes & kPrefixTypeFavored)
     {
         otIp6Prefix       favored;
         otRoutePreference preference;
 
         SuccessOrExit(error = otBorderRoutingGetFavoredOmrPrefix(GetInstancePtr(), &favored, &preference));
 
-        OutputFormat("%s", outputLocal ? "Favored: " : "");
+        OutputFormat("%s", outputPrefixTypes == kPrefixTypeFavored ? "" : "Favored: ");
         OutputIp6Prefix(favored);
         OutputLine(" prf:%s", Interpreter::PreferenceToString(preference));
     }
@@ -234,11 +257,10 @@ exit:
  */
 template <> otError Br::Process<Cmd("onlinkprefix")>(Arg aArgs[])
 {
-    otError error = OT_ERROR_NONE;
-    bool    outputLocal;
-    bool    outputFavored;
+    otError    error = OT_ERROR_NONE;
+    PrefixType outputPrefixTypes;
 
-    SuccessOrExit(error = ParsePrefixTypeArgs(aArgs, outputLocal, outputFavored));
+    SuccessOrExit(error = ParsePrefixTypeArgs(aArgs, outputPrefixTypes));
 
     /**
      * @cli br onlinkprefix local
@@ -250,13 +272,13 @@ template <> otError Br::Process<Cmd("onlinkprefix")>(Arg aArgs[])
      * @par api_copy
      * #otBorderRoutingGetOnLinkPrefix
      */
-    if (outputLocal)
+    if (outputPrefixTypes & kPrefixTypeLocal)
     {
         otIp6Prefix local;
 
         SuccessOrExit(error = otBorderRoutingGetOnLinkPrefix(GetInstancePtr(), &local));
 
-        OutputFormat("%s", outputFavored ? "Local: " : "");
+        OutputFormat("%s", outputPrefixTypes == kPrefixTypeLocal ? "" : "Local: ");
         OutputIp6PrefixLine(local);
     }
 
@@ -270,13 +292,13 @@ template <> otError Br::Process<Cmd("onlinkprefix")>(Arg aArgs[])
      * @par api_copy
      * #otBorderRoutingGetFavoredOnLinkPrefix
      */
-    if (outputFavored)
+    if (outputPrefixTypes & kPrefixTypeFavored)
     {
         otIp6Prefix favored;
 
         SuccessOrExit(error = otBorderRoutingGetFavoredOnLinkPrefix(GetInstancePtr(), &favored));
 
-        OutputFormat("%s", outputLocal ? "Favored: " : "");
+        OutputFormat("%s", outputPrefixTypes == kPrefixTypeFavored ? "" : "Favored: ");
         OutputIp6PrefixLine(favored);
     }
 
@@ -301,11 +323,10 @@ exit:
  */
 template <> otError Br::Process<Cmd("nat64prefix")>(Arg aArgs[])
 {
-    otError error = OT_ERROR_NONE;
-    bool    outputLocal;
-    bool    outputFavored;
+    otError    error = OT_ERROR_NONE;
+    PrefixType outputPrefixTypes;
 
-    SuccessOrExit(error = ParsePrefixTypeArgs(aArgs, outputLocal, outputFavored));
+    SuccessOrExit(error = ParsePrefixTypeArgs(aArgs, outputPrefixTypes));
 
     /**
      * @cli br nat64prefix local
@@ -317,13 +338,13 @@ template <> otError Br::Process<Cmd("nat64prefix")>(Arg aArgs[])
      * @par api_copy
      * #otBorderRoutingGetNat64Prefix
      */
-    if (outputLocal)
+    if (outputPrefixTypes & kPrefixTypeLocal)
     {
         otIp6Prefix local;
 
         SuccessOrExit(error = otBorderRoutingGetNat64Prefix(GetInstancePtr(), &local));
 
-        OutputFormat("%s", outputFavored ? "Local: " : "");
+        OutputFormat("%s", outputPrefixTypes == kPrefixTypeLocal ? "" : "Local: ");
         OutputIp6PrefixLine(local);
     }
 
@@ -337,14 +358,14 @@ template <> otError Br::Process<Cmd("nat64prefix")>(Arg aArgs[])
      * @par api_copy
      * #otBorderRoutingGetFavoredNat64Prefix
      */
-    if (outputFavored)
+    if (outputPrefixTypes & kPrefixTypeFavored)
     {
         otIp6Prefix       favored;
         otRoutePreference preference;
 
         SuccessOrExit(error = otBorderRoutingGetFavoredNat64Prefix(GetInstancePtr(), &favored, &preference));
 
-        OutputFormat("%s", outputLocal ? "Favored: " : "");
+        OutputFormat("%s", outputPrefixTypes == kPrefixTypeFavored ? "" : "Favored: ");
         OutputIp6Prefix(favored);
         OutputLine(" prf:%s", Interpreter::PreferenceToString(preference));
     }
@@ -457,6 +478,59 @@ exit:
     return error;
 }
 
+template <> otError Br::Process<Cmd("routeprf")>(Arg aArgs[])
+{
+    otError error = OT_ERROR_NONE;
+
+    /**
+     * @cli br routeprf
+     * @code
+     * br routeprf
+     * med
+     * Done
+     * @endcode
+     * @par api_copy
+     * #otBorderRoutingGetRoutePreference
+     */
+    if (aArgs[0].IsEmpty())
+    {
+        OutputLine("%s", Interpreter::PreferenceToString(otBorderRoutingGetRoutePreference(GetInstancePtr())));
+    }
+    /**
+     * @cli br routeprf clear
+     * @code
+     * br routeprf clear
+     * Done
+     * @endcode
+     * @par api_copy
+     * #otBorderRoutingClearRoutePreference
+     */
+    else if (aArgs[0] == "clear")
+    {
+        otBorderRoutingClearRoutePreference(GetInstancePtr());
+    }
+    /**
+     * @cli br routeprf (high,med,low)
+     * @code
+     * br routeprf low
+     * Done
+     * @endcode
+     * @cparam br routeprf [@ca{high}|@ca{med}|@ca{low}]
+     * @par api_copy
+     * #otBorderRoutingSetRoutePreference
+     */
+    else
+    {
+        otRoutePreference preference;
+
+        SuccessOrExit(error = Interpreter::ParsePreference(aArgs[0], preference));
+        otBorderRoutingSetRoutePreference(GetInstancePtr(), preference);
+    }
+
+exit:
+    return error;
+}
+
 #if OPENTHREAD_CONFIG_IP6_BR_COUNTERS_ENABLE
 
 /**
@@ -504,6 +578,7 @@ otError Br::Process(Arg aArgs[])
 #endif
         CmdEntry("disable"),
         CmdEntry("enable"),
+        CmdEntry("init"),
 #if OPENTHREAD_CONFIG_NAT64_BORDER_ROUTING_ENABLE
         CmdEntry("nat64prefix"),
 #endif
@@ -511,6 +586,7 @@ otError Br::Process(Arg aArgs[])
         CmdEntry("onlinkprefix"),
         CmdEntry("prefixtable"),
         CmdEntry("rioprf"),
+        CmdEntry("routeprf"),
         CmdEntry("state"),
     };
 

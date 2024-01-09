@@ -486,10 +486,7 @@ void RTOS_PreSleepProcessing(uint32_t *v)
         {
             now_v = 0;
         }
-        else
-        {
-            *v -= now_v;
-        }
+		*v -= now_v;
     }
 }
 

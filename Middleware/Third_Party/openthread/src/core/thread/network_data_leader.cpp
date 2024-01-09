@@ -244,6 +244,11 @@ Error LeaderBase::RouteLookup(const Ip6::Address &aSource, const Ip6::Address &a
 
     while ((prefixTlv = FindNextMatchingPrefixTlv(aSource, prefixTlv)) != nullptr)
     {
+        if (prefixTlv->FindSubTlv<BorderRouterTlv>() == nullptr)
+        {
+            continue;
+        }
+
         if (ExternalRouteLookup(prefixTlv->GetDomainId(), aDestination, aRloc16) == kErrorNone)
         {
             ExitNow(error = kErrorNone);
@@ -296,6 +301,11 @@ int LeaderBase::CompareRouteEntries(int8_t   aFirstPreference,
     // that the first entry is preferred over the second one.
 
     result = ThreeWayCompare(Get<RouterTable>().GetPathCost(aSecondRloc), Get<RouterTable>().GetPathCost(aFirstRloc));
+    VerifyOrExit(result == 0);
+
+    // If all the same, prefer the BR acting as a router over an
+    // end device.
+    result = ThreeWayCompare(Mle::IsActiveRouter(aFirstRloc), Mle::IsActiveRouter(aSecondRloc));
 #endif
 
 exit:

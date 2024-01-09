@@ -2,8 +2,8 @@
 *
 * @File         ruci_pci15p4_mac_cmd.c
 * @Version
-* $Revision:5942
-* $Date: 2023-07-13
+* $Revision:6351
+* $Date: 2023-11-17
 * @Brief
 * @Note
 * Copyright (C) 2023 Rafael Microelectronics Inc. All rights reserved.

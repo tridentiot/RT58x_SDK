@@ -48,6 +48,10 @@
 
 namespace ot {
 
+namespace Utils {
+class MeshDiag;
+}
+
 namespace NetworkDiagnostic {
 
 /**
@@ -62,7 +66,7 @@ namespace NetworkDiagnostic {
 class Client;
 
 /**
- * This class implements the Network Diagnostic server responding to requests.
+ * Implements the Network Diagnostic server responding to requests.
  *
  */
 class Server : public InstanceLocator, private NonCopyable
@@ -72,24 +76,148 @@ class Server : public InstanceLocator, private NonCopyable
 
 public:
     /**
-     * This constructor initializes the Server.
+     * Initializes the Server.
      *
      * @param[in] aInstance   The OpenThread instance.
      *
      */
     explicit Server(Instance &aInstance);
 
+#if OPENTHREAD_CONFIG_NET_DIAG_VENDOR_INFO_SET_API_ENABLE
+    /**
+     * Returns the vendor name string.
+     *
+     * @returns The vendor name string.
+     *
+     */
+    const char *GetVendorName(void) const { return mVendorName; }
+
+    /**
+     * Sets the vendor name string.
+     *
+     * @param[in] aVendorName     The vendor name string.
+     *
+     * @retval kErrorNone         Successfully set the vendor name.
+     * @retval kErrorInvalidArgs  @p aVendorName is not valid (too long or not UTF8).
+     *
+     */
+    Error SetVendorName(const char *aVendorName);
+
+    /**
+     * Returns the vendor model string.
+     *
+     * @returns The vendor model string.
+     *
+     */
+    const char *GetVendorModel(void) const { return mVendorModel; }
+
+    /**
+     * Sets the vendor model string.
+     *
+     * @param[in] aVendorModel     The vendor model string.
+     *
+     * @retval kErrorNone         Successfully set the vendor model.
+     * @retval kErrorInvalidArgs  @p aVendorModel is not valid (too long or not UTF8).
+     *
+     */
+    Error SetVendorModel(const char *aVendorModel);
+
+    /**
+     * Returns the vendor software version string.
+     *
+     * @returns The vendor software version string.
+     *
+     */
+    const char *GetVendorSwVersion(void) const { return mVendorSwVersion; }
+
+    /**
+     * Sets the vendor sw version string
+     *
+     * @param[in] aVendorSwVersion     The vendor sw version string.
+     *
+     * @retval kErrorNone         Successfully set the vendor sw version.
+     * @retval kErrorInvalidArgs  @p aVendorSwVersion is not valid (too long or not UTF8).
+     *
+     */
+    Error SetVendorSwVersion(const char *aVendorSwVersion);
+
+#else
+    const char *GetVendorName(void) const { return kVendorName; }
+    const char *GetVendorModel(void) const { return kVendorModel; }
+    const char *GetVendorSwVersion(void) const { return kVendorSwVersion; }
+#endif // OPENTHREAD_CONFIG_NET_DIAG_VENDOR_INFO_SET_API_ENABLE
+
 private:
-    static constexpr uint16_t kMaxChildEntries = 398;
+    static constexpr uint16_t kMaxChildEntries              = 398;
+    static constexpr uint16_t kAnswerMessageLengthThreshold = 800;
+
+#if OPENTHREAD_FTD
+    struct AnswerInfo
+    {
+        AnswerInfo(void)
+            : mAnswerIndex(0)
+            , mQueryId(0)
+            , mHasQueryId(false)
+            , mFirstAnswer(nullptr)
+        {
+        }
+
+        uint16_t          mAnswerIndex;
+        uint16_t          mQueryId;
+        bool              mHasQueryId;
+        Message::Priority mPriority;
+        Coap::Message    *mFirstAnswer;
+    };
+#endif
+
+    static const char kVendorName[];
+    static const char kVendorModel[];
+    static const char kVendorSwVersion[];
 
     Error AppendDiagTlv(uint8_t aTlvType, Message &aMessage);
     Error AppendIp6AddressList(Message &aMessage);
     Error AppendMacCounters(Message &aMessage);
-    Error AppendChildTable(Message &aMessage);
     Error AppendRequestedTlvs(const Message &aRequest, Message &aResponse);
     void  PrepareMessageInfoForDest(const Ip6::Address &aDestination, Tmf::MessageInfo &aMessageInfo) const;
 
+#if OPENTHREAD_MTD
+    void SendAnswer(const Ip6::Address &aDestination, const Message &aRequest);
+#elif OPENTHREAD_FTD
+    Error       AllocateAnswer(Coap::Message *&aAnswer, AnswerInfo &aInfo);
+    Error       CheckAnswerLength(Coap::Message *&aAnswer, AnswerInfo &aInfo);
+    bool        IsLastAnswer(const Coap::Message &aAnswer) const;
+    void        FreeAllRelatedAnswers(Coap::Message &aFirstAnswer);
+    void        PrepareAndSendAnswers(const Ip6::Address &aDestination, const Message &aRequest);
+    void        SendNextAnswer(Coap::Message &aAnswer, const Ip6::Address &aDestination);
+    Error       AppendChildTable(Message &aMessage);
+    Error       AppendChildTableAsChildTlvs(Coap::Message *&aAnswer, AnswerInfo &aInfo);
+    Error       AppendRouterNeighborTlvs(Coap::Message *&aAnswer, AnswerInfo &aInfo);
+    Error       AppendChildTableIp6AddressList(Coap::Message *&aAnswer, AnswerInfo &aInfo);
+    Error       AppendChildIp6AddressListTlv(Coap::Message &aAnswer, const Child &aChild);
+
+    static void HandleAnswerResponse(void                *aContext,
+                                     otMessage           *aMessage,
+                                     const otMessageInfo *aMessageInfo,
+                                     Error                aResult);
+    void        HandleAnswerResponse(Coap::Message          &aNextAnswer,
+                                     Coap::Message          *aResponse,
+                                     const Ip6::MessageInfo *aMessageInfo,
+                                     Error                   aResult);
+#endif
+
     template <Uri kUri> void HandleTmf(Coap::Message &aMessage, const Ip6::MessageInfo &aMessageInfo);
+
+#if OPENTHREAD_CONFIG_NET_DIAG_VENDOR_INFO_SET_API_ENABLE
+    Error SetVendorString(char *aDestString, uint16_t kMaxSize, const char *aSrcString);
+
+    VendorNameTlv::StringType      mVendorName;
+    VendorModelTlv::StringType     mVendorModel;
+    VendorSwVersionTlv::StringType mVendorSwVersion;
+#endif
+
+#if OPENTHREAD_FTD
+    Coap::MessageQueue mAnswerQueue;
+#endif
 };
 
 DeclareTmfHandler(Server, kUriDiagnosticGetRequest);
@@ -99,12 +227,13 @@ DeclareTmfHandler(Server, kUriDiagnosticGetAnswer);
 #if OPENTHREAD_CONFIG_TMF_NETDIAG_CLIENT_ENABLE
 
 /**
- * This class implements the Network Diagnostic client sending requests and queries.
+ * Implements the Network Diagnostic client sending requests and queries.
  *
  */
 class Client : public InstanceLocator, private NonCopyable
 {
     friend class Tmf::Agent;
+    friend class Utils::MeshDiag;
 
 public:
     typedef otNetworkDiagIterator          Iterator;    ///< Iterator to go through TLVs in `GetNextDiagTlv()`.
@@ -115,7 +244,7 @@ public:
     static constexpr Iterator kIteratorInit = OT_NETWORK_DIAGNOSTIC_ITERATOR_INIT; ///< Initializer for Iterator.
 
     /**
-     * This constructor initializes the Client.
+     * Initializes the Client.
      *
      * @param[in] aInstance   The OpenThread instance.
      *
@@ -123,7 +252,7 @@ public:
     explicit Client(Instance &aInstance);
 
     /**
-     * This method sends Diagnostic Get request. If the @p aDestination is of multicast type, the DIAG_GET.qry
+     * Sends Diagnostic Get request. If the @p aDestination is of multicast type, the DIAG_GET.qry
      * message is sent or the DIAG_GET.req otherwise.
      *
      * @param[in]  aDestination      The destination address.
@@ -140,7 +269,7 @@ public:
                             void               *Context);
 
     /**
-     * This method sends Diagnostic Reset request.
+     * Sends Diagnostic Reset request.
      *
      * @param[in] aDestination  The destination address.
      * @param[in] aTlvTypes     An array of Network Diagnostic TLV types.
@@ -150,7 +279,7 @@ public:
     Error SendDiagnosticReset(const Ip6::Address &aDestination, const uint8_t aTlvTypes[], uint8_t aCount);
 
     /**
-     * This static method gets the next Network Diagnostic TLV in a given message.
+     * Gets the next Network Diagnostic TLV in a given message.
      *
      * @param[in]      aMessage    Message to read TLVs from.
      * @param[in,out]  aIterator   The Network Diagnostic iterator. To get the first TLV set it to `kIteratorInit`.
@@ -163,10 +292,17 @@ public:
      */
     static Error GetNextDiagTlv(const Coap::Message &aMessage, Iterator &aIterator, TlvInfo &aTlvInfo);
 
-private:
-    static constexpr uint16_t kMaxChildEntries = 398;
+    /**
+     * This method returns the query ID used for the last Network Diagnostic Query command.
+     *
+     * @returns The query ID used for last query.
+     *
+     */
+    uint16_t GetLastQueryId(void) const { return mQueryId; }
 
+private:
     Error SendCommand(Uri                   aUri,
+                      Message::Priority     aPriority,
                       const Ip6::Address   &aDestination,
                       const uint8_t         aTlvTypes[],
                       uint8_t               aCount,
@@ -185,6 +321,7 @@ private:
     static const char *UriToString(Uri aUri);
 #endif
 
+    uint16_t              mQueryId;
     Callback<GetCallback> mGetCallback;
 };
 

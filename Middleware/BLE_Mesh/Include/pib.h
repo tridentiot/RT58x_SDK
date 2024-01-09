@@ -110,6 +110,8 @@ int pib_init(cfg_pib_t *p_cfg_pib, ble_mesh_element_param_t *p_element, uint8_t 
 uint8_t pib_prov_start_address_set(uint16_t address);
 
 pib_err_t pib_model_subscribe_list_add(uint16_t element_addr, uint32_t model_id, uint16_t sub_address);
+pib_err_t pib_model_subscribe_list_remove(uint16_t element_addr, uint32_t model_id, uint16_t sub_address);
+
 pib_err_t pib_model_app_key_bind(uint16_t element_addr, uint32_t model_id, uint16_t key_index);
 pib_err_t pib_model_app_key_unbind(uint16_t element_addr, uint32_t model_id, uint16_t key_index);
 

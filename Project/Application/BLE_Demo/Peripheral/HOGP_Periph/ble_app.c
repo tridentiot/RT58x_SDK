@@ -125,9 +125,16 @@ static uint8_t hid_consumer_report_count;      //consumer control value. Here us
 static uint8_t hid_keyboard_report_state;      //keyboard report state
 static uint8_t hid_keyboard_report_count;      //keyboard control value. Here use to control keycode.
 
-#if (IO_CAPABILITY_SETTING == KEYBOARD_ONLY)
-static uint8_t ble_passkey_confirmed_state = 0;  //wait to 1 to set scanned Passkey.
+#if (IO_CAPABILITY_SETTING != NOINPUT_NOOUTPUT)
+static uint8_t ble_passkey_confirmed_state = 0;  //wait to 1 to set scanned Passkey and 2 for display.
+#endif
+#if ((IO_CAPABILITY_SETTING == KEYBOARD_ONLY) || (IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY) || (IO_CAPABILITY_SETTING == DISPLAY_YESNO))
 static uint32_t passkey = 0;                   //passkey value
+#endif
+
+#if ((IO_CAPABILITY_SETTING == DISPLAY_YESNO) || (IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY))
+static uint8_t ble_numeric_comp_state = 0;  //wait to 1 to set scanned numeric comparison result.
+static uint8_t same_numeric = 0xff;         //numeric is same
 #endif
 
 /**************************************************************************************************
@@ -282,7 +289,7 @@ static void app_peripheral_handler(app_req_param_t *p_param)
 
     case APP_REQUEST_HIDS_PASSKEY_ENTRY:
     {
-#if (IO_CAPABILITY_SETTING == KEYBOARD_ONLY)
+#if ((IO_CAPABILITY_SETTING == KEYBOARD_ONLY) || (IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY))
         ble_sm_passkey_param_t param;
 
         param.host_id = host_id;
@@ -293,6 +300,21 @@ static void app_peripheral_handler(app_req_param_t *p_param)
 #endif
     }
     break;
+
+    case APP_REQUEST_HIDS_NUMERIC_COMP_ENTRY:
+    {
+#if ((IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY) || (IO_CAPABILITY_SETTING == DISPLAY_YESNO))
+        ble_sm_numeric_comp_result_param_t param;
+
+        param.host_id = host_id;
+        param.same_numeric = same_numeric;
+
+        info_color(LOG_CYAN, "Numeric matched: %d\n", same_numeric);
+        ble_cmd_numeric_comp_result_set(&param);
+#endif
+    }
+    break;
+
 
     case APP_REQUEST_HIDS_NTF:
     {
@@ -638,7 +660,10 @@ static void ble_evt_handler(ble_evt_param_t *p_param)
         {
             // I/O Capability is display
             // Generate a 6-digit random code and display it for pairing.
+#if (IO_CAPABILITY_SETTING != NOINPUT_NOOUTPUT)
             info_color(LOG_CYAN, "BLE_PAIRING_KEY = %d\n", (uint32_t)DEMO_HID_DISPLAY_PASSKEY);
+            ble_passkey_confirmed_state = 2;
+#endif
         }
     }
     break;
@@ -646,20 +671,35 @@ static void ble_evt_handler(ble_evt_param_t *p_param)
     case BLE_SM_EVT_PASSKEY_CONFIRM:
     {
         //enter a scanned Passkey or use a randomly generated passkey.
-#if (IO_CAPABILITY_SETTING == DISPLAY_ONLY)
+#if (IO_CAPABILITY_SETTING != NOINPUT_NOOUTPUT)
 
         ble_evt_sm_passkey_confirm_param_t *p_cfm_param = (ble_evt_sm_passkey_confirm_param_t *)&p_param->event_param.ble_evt_sm.param.evt_passkey_confirm_param;
         ble_sm_passkey_param_t passkey_param;
 
-        passkey_param.host_id = p_cfm_param->host_id;
-        passkey_param.passkey = (uint32_t)DEMO_HID_DISPLAY_PASSKEY;
+        if (ble_passkey_confirmed_state == 2)
+        {
+            passkey_param.host_id = p_cfm_param->host_id;
+            passkey_param.passkey = (uint32_t)DEMO_HID_DISPLAY_PASSKEY;
+            // set passkey
+            ble_cmd_passkey_set(&passkey_param);
+            ble_passkey_confirmed_state = 0;
+        }
+        else
+        {
+            ble_passkey_confirmed_state = 1;
+            info_color(LOG_CYAN, "Please enter passkey...\n");
+        }
+#endif
+    }
+    break;
 
-        // set passkey
-        ble_cmd_passkey_set(&passkey_param);
+    case BLE_SM_EVT_NUMERIC_COMPARISON:
+    {
+#if ((IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY) || (IO_CAPABILITY_SETTING == DISPLAY_YESNO))
+        ble_evt_sm_numeric_comparison_param_t *p_cfm_param = (ble_evt_sm_numeric_comparison_param_t *)&p_param->event_param.ble_evt_sm.param.evt_numeric_comparison_param;
 
-#elif (IO_CAPABILITY_SETTING == KEYBOARD_ONLY)
-        ble_passkey_confirmed_state = 1;
-        info_color(LOG_CYAN, "Please enter passkey...\n");
+        ble_numeric_comp_state = 1;
+        info_color(LOG_CYAN, "confirm pairing values:\n%06d (1: matched, 0: not matched)\n", p_cfm_param->comparison_value);
 #endif
     }
     break;
@@ -671,6 +711,15 @@ static void ble_evt_handler(ble_evt_param_t *p_param)
         if (p_auth_param->status == BLE_HCI_ERR_CODE_SUCCESS)
         {
             ble_cmd_cccd_restore(p_auth_param->host_id);
+        }
+        else
+        {
+#if (IO_CAPABILITY_SETTING != NOINPUT_NOOUTPUT)
+            ble_passkey_confirmed_state = 0;
+#endif
+#if ((IO_CAPABILITY_SETTING == DISPLAY_YESNO) || (IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY))
+            ble_numeric_comp_state = 0;
+#endif
         }
         info_color(LOG_CYAN, "BLE authentication status = %d\n", p_auth_param->status);
     }
@@ -1101,6 +1150,12 @@ static ble_err_t ble_init(void)
             }
         }
 
+        status = ble_cmd_lesc_init();
+        if (status != BLE_ERR_OK)
+        {
+            break;
+        }
+
         status = ble_cmd_resolvable_address_init();
         if (status != BLE_ERR_OK)
         {
@@ -1137,7 +1192,7 @@ static ble_err_t ble_init(void)
  *    PUBLIC FUNCTIONS
  *************************************************************************************************/
 
-#if (IO_CAPABILITY_SETTING == KEYBOARD_ONLY)
+#if ((IO_CAPABILITY_SETTING == KEYBOARD_ONLY) || (IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY) || (IO_CAPABILITY_SETTING == DISPLAY_YESNO))
 void passkey_set(uint8_t *p_data, uint8_t length)
 {
     if (ble_passkey_confirmed_state == 1)
@@ -1152,6 +1207,22 @@ void passkey_set(uint8_t *p_data, uint8_t length)
             // No Application queue buffer. Error.
         }
     }
+
+#if ((IO_CAPABILITY_SETTING == KEYBOARD_DISPLAY) || (IO_CAPABILITY_SETTING == DISPLAY_YESNO))
+    if (ble_numeric_comp_state == 1)
+    {
+        ble_numeric_comp_state = 0;
+
+        sscanf((char *)p_data, "%d", (int *)&same_numeric);
+
+        // send HIDS passkey
+        if (app_request_set(APP_HID_P_HOST_ID, APP_REQUEST_HIDS_NUMERIC_COMP_ENTRY, true) == false)
+        {
+            // No Application queue buffer. Error.
+        }
+    }
+#endif
+
 }
 #endif
 

@@ -129,6 +129,7 @@ build_simulation()
         options+=("-DOT_CSL_RECEIVER=ON")
         options+=("-DOT_LINK_METRICS_INITIATOR=ON")
         options+=("-DOT_LINK_METRICS_SUBJECT=ON")
+        options+=("-DOT_LINK_METRICS_MANAGER=ON")
     fi
 
     if [[ ${ot_extra_options[*]+x} ]]; then
@@ -162,6 +163,9 @@ build_posix()
     if [[ ${version} != "1.1" ]]; then
         options+=("-DOT_DUA=ON")
         options+=("-DOT_MLR=ON")
+        options+=("-DOT_LINK_METRICS_INITIATOR=ON")
+        options+=("-DOT_LINK_METRICS_SUBJECT=ON")
+        options+=("-DOT_LINK_METRICS_MANAGER=ON")
     fi
 
     if [[ ${FULL_LOGS} == 1 ]]; then
@@ -272,6 +276,7 @@ do_cert()
 do_cert_suite()
 {
     export top_builddir="${OT_BUILDDIR}/openthread-simulation-${THREAD_VERSION}"
+    export top_srcdir="${OT_SRCDIR}"
 
     if [[ ${THREAD_VERSION} != "1.1" ]]; then
         export top_builddir_1_3_bbr="${OT_BUILDDIR}/openthread-simulation-1.3-bbr"
@@ -285,7 +290,8 @@ do_cert_suite()
 
     sudo modprobe ip6table_filter
 
-    python3 tests/scripts/thread-cert/run_cert_suite.py --multiply "${MULTIPLY:-1}" "$@"
+    mkdir -p ot_testing
+    ./tests/scripts/thread-cert/run_cert_suite.py --run-directory ot_testing --multiply "${MULTIPLY:-1}" "$@"
     exit 0
 }
 
@@ -389,7 +395,7 @@ do_build_otbr_docker()
 
 do_pktverify()
 {
-    python3 ./tests/scripts/thread-cert/pktverify/verify.py "$1"
+    ./tests/scripts/thread-cert/pktverify/verify.py "$1"
 }
 
 ot_exec_expect_script()
@@ -444,7 +450,7 @@ do_expect()
             fi
         fi
     else
-        test_patterns=(-name 'cli-*.exp' -o -name 'simulation-*.exp')
+        test_patterns=(-name 'cli-*.exp' -o -name 'simulation-*.exp' -o -name 'cli_non_rcp-*.exp')
     fi
 
     if [[ $# != 0 ]]; then
@@ -654,7 +660,7 @@ main()
 {
     envsetup "$@"
 
-    if [[ -z ${1:-} ]]; then
+    if [[ -z ${1-} ]]; then
         print_usage 1
     fi
 

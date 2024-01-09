@@ -229,7 +229,7 @@ static void *_mem_malloc( size_t WantedSize )
 }
 /*-----------------------------------------------------------*/
 
-static void _mem_free(void *pv)
+static void _mem_free(void *pv, const char *pc_func_ptr, uint32_t u32_line)
 {
     uint8_t *puc = (uint8_t *) pv;
     BlockLink_t *pLink;
@@ -238,7 +238,7 @@ static void _mem_free(void *pv)
     {
         if ( ((uint32_t)pv < (uint32_t)mem_Heap) || ((uint32_t)pv > (uint32_t)&mem_Heap[ MEM_MGMT_HEAP_SIZE ]) )
         {
-            err("mem_free 0x%p error\n", pv);
+            err("mem_free 0x%p error %s-%d(%s)\n", pv, pc_func_ptr, u32_line);
         }
         configASSERT( ((uint32_t)pv >= (uint32_t)mem_Heap) && ((uint32_t)pv <= (uint32_t)&mem_Heap[ MEM_MGMT_HEAP_SIZE ]) );
         /* The memory being freed will have an BlockLink_t structure immediately
@@ -404,7 +404,7 @@ static void mem_prvInsertBlockIntoFreeList( BlockLink_t *pBlockToInsert ) /* PRI
     }
 }
 /*-----------------------------------------------------------*/
-
+#if (MODULE_ENABLE(SUPPORT_MULTITASKING))
 void mem_vPortGetHeapStats( HeapStats_t *pxHeapStats )
 {
     BlockLink_t *pxBlock;
@@ -467,7 +467,7 @@ void mem_vPortGetHeapStats( HeapStats_t *pxHeapStats )
 #else
 #endif
 }
-
+#endif
 // mgmt
 //==================================
 //     Memory functions
@@ -578,12 +578,22 @@ void mem_mgmt_show_info(void)
  */
 void *mem_malloc_fn(uint32_t u32_size, const char *pc_func_ptr, uint32_t u32_line)
 {
+#if (MODULE_ENABLE(SUPPORT_MULTITASKING))
+    vTaskSuspendAll();
+#else
+    enter_critical_section();
+#endif
     void *ptr;
     /*-----------------------------------*/
     /* A.Input Parameter Range Check     */
     /*-----------------------------------*/
     if (u32_size == 0)
     {
+#if (MODULE_ENABLE(SUPPORT_MULTITASKING))
+        xTaskResumeAll();
+#else
+        leave_critical_section();
+#endif
         return NULL;
     }
 
@@ -599,21 +609,16 @@ void *mem_malloc_fn(uint32_t u32_size, const char *pc_func_ptr, uint32_t u32_lin
 
     if (ptr)
     {
-#if (MODULE_ENABLE(SUPPORT_MULTITASKING))
-        vTaskSuspendAll();
-#else
-        enter_critical_section();
-#endif
         malloc_info_insert(ptr, u32_size, (char *)pc_func_ptr, u32_line);
-#if (MODULE_ENABLE(SUPPORT_MULTITASKING))
-        xTaskResumeAll();
-#else
-        leave_critical_section();
-#endif
     }
     /*-----------------------------------*/
     /* C. Result & Return                */
     /*-----------------------------------*/
+#if (MODULE_ENABLE(SUPPORT_MULTITASKING))
+    xTaskResumeAll();
+#else
+    leave_critical_section();
+#endif
     return ptr;
 }
 
@@ -622,7 +627,11 @@ void *mem_malloc_fn(uint32_t u32_size, const char *pc_func_ptr, uint32_t u32_lin
  */
 void mem_free_fn(void *p_pointer, const char *pc_func_ptr, uint32_t u32_line)
 {
-
+#if (MODULE_ENABLE(SUPPORT_MULTITASKING))
+    vTaskSuspendAll();
+#else
+    enter_critical_section();
+#endif
 #if (MODULE_ENABLE(SUPPORT_MULTITASKING))
     char *current_task_name = pcTaskGetTaskName(xTaskGetCurrentTaskHandle());
 #else
@@ -641,21 +650,18 @@ void mem_free_fn(void *p_pointer, const char *pc_func_ptr, uint32_t u32_line)
     /*-----------------------------------*/
     /* B. Main Functionality             */
     /*-----------------------------------*/
-    _mem_free(p_pointer);
-#if (MODULE_ENABLE(SUPPORT_MULTITASKING))
-    vTaskSuspendAll();
-#else
-    enter_critical_section();
-#endif
+    _mem_free(p_pointer, pc_func_ptr, u32_line);
+
     malloc_info_delete(p_pointer);
+
+    /*-----------------------------------*/
+    /* C. Result & Return                */
+    /*-----------------------------------*/
 #if (MODULE_ENABLE(SUPPORT_MULTITASKING))
     xTaskResumeAll();
 #else
     leave_critical_section();
 #endif
-    /*-----------------------------------*/
-    /* C. Result & Return                */
-    /*-----------------------------------*/
 }
 
 

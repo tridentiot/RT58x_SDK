@@ -793,6 +793,11 @@
               <FileType>1</FileType>
               <FilePath>..\..\..\..\..\Middleware\BLE\BLE_Service\FOTAS\ble_service_fotas.c</FilePath>
             </File>
+            <File>
+              <FileName>ble_profile_def.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\..\..\..\Middleware\BLE_Mesh\BLE_App_Profile\ble_profile_def.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

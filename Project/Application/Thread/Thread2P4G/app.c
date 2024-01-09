@@ -17,27 +17,20 @@
 #include "project_config.h"
 #include "cm3_mcu.h"
 #include "bsp.h"
-#include "bsp_console.h"
-#include "bsp_uart.h"
 #include "util_log.h"
 #include "rfb.h"
 #include "app.h"
 #include "mem_mgmt.h"
+#include "ota_handler.h"
+#include "sw_timer.h"
+#include "platform-rt58x.h"
+#include "app_uart_handler.h"
 
 static otUdpSocket socket;
 static otSockAddr sockaddr;
 static otInstance *g_app_instance = NULL;
 extern void otAppCliInit(otInstance *aInstance);
-
 extern otError ota_init(otInstance *aInstance);
-extern void ota_start(uint16_t segments_size, uint16_t intervel);
-extern uint32_t ota_get_image_code();
-extern uint32_t ota_get_image_version();
-extern uint32_t ota_get_image_size();
-extern uint32_t ota_get_image_crc();
-extern void ota_debug_level(unsigned int level);
-extern void sw_timer_proc(void);
-
 void _Sleep_Init(void);
 void UdpReceiveCallBack(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo);
 
@@ -226,7 +219,7 @@ static void _Set_Network_Configuration()
                                           };
 #else
     uint8_t nwkkey[OT_NETWORK_KEY_SIZE] = {0xfe, 0x83, 0x44, 0x8a, 0x67, 0x29, 0xfe, 0xab,
-                                           0xab, 0xfe, 0x29, 0x67, 0x8a, 0x44, 0x83, 0xfe
+                                           0xab, 0xfe, 0x29, 0x67, 0x8a, 0x44, 0x83, 0xff
                                           };
 #endif
 
@@ -342,13 +335,13 @@ void _Udp_Data_Send(uint16_t PeerPort, otIp6Address PeerAddr, uint8_t *data, uin
             break;
         }
         error = otMessageAppend(message, data, buffer_lens);
-        if (error != NULL)
+        if (error != OT_ERROR_NONE)
         {
             break;
         }
 
         error = otUdpSend(g_app_instance, &socket, message, &messageInfo);
-        if (error != NULL)
+        if (error != OT_ERROR_NONE)
         {
             break;
         }
@@ -425,10 +418,10 @@ static otError Processota(void *aContext, uint8_t aArgsLength, char *aArgs[])
 
     if (0 == aArgsLength)
     {
-        otCliOutputFormat("ota image code : %x \n", ota_get_image_code());
-        otCliOutputFormat("ota image version : %x \n", ota_get_image_version());
-        otCliOutputFormat("ota image size : %x \n", ota_get_image_size());
-        otCliOutputFormat("ota image crc : %x \n", ota_get_image_crc());
+        info("ota state : %s \n", OtaStateToString(ota_get_state()));
+        info("ota image version : 0x%08x\n", ota_get_image_version());
+        info("ota image size : 0x%08x \n", ota_get_image_size());
+        info("ota image crc : 0x%08x \n", ota_get_image_crc());
     }
     else if (!strcmp(aArgs[0], "start"))
     {
@@ -448,7 +441,7 @@ static otError Processota(void *aContext, uint8_t aArgsLength, char *aArgs[])
                 {
                     break;
                 }
-                otCliOutputFormat("segments_size %u ,intervel %u \n", segments_size, intervel);
+                info("segments_size %u ,intervel %u \n", (uint16_t)segments_size, (uint16_t)intervel);
                 ota_start((uint16_t)segments_size, (uint16_t)intervel);
             } while (0);
         }
@@ -456,6 +449,17 @@ static otError Processota(void *aContext, uint8_t aArgsLength, char *aArgs[])
         {
             error = OT_ERROR_INVALID_COMMAND;
         }
+    }
+    else if (!strcmp(aArgs[0], "send"))
+    {
+        if (aArgsLength > 1)
+        {
+            ota_send(aArgs[1]);
+        }
+    }
+    else if (!strcmp(aArgs[0], "stop"))
+    {
+        ota_stop();
     }
     else if (!strcmp(aArgs[0], "debug"))
     {
@@ -521,9 +525,15 @@ void _app_init(void)
     OT_ASSERT(otLoggingSetLevel(OT_LOG_LEVEL_NONE) == OT_ERROR_NONE);
 #endif
 
+    //not use freertos
+    sw_timer_init();
+
     _Sleep_Init();
     _Set_Network_Configuration();
     _Udp_Init();
+
+    /*bin download will use uart 1 */
+    app_uart_handler_init();
 
     OT_ASSERT(ota_init(g_app_instance) == OT_ERROR_NONE);
 
@@ -539,6 +549,11 @@ void _app_init(void)
 
 void _app_process_action()
 {
+    /*sw timer use*/
+    sw_timer_proc();
+    /*bin download will use uart 1 */
+    app_uart_handler_recv();
+    /*openthread use*/
     otTaskletsProcess(g_app_instance);
     otSysProcessDrivers(g_app_instance);
 }
@@ -546,4 +561,14 @@ void _app_process_action()
 void _app_exit(void)
 {
     otInstanceFinalize(g_app_instance);
+}
+
+void otTaskletsSignalPending(otInstance *aInstance)
+{
+    OT_UNUSED_VARIABLE(aInstance);
+}
+
+void otSysEventSignalPending(void)
+{
+
 }

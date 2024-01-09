@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.BMP"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Rafael RT58x  SDK
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
   </td>
  </tr>
@@ -109,34 +109,34 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"> * If timer_handler is not NULL, system will call timer_handler</span></div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"> *when timeout happen (periodic interrupt mode).</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> Timer_Int_Callback_Register(uint32_t timer_id,</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                        <a class="code" href="timer_8h.html#aedaa65f6c65a047d1c3190ce900d04cc">timer_isr_handler_t</a> timer_handler);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> Timer_Int_Callback_Register(uint32_t timer_id,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                                 <a class="code" href="timer_8h.html#aedaa65f6c65a047d1c3190ce900d04cc">timer_isr_handler_t</a> timer_handler);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">extern</span> uint32_t Timer_Int_Priority(uint32_t timer_id,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                                   uint32_t timer_priority);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;uint32_t Timer_Int_Priority(uint32_t timer_id,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                            uint32_t timer_priority);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">extern</span> uint32_t Timer_Open(uint32_t timer_id,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                           <a class="code" href="structtimer__config__mode__t.html">timer_config_mode_t</a> mode,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                           <a class="code" href="timer_8h.html#aedaa65f6c65a047d1c3190ce900d04cc">timer_isr_handler_t</a> timer_handler);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;uint32_t Timer_Open(uint32_t timer_id,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                    <a class="code" href="structtimer__config__mode__t.html">timer_config_mode_t</a> mode,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                    <a class="code" href="timer_8h.html#aedaa65f6c65a047d1c3190ce900d04cc">timer_isr_handler_t</a> timer_handler);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keyword">extern</span> uint32_t Timer_Load(uint32_t timer_id, uint32_t timeout_ticks);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;uint32_t Timer_Load(uint32_t timer_id, uint32_t timeout_ticks);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">/*  For example: if timer running in 32MHz. And prescale is 1</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment"> * timeout_ticks as 320000 in predioc mode,</span></div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment"> * it will generate 10 ms interrupt.</span></div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">extern</span> uint32_t Timer_Start(uint32_t timer_id,</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                            uint32_t timeout_ticks);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;uint32_t Timer_Start(uint32_t timer_id,</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                     uint32_t timeout_ticks);</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">extern</span> uint32_t Timer_Close(uint32_t timer_id);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;uint32_t Timer_Close(uint32_t timer_id);</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">extern</span> uint32_t Timer_Stop(uint32_t timer_id);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;uint32_t Timer_Stop(uint32_t timer_id);</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> * This function will return the current tick.</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> * Please note: the tick is down counter.</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">extern</span> uint32_t Timer_Current_Get(uint32_t timer_id);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;uint32_t Timer_Current_Get(uint32_t timer_id);</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>

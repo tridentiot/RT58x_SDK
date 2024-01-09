@@ -18,11 +18,12 @@
 #include "rfb.h"
 #include "cm3_mcu.h"
 #include "bsp.h"
-#include "bsp_console.h"
-#include "bsp_uart.h"
-#include "util_log.h"
 #include "app.h"
 #include "mem_mgmt.h"
+#include "uart_stdio.h"
+/* Utility Library APIs */
+#include "util_log.h"
+#include "util_printf.h"
 
 #if OPENTHREAD_CONFIG_RADIO_915MHZ_OQPSK_SUPPORT
 #define RFB_DATA_RATE FSK_300K // Supported Value: [FSK_50K; FSK_100K; FSK_150K; FSK_200K; FSK_300K]
@@ -56,51 +57,51 @@ void _Sleep_Init()
     Lpm_Enable_Low_Power_Wakeup((LOW_POWER_WAKEUP_32K_TIMER | LOW_POWER_WAKEUP_UART0_RX));
 }
 
-void otTaskletsSignalPending(otInstance *aInstance)
-{
-    OT_UNUSED_VARIABLE(aInstance);
-}
 
 void UdpReceiveCallBack(void *aContext, otMessage *aMessage, const otMessageInfo *aMessageInfo)
 {
     OT_UNUSED_VARIABLE(aContext);
 
-    char buf[1500];
+    uint8_t *buf = NULL;
+    uint8_t data_seq = 0, cmd = 0xFF;
     int length;
     char string[OT_IP6_ADDRESS_STRING_SIZE];
 
     otIp6AddressToString(&aMessageInfo->mPeerAddr, string, sizeof(string));
     length = otMessageGetLength(aMessage) - otMessageGetOffset(aMessage);
+
     info("%d bytes from \n", length);
     info("ip : %s\n", string);
     info("port : %d \n", aMessageInfo->mSockPort);
-
-    length = otMessageRead(aMessage, otMessageGetOffset(aMessage), buf, sizeof(buf) - 1);
-    buf[length] = '\0';
-
-    info("Message Received : ");
-    for (int i = 0; i < length; i++)
+    buf = mem_malloc(length);
+    if (buf)
     {
-        info("%02x", buf[i]);
-    }
-    info("\n");
+        otMessageRead(aMessage, otMessageGetOffset(aMessage), buf, length);
 
-    if (memcmp(&buf, "ACK_", sizeof(char) * 4) != 0)
-    {
-        uint8_t *tmp_buf = NULL;
-        tmp_buf = mem_malloc(length + 4);
-        if (tmp_buf)
+        info("Message Received : ");
+        for (int i = 0; i < length; i++)
         {
-            memset(tmp_buf, 0x0, length + 4);
-            memcpy((char *)tmp_buf, "ACK_", sizeof(char) * 4);
-            memcpy(&tmp_buf[4], buf, length);
-            _Udp_Data_Send(aMessageInfo->mSockPort, aMessageInfo->mPeerAddr, tmp_buf, (length + 4));
-            if (tmp_buf)
-            {
-                mem_free(tmp_buf);
-            }
+            info("%02x", buf[i]);
+        }
+        info("\n");
+        mem_free(buf);
+    }
+}
+
+/* pin mux setting init*/
+static void pin_mux_init(void)
+{
+    int i;
+
+    /*set all pin to gpio, except GPIO16, GPIO17 */
+    for (i = 0; i < 32; i++)
+    {
+        if ((i != 16) && (i != 17))
+        {
+            pin_set_mode(i, MODE_GPIO);
         }
     }
+    return;
 }
 
 int main(int argc, char *argv[])
@@ -109,6 +110,22 @@ int main(int argc, char *argv[])
     rafael_radio_subg_datarate_set(RFB_DATA_RATE);
 #endif
     rafael_radio_cca_threshold_set(RFB_CCA_THRESHOLD);
+
+    /* pinmux init */
+    pin_mux_init();
+
+    /* led init */
+    gpio_cfg_output(20);
+    gpio_cfg_output(21);
+    gpio_cfg_output(22);
+    gpio_pin_write(20, 1);
+    gpio_pin_write(21, 1);
+    gpio_pin_write(22, 1);
+
+    /*uart 0 init*/
+    uart_stdio_init(NULL);
+    utility_register_stdout(uart_stdio_write_ch, uart_stdio_write);
+    util_log_init();
 
     otSysInit(argc, argv);
 

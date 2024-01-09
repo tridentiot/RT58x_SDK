@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.BMP"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Rafael RT58x  SDK
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
   </td>
  </tr>
@@ -165,19 +165,19 @@ $(function() {
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">extern</span> <a class="code" href="group___sys___ctrl.html#ga2fdf3dbd5dbceb8442aea4075b6553ce">delay_us_t</a> Delay_us;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keyword">extern</span> <a class="code" href="group___sys___ctrl.html#gafadd26f0b8f24dec33d325902c1d7d97">delay_ms_t</a> Delay_ms;</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160; </div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___sys___ctrl.html#ga066d1783a4157209f59f2c128ddc9a8e">pin_get_mode</a>(uint32_t pin_number);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gab560fef99bf9025749e7ab2fd7211424">pin_set_mode</a>(uint32_t pin_number, uint32_t mode);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#ga8f748df3d4ac4704999330f5e0e659e6">enable_perclk</a>(uint32_t clock_id);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gaccaf3083393739e519f6bce90ec7bf74">disable_perclk</a>(uint32_t clock);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gab240022069bf8487fdf1561fcb6c9ffc">pin_set_pullopt</a>(uint32_t pin_number, uint32_t mode);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gae069ce91c7e8d56f3692c617d8acf4f2">pin_set_drvopt</a>(uint32_t pin_number, uint32_t mode);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#ga97b5b877ce15de48019d7ee48b5871de">enable_pin_opendrain</a>(uint32_t pin_number);</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gac7c3b74e5dbfd9c455959aa3814f85c8">disable_pin_opendrain</a>(uint32_t pin_number);</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="keyword">extern</span> sys_clk_sel_t <a class="code" href="group___sys___ctrl.html#ga04715b8edcf2ac90fe08b30fdd3813bb">Pll_Unlock_Check</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___sys___ctrl.html#gab56769c6e3a9291eca40de908e1b496c">Pll_Status_Check</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___sys___ctrl.html#ga0242b0f2a6328843a94b2505791f8f9a">Change_Ahb_System_Clk</a>(sys_clk_sel_t sys_clk_mode);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;uint32_t <a class="code" href="group___sys___ctrl.html#ga066d1783a4157209f59f2c128ddc9a8e">pin_get_mode</a>(uint32_t pin_number);</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gab560fef99bf9025749e7ab2fd7211424">pin_set_mode</a>(uint32_t pin_number, uint32_t mode);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#ga8f748df3d4ac4704999330f5e0e659e6">enable_perclk</a>(uint32_t clock_id);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gaccaf3083393739e519f6bce90ec7bf74">disable_perclk</a>(uint32_t clock);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gab240022069bf8487fdf1561fcb6c9ffc">pin_set_pullopt</a>(uint32_t pin_number, uint32_t mode);</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gae069ce91c7e8d56f3692c617d8acf4f2">pin_set_drvopt</a>(uint32_t pin_number, uint32_t mode);</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#ga97b5b877ce15de48019d7ee48b5871de">enable_pin_opendrain</a>(uint32_t pin_number);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#gac7c3b74e5dbfd9c455959aa3814f85c8">disable_pin_opendrain</a>(uint32_t pin_number);</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;sys_clk_sel_t <a class="code" href="group___sys___ctrl.html#ga04715b8edcf2ac90fe08b30fdd3813bb">Pll_Unlock_Check</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;uint32_t <a class="code" href="group___sys___ctrl.html#gab56769c6e3a9291eca40de908e1b496c">Pll_Status_Check</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;uint32_t <a class="code" href="group___sys___ctrl.html#ga0242b0f2a6328843a94b2505791f8f9a">Change_Ahb_System_Clk</a>(sys_clk_sel_t sys_clk_mode);</div>
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="keyword">extern</span> sys_clk_sel_t <a class="code" href="group___sys___ctrl.html#gadce50ce8cb35b413c5492ba47c0754af">Get_Ahb_System_Clk</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;sys_clk_sel_t <a class="code" href="group___sys___ctrl.html#gadce50ce8cb35b413c5492ba47c0754af">Get_Ahb_System_Clk</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="comment"> * Select Slow clock source.</span></div>
@@ -190,10 +190,10 @@ $(function() {
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> set_slow_clock_source(uint32_t mode);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#ga30a0b55325e533278f71bc00954559a4">set_ext32k_pin</a>(uint32_t pin_number);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="keywordtype">void</span> set_slow_clock_source(uint32_t mode);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#ga30a0b55325e533278f71bc00954559a4">set_ext32k_pin</a>(uint32_t pin_number);</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; </div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="keyword">extern</span> uint32_t <a class="code" href="group___sys___ctrl.html#ga043a2b73adea38cd748a278bb8006450">get_random_number</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;uint32_t <a class="code" href="group___sys___ctrl.html#ga043a2b73adea38cd748a278bb8006450">get_random_number</a>(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160; </div>
 <div class="line"><a name="l00380"></a><span class="lineno"><a class="line" href="group___sys___ctrl.html#ga9c1e5ad55dd160126aabfca3c2bf50c5">  380</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___sys___ctrl.html#ga9c1e5ad55dd160126aabfca3c2bf50c5">sys_set_retention_reg</a>(uint32_t index, uint32_t value)</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;{</div>

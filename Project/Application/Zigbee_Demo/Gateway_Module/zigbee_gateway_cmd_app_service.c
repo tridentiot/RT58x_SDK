@@ -139,9 +139,9 @@ typedef enum
     GW_CMD_APP_SRV_SCENE_STORE,
     GW_CMD_APP_SRV_SCENE_RECALL,
     GW_CMD_APP_SRV_SCENE_GET_EMBERSHIP,
-    GW_CMD_APP_SRV_SCENE_ENHANCED_ADD,
-    GW_CMD_APP_SRV_SCENE_ENHANCED_VIEW,
-    GW_CMD_APP_SRV_SCENE_COPY,
+    GW_CMD_APP_SRV_SCENE_ENHANCED_ADD = 00040,
+    GW_CMD_APP_SRV_SCENE_ENHANCED_VIEW = 00041,
+    GW_CMD_APP_SRV_SCENE_COPY = 00042,
 } e_scene_mgmt;
 
 #define GW_CMD_APP_SRV_ONOFF_CTRL_BASE              0x70000
@@ -294,7 +294,7 @@ static void _zcl_basic_read_rsp_cb(uint16_t cluster_id, uint16_t addr, uint8_t s
     if (p_rsp_pd)
     {
         zigbee_gateway_cmd_send(GW_CMD_APP_CMD_RSP_GEN(cmd_id | GW_CMD_APP_SRV_DEV_BASE),
-                                addr, 1, src_endp, p_rsp_pd, rsp_pd_len);
+                                addr, 0, src_endp, p_rsp_pd, rsp_pd_len);
         sys_free(p_rsp_pd);
     }
 }
@@ -703,7 +703,7 @@ static void _cmd_dev_group_mgmt_handle(uint32_t cmd_id, uint8_t *pkt)
 
         p_attr_data[0] = pt_pd->parameter[1];
         p_attr_data[1] = pt_pd->parameter[2];
-        p_attr_data[2] = 0;                   /* string lenght */
+        p_attr_data[2] = 0;                   /* string length */
         break;
 
     case GW_CMD_APP_SRV_GROUP_VIEW:
@@ -735,7 +735,7 @@ static void _cmd_dev_group_mgmt_handle(uint32_t cmd_id, uint8_t *pkt)
         disable_default_rsp = pt_pd->parameter[1];
         break;
     case GW_CMD_APP_SRV_GROUP_ADD_IF_IDENTIFYING:
-        attr_data_len = 2;
+        attr_data_len = 3;
         p_attr_data = sys_malloc(attr_data_len);
 
         if (p_attr_data == NULL)
@@ -745,6 +745,7 @@ static void _cmd_dev_group_mgmt_handle(uint32_t cmd_id, uint8_t *pkt)
 
         p_attr_data[0] = pt_pd->parameter[2];
         p_attr_data[1] = pt_pd->parameter[3];
+        p_attr_data[2] = 0;                   /* string length */
 
         disable_default_rsp = pt_pd->parameter[1];
         break;

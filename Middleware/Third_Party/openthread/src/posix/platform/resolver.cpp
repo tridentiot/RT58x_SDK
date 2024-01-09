@@ -34,6 +34,7 @@
 #include <openthread/message.h>
 #include <openthread/udp.h>
 #include <openthread/platform/dns.h>
+#include <openthread/platform/time.h>
 
 #include "common/code_utils.hpp"
 
@@ -51,8 +52,8 @@
 #if OPENTHREAD_CONFIG_DNS_UPSTREAM_QUERY_ENABLE
 
 namespace {
-constexpr char kResolveConfLocation[] = "/etc/resolv.conf";
-constexpr char kNameserverItem[]      = "nameserver";
+constexpr char kResolvConfFullPath[] = "/etc/resolv.conf";
+constexpr char kNameserverItem[]     = "nameserver";
 } // namespace
 
 extern ot::Posix::Resolver gResolver;
@@ -63,8 +64,18 @@ namespace Posix {
 void Resolver::Init(void)
 {
     memset(mUpstreamTransaction, 0, sizeof(mUpstreamTransaction));
-
     LoadDnsServerListFromConf();
+}
+
+void Resolver::TryRefreshDnsServerList(void)
+{
+    uint64_t now = otPlatTimeGet();
+
+    if (now > mUpstreamDnsServerListFreshness + kDnsServerListCacheTimeoutMs ||
+        (mUpstreamDnsServerCount == 0 && now > mUpstreamDnsServerListFreshness + kDnsServerListNullCacheTimeoutMs))
+    {
+        LoadDnsServerListFromConf();
+    }
 }
 
 void Resolver::LoadDnsServerListFromConf(void)
@@ -72,16 +83,11 @@ void Resolver::LoadDnsServerListFromConf(void)
     std::string   line;
     std::ifstream fp;
 
-    fp.open(kResolveConfLocation);
-    if (fp.bad())
-    {
-        otLogCritPlat("Cannot read %s for domain name servers, default to 127.0.0.1", kResolveConfLocation);
-        mUpstreamDnsServerCount = 1;
-        assert(inet_pton(AF_INET, "127.0.0.1", &mUpstreamDnsServerList[0]) == 1);
-        ExitNow();
-    }
+    mUpstreamDnsServerCount = 0;
 
-    while (std::getline(fp, line) && mUpstreamDnsServerCount < kMaxUpstreamServerCount)
+    fp.open(kResolvConfFullPath);
+
+    while (fp.good() && std::getline(fp, line) && mUpstreamDnsServerCount < kMaxUpstreamServerCount)
     {
         if (line.find(kNameserverItem, 0) == 0)
         {
@@ -89,7 +95,7 @@ void Resolver::LoadDnsServerListFromConf(void)
 
             if (inet_pton(AF_INET, &line.c_str()[sizeof(kNameserverItem)], &addr) == 1)
             {
-                otLogCritPlat("Got nameserver #%d: %s", mUpstreamDnsServerCount,
+                otLogInfoPlat("Got nameserver #%d: %s", mUpstreamDnsServerCount,
                               &line.c_str()[sizeof(kNameserverItem)]);
                 mUpstreamDnsServerList[mUpstreamDnsServerCount] = addr;
                 mUpstreamDnsServerCount++;
@@ -97,8 +103,12 @@ void Resolver::LoadDnsServerListFromConf(void)
         }
     }
 
-exit:
-    return;
+    if (mUpstreamDnsServerCount == 0)
+    {
+        otLogCritPlat("No domain name servers found in %s, default to 127.0.0.1", kResolvConfFullPath);
+    }
+
+    mUpstreamDnsServerListFreshness = otPlatTimeGet();
 }
 
 void Resolver::Query(otPlatDnsUpstreamQuery *aTxn, const otMessage *aQuery)
@@ -115,6 +125,8 @@ void Resolver::Query(otPlatDnsUpstreamQuery *aTxn, const otMessage *aQuery)
 
     txn = AllocateTransaction(aTxn);
     VerifyOrExit(txn != nullptr, error = OT_ERROR_NO_BUFS);
+
+    TryRefreshDnsServerList();
 
     serverAddr.sin_family = AF_INET;
     serverAddr.sin_port   = htons(53);
@@ -245,30 +257,30 @@ void Resolver::CloseTransaction(Transaction *aTxn)
     aTxn->mThreadTxn = nullptr;
 }
 
-void Resolver::UpdateFdSet(fd_set *aReadFdSet, fd_set *aErrorFdSet, int *aMaxFd)
+void Resolver::UpdateFdSet(otSysMainloopContext &aContext)
 {
     for (Transaction &txn : mUpstreamTransaction)
     {
         if (txn.mThreadTxn != nullptr)
         {
-            FD_SET(txn.mUdpFd, aReadFdSet);
-            FD_SET(txn.mUdpFd, aErrorFdSet);
-            if (txn.mUdpFd > *aMaxFd)
+            FD_SET(txn.mUdpFd, &aContext.mReadFdSet);
+            FD_SET(txn.mUdpFd, &aContext.mErrorFdSet);
+            if (txn.mUdpFd > aContext.mMaxFd)
             {
-                *aMaxFd = txn.mUdpFd;
+                aContext.mMaxFd = txn.mUdpFd;
             }
         }
     }
 }
 
-void Resolver::Process(const fd_set *aReadFdSet, const fd_set *aErrorFdSet)
+void Resolver::Process(const otSysMainloopContext &aContext)
 {
     for (Transaction &txn : mUpstreamTransaction)
     {
         if (txn.mThreadTxn != nullptr)
         {
             // Note: On Linux, we can only get the error via read, so they should share the same logic.
-            if (FD_ISSET(txn.mUdpFd, aErrorFdSet) || FD_ISSET(txn.mUdpFd, aReadFdSet))
+            if (FD_ISSET(txn.mUdpFd, &aContext.mErrorFdSet) || FD_ISSET(txn.mUdpFd, &aContext.mReadFdSet))
             {
                 ForwardResponse(&txn);
                 CloseTransaction(&txn);

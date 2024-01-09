@@ -66,18 +66,18 @@ static zcl_cfg_report_rsp_cb p_cfg_report_rsp_cb = NULL;
 //=============================================================================
 static void _zcl_identify_handle(uint8_t cmd, uint16_t src_addr, uint8_t src_endp, uint16_t datalen, uint8_t *pdata)
 {
-    zigbee_gateway_cmd_send(0x00048001, src_addr, 1, src_endp, (uint8_t *)pdata, datalen);
+    zigbee_gateway_cmd_send(0x00048001, src_addr, 0, src_endp, (uint8_t *)pdata, datalen);
 }
 
 static void _zcl_group_handle(uint8_t cmd, uint16_t src_addr, uint8_t src_endp, uint16_t datalen, uint8_t *pdata)
 {
-    zigbee_gateway_cmd_send(0x00058000 | cmd, src_addr, 1, src_endp, (uint8_t *)pdata, datalen);
+    zigbee_gateway_cmd_send(0x00058000 | cmd, src_addr, 0, src_endp, (uint8_t *)pdata, datalen);
 }
 
 
 static void _zcl_scene_handle(uint8_t cmd, uint16_t src_addr, uint8_t src_endp, uint16_t datalen, uint8_t *pdata)
 {
-    zigbee_gateway_cmd_send(0x00068000 | cmd, src_addr, 1, src_endp, (uint8_t *)pdata, datalen);
+    zigbee_gateway_cmd_send(0x00068000 | cmd, src_addr, 0, src_endp, (uint8_t *)pdata, datalen);
 }
 
 
@@ -306,10 +306,11 @@ void zigbee_zcl_msg_handler(sys_tlv_t *pt_tlv)
             else if (pt_zcl_msg->cmd == 0x0a) // Report
             {
                 _zcl_read_attr_report_process(pt_zcl_msg->cmd, pt_zcl_msg->clusterID, pt_zcl_msg->srcAddr, pt_zcl_msg->cmdFormatLen, pt_zcl_msg->cmdFormat);
+                zigbee_gateway_cmd_send(0x00028800, pt_zcl_msg->srcAddr, 0, pt_zcl_msg->srcEndpint, (uint8_t *)pt_zcl_msg->cmdFormat, pt_zcl_msg->cmdFormatLen);
             }
             if (pt_zcl_msg->cmd == 0x0b) // defaut response
             {
-                zigbee_gateway_cmd_send(0x00018800, pt_zcl_msg->srcAddr, 1, pt_zcl_msg->srcEndpint, (uint8_t *)pt_zcl_msg->cmdFormat, pt_zcl_msg->cmdFormatLen);
+                zigbee_gateway_cmd_send(0x00018800, pt_zcl_msg->srcAddr, 0, pt_zcl_msg->srcEndpint, (uint8_t *)pt_zcl_msg->cmdFormat, pt_zcl_msg->cmdFormatLen);
             }
         }
         else
@@ -328,6 +329,15 @@ void zigbee_zcl_msg_handler(sys_tlv_t *pt_tlv)
                 if (zcl_cluster_ms_func_list[pt_zcl_msg->clusterID - ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT])
                     zcl_cluster_ms_func_list[pt_zcl_msg->clusterID - ZB_ZCL_CLUSTER_ID_ILLUMINANCE_MEASUREMENT]
                     (pt_zcl_msg->cmd, pt_zcl_msg->cmdFormatLen, pt_zcl_msg->cmdFormat);
+            }
+            else if (pt_zcl_msg->clusterID == ZB_ZCL_CLUSTER_ID_IAS_ZONE)
+            {
+                if (pt_zcl_msg->cmd == ZB_ZCL_CMD_IAS_ZONE_ZONE_STATUS_CHANGE_NOT_ID) // zone status change notification
+                {
+                    // zigbee_app_zcl_zone_status_change_notification_reg(_zcl_zone_status_change_notificatin_cb);
+                    // p_zone_status_change_notification_cb(cmd_info->cluster_id, src_addr, src_ep, pData, payload_size);
+                    zigbee_gateway_cmd_send(0x00230000, pt_zcl_msg->srcAddr, 0, pt_zcl_msg->srcEndpint, (uint8_t *)pt_zcl_msg->cmdFormat, pt_zcl_msg->cmdFormatLen);
+                }
             }
             else
             {

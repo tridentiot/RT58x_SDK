@@ -115,7 +115,7 @@ static void _zdo_evt_device_announce(sys_tlv_t *pt_tlv)
                    pt_dev_annce->ieeeAddr[3], pt_dev_annce->ieeeAddr[2],
                    pt_dev_annce->ieeeAddr[1], pt_dev_annce->ieeeAddr[0]);
         info_color(LOG_GREEN, "\tShort address 0x%04x, Cap %02X\n", pt_dev_annce->shortAddr, pt_dev_annce->capability);
-        zigbee_gateway_cmd_send((0x0013), 0x0000, 1, 0, (uint8_t *)pt_tlv->value, 11);
+        zigbee_gateway_cmd_send((0x0013), 0x0000, 0, 0, (uint8_t *)pt_tlv->value, 11);
         zigbee_act_ep_req(pt_dev_annce->shortAddr);
 
         for (i = 0; i < ZB_GW_SUPPORT_MAX_DEVICE_NUM; i++)

@@ -23,7 +23,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.BMP"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Rafael RT58x  SDK
-   &#160;<span id="projectnumber">v1.6.0</span>
+   &#160;<span id="projectnumber">v1.7.0</span>
    </div>
   </td>
  </tr>
@@ -123,12 +123,12 @@ $(function() {
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/**************************************************************************************************</span></div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"> *    GLOBAL PROTOTYPES</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"> *************************************************************************************************/</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#ga1c138ef8d32e9db540120c6386f51439">gpio_cfg</a>(</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#ga1c138ef8d32e9db540120c6386f51439">gpio_cfg</a>(</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    uint32_t         pin_number,</div>
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <a class="code" href="group___g_p_i_o___driver.html#ga2222c56d5d7112faa00c91e578169b7b">gpio_pin_dir_t</a>   dir,</div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    <a class="code" href="group___g_p_i_o___driver.html#gac30d655aed4f8fba75efd6badd941278">gpio_pin_int_mode_t</a> int_mode);</div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">extern</span> <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#gad9c721f3c3e21c8fba58e36916a369f3">gpio_register_isr</a>(</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#gad9c721f3c3e21c8fba58e36916a369f3">gpio_register_isr</a>(</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    uint32_t            pin,</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="group___g_p_i_o___driver.html#gad494be1412b2c525be4fbb9f3cc159fe">gpio_isr_handler_t</a>  app_gpio_callback,</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordtype">void</span>                *param);</div>
@@ -199,70 +199,69 @@ $(function() {
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keywordflow">return</span> ((GPIO-&gt;STATE &amp; (1 &lt;&lt; pin_number)) ? 1 : 0);</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;}</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160; </div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#gaaf44121055c269513f9513a048f1c658">  260</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#gaaf44121055c269513f9513a048f1c658">gpio_int_enable</a>(uint32_t pin)</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;{</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    assert_param(pin &lt; <a class="code" href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a>);</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    GPIO-&gt;ENABLE_INT = (1 &lt;&lt; pin);</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160; </div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#ga5a9765d1c61e8ca68df0c2ef3500a5f4">  274</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#ga5a9765d1c61e8ca68df0c2ef3500a5f4">gpio_int_disable</a>(uint32_t pin)</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;{</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    assert_param(pin &lt; <a class="code" href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a>);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    GPIO-&gt;DISABLE_INT = (1 &lt;&lt; pin);</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;}</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
-<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#gac183bcbd772988c34062407adb6b9f7b">  292</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#gac183bcbd772988c34062407adb6b9f7b">gpio_debounce_enable</a>(uint32_t pin)</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;{</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    assert_param(pin &lt; <a class="code" href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a>);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    GPIO-&gt;DEBOUCE_EN = (1 &lt;&lt; pin);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;}</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160; </div>
-<div class="line"><a name="l00308"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#gafdad2eb3884f642fa45f7e3c13c320ac">  308</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#gafdad2eb3884f642fa45f7e3c13c320ac">gpio_debounce_disable</a>(uint32_t pin)</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;{</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    assert_param(pin &lt; <a class="code" href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a>);</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;    GPIO-&gt;DEBOUCE_DIS = (1 &lt;&lt; pin);</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;}</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#ga1a77eb0b69f528414fd3ecc0da944d10">  322</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#ga1a77eb0b69f528414fd3ecc0da944d10">gpio_set_debounce_time</a>(uint32_t mode)</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;{</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;    assert_param(mode &lt; <a class="code" href="group___g_p_i_o___driver.html#ga277ab1c1e101da21d1948f65102909fe">DEBOUNCE_SLOWCLOCKS_4096</a>);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    <span class="keywordflow">if</span> (mode &gt; <a class="code" href="group___g_p_i_o___driver.html#ga277ab1c1e101da21d1948f65102909fe">DEBOUNCE_SLOWCLOCKS_4096</a>)</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;    {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;        mode = <a class="code" href="group___g_p_i_o___driver.html#ga277ab1c1e101da21d1948f65102909fe">DEBOUNCE_SLOWCLOCKS_4096</a>;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;    }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160; </div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    GPIO-&gt;DEBOUNCE_TIME = mode;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;}</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; <span class="comment">/* end of peripheral_group GPIO_Driver */</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;}</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#gaaf44121055c269513f9513a048f1c658">  259</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#gaaf44121055c269513f9513a048f1c658">gpio_int_enable</a>(uint32_t pin)</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;{</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    assert_param(pin &lt; <a class="code" href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a>);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    GPIO-&gt;ENABLE_INT = (1 &lt;&lt; pin);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;}</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
+<div class="line"><a name="l00273"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#ga5a9765d1c61e8ca68df0c2ef3500a5f4">  273</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#ga5a9765d1c61e8ca68df0c2ef3500a5f4">gpio_int_disable</a>(uint32_t pin)</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;{</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    assert_param(pin &lt; <a class="code" href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a>);</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    GPIO-&gt;DISABLE_INT = (1 &lt;&lt; pin);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;}</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160; </div>
+<div class="line"><a name="l00291"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#gac183bcbd772988c34062407adb6b9f7b">  291</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#gac183bcbd772988c34062407adb6b9f7b">gpio_debounce_enable</a>(uint32_t pin)</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;{</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    assert_param(pin &lt; <a class="code" href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a>);</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    GPIO-&gt;DEBOUCE_EN = (1 &lt;&lt; pin);</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160; </div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#gafdad2eb3884f642fa45f7e3c13c320ac">  307</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#gafdad2eb3884f642fa45f7e3c13c320ac">gpio_debounce_disable</a>(uint32_t pin)</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;{</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    assert_param(pin &lt; <a class="code" href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a>);</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    GPIO-&gt;DEBOUCE_DIS = (1 &lt;&lt; pin);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; </div>
+<div class="line"><a name="l00321"></a><span class="lineno"><a class="line" href="group___g_p_i_o___driver.html#ga1a77eb0b69f528414fd3ecc0da944d10">  321</a></span>&#160;__STATIC_INLINE <span class="keywordtype">void</span> <a class="code" href="group___g_p_i_o___driver.html#ga1a77eb0b69f528414fd3ecc0da944d10">gpio_set_debounce_time</a>(uint32_t mode)</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;{</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;    assert_param(mode &lt; <a class="code" href="group___g_p_i_o___driver.html#ga277ab1c1e101da21d1948f65102909fe">DEBOUNCE_SLOWCLOCKS_4096</a>);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160; </div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;    <span class="keywordflow">if</span> (mode &gt; <a class="code" href="group___g_p_i_o___driver.html#ga277ab1c1e101da21d1948f65102909fe">DEBOUNCE_SLOWCLOCKS_4096</a>)</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;    {</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;        mode = <a class="code" href="group___g_p_i_o___driver.html#ga277ab1c1e101da21d1948f65102909fe">DEBOUNCE_SLOWCLOCKS_4096</a>;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;    }</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160; </div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    GPIO-&gt;DEBOUNCE_TIME = mode;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;}</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160; <span class="comment">/* end of peripheral_group GPIO_Driver */</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160; </div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;}</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
 <div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160; </div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* end of __GPIO_H__ */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160; </div>
-<div class="ttc" id="agroup___g_p_i_o___driver_html_ga1a77eb0b69f528414fd3ecc0da944d10"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga1a77eb0b69f528414fd3ecc0da944d10">gpio_set_debounce_time</a></div><div class="ttdeci">__STATIC_INLINE void gpio_set_debounce_time(uint32_t mode)</div><div class="ttdoc">Set GPIO debounce clock.</div><div class="ttdef"><b>Definition:</b> gpio.h:322</div></div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* end of __GPIO_H__ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="ttc" id="agroup___g_p_i_o___driver_html_ga1a77eb0b69f528414fd3ecc0da944d10"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga1a77eb0b69f528414fd3ecc0da944d10">gpio_set_debounce_time</a></div><div class="ttdeci">__STATIC_INLINE void gpio_set_debounce_time(uint32_t mode)</div><div class="ttdoc">Set GPIO debounce clock.</div><div class="ttdef"><b>Definition:</b> gpio.h:321</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga1c138ef8d32e9db540120c6386f51439"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga1c138ef8d32e9db540120c6386f51439">gpio_cfg</a></div><div class="ttdeci">void gpio_cfg(uint32_t pin_number, gpio_pin_dir_t dir, gpio_pin_int_mode_t int_mode)</div><div class="ttdoc">Pin configuration function.</div><div class="ttdef"><b>Definition:</b> gpio.c:23</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga2222c56d5d7112faa00c91e578169b7b"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga2222c56d5d7112faa00c91e578169b7b">gpio_pin_dir_t</a></div><div class="ttdeci">gpio_pin_dir_t</div><div class="ttdoc">Pin direction definitions.</div><div class="ttdef"><b>Definition:</b> gpio.h:51</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga25ed244e6eb318352b256044edba0e08"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga25ed244e6eb318352b256044edba0e08">gpio_pin_clear</a></div><div class="ttdeci">__STATIC_INLINE void gpio_pin_clear(uint32_t pin_number)</div><div class="ttdoc">Set gpio pin output low.</div><div class="ttdef"><b>Definition:</b> gpio.h:178</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga277ab1c1e101da21d1948f65102909fe"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga277ab1c1e101da21d1948f65102909fe">DEBOUNCE_SLOWCLOCKS_4096</a></div><div class="ttdeci">#define DEBOUNCE_SLOWCLOCKS_4096</div><div class="ttdef"><b>Definition:</b> gpio.h:42</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga45c95fbc34b34ab736544d61672d7b5c"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga45c95fbc34b34ab736544d61672d7b5c">gpio_pin_set</a></div><div class="ttdeci">__STATIC_INLINE void gpio_pin_set(uint32_t pin_number)</div><div class="ttdoc">Set gpio pin output high.</div><div class="ttdef"><b>Definition:</b> gpio.h:163</div></div>
-<div class="ttc" id="agroup___g_p_i_o___driver_html_ga5a9765d1c61e8ca68df0c2ef3500a5f4"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga5a9765d1c61e8ca68df0c2ef3500a5f4">gpio_int_disable</a></div><div class="ttdeci">__STATIC_INLINE void gpio_int_disable(uint32_t pin)</div><div class="ttdoc">Disable gpio pin interrupt.</div><div class="ttdef"><b>Definition:</b> gpio.h:274</div></div>
+<div class="ttc" id="agroup___g_p_i_o___driver_html_ga5a9765d1c61e8ca68df0c2ef3500a5f4"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga5a9765d1c61e8ca68df0c2ef3500a5f4">gpio_int_disable</a></div><div class="ttdeci">__STATIC_INLINE void gpio_int_disable(uint32_t pin)</div><div class="ttdoc">Disable gpio pin interrupt.</div><div class="ttdef"><b>Definition:</b> gpio.h:273</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga6aef4500247bcc2e4871a5778405238c"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga6aef4500247bcc2e4871a5778405238c">gpio_pin_toggle</a></div><div class="ttdeci">__STATIC_INLINE void gpio_pin_toggle(uint32_t pin_number)</div><div class="ttdoc">Toggle gpio pin output value.</div><div class="ttdef"><b>Definition:</b> gpio.h:216</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga74a1123170615091119fc2b91de61a8b"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga74a1123170615091119fc2b91de61a8b">gpio_pin_get</a></div><div class="ttdeci">__STATIC_INLINE uint32_t gpio_pin_get(uint32_t pin_number)</div><div class="ttdoc">Get gpio pin input value.</div><div class="ttdef"><b>Definition:</b> gpio.h:244</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga859fd296c83c719e59e84576aac136fe"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga859fd296c83c719e59e84576aac136fe">gpio_cfg_output</a></div><div class="ttdeci">__STATIC_INLINE void gpio_cfg_output(uint32_t pin_number)</div><div class="ttdoc">Set gpio pin to output mode.</div><div class="ttdef"><b>Definition:</b> gpio.h:133</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ga8a7e54d3988f116cf49509d534b410e2"><div class="ttname"><a href="group___g_p_i_o___driver.html#ga8a7e54d3988f116cf49509d534b410e2">gpio_cfg_input</a></div><div class="ttdeci">__STATIC_INLINE void gpio_cfg_input(uint32_t pin_number, gpio_pin_int_mode_t int_mode)</div><div class="ttdoc">Set gpio pin to input mode.</div><div class="ttdef"><b>Definition:</b> gpio.h:150</div></div>
-<div class="ttc" id="agroup___g_p_i_o___driver_html_gaaf44121055c269513f9513a048f1c658"><div class="ttname"><a href="group___g_p_i_o___driver.html#gaaf44121055c269513f9513a048f1c658">gpio_int_enable</a></div><div class="ttdeci">__STATIC_INLINE void gpio_int_enable(uint32_t pin)</div><div class="ttdoc">Enable gpio pin interrupt.</div><div class="ttdef"><b>Definition:</b> gpio.h:260</div></div>
-<div class="ttc" id="agroup___g_p_i_o___driver_html_gac183bcbd772988c34062407adb6b9f7b"><div class="ttname"><a href="group___g_p_i_o___driver.html#gac183bcbd772988c34062407adb6b9f7b">gpio_debounce_enable</a></div><div class="ttdeci">__STATIC_INLINE void gpio_debounce_enable(uint32_t pin)</div><div class="ttdoc">Enable gpio pin debounce function.</div><div class="ttdef"><b>Definition:</b> gpio.h:292</div></div>
+<div class="ttc" id="agroup___g_p_i_o___driver_html_gaaf44121055c269513f9513a048f1c658"><div class="ttname"><a href="group___g_p_i_o___driver.html#gaaf44121055c269513f9513a048f1c658">gpio_int_enable</a></div><div class="ttdeci">__STATIC_INLINE void gpio_int_enable(uint32_t pin)</div><div class="ttdoc">Enable gpio pin interrupt.</div><div class="ttdef"><b>Definition:</b> gpio.h:259</div></div>
+<div class="ttc" id="agroup___g_p_i_o___driver_html_gac183bcbd772988c34062407adb6b9f7b"><div class="ttname"><a href="group___g_p_i_o___driver.html#gac183bcbd772988c34062407adb6b9f7b">gpio_debounce_enable</a></div><div class="ttdeci">__STATIC_INLINE void gpio_debounce_enable(uint32_t pin)</div><div class="ttdoc">Enable gpio pin debounce function.</div><div class="ttdef"><b>Definition:</b> gpio.h:291</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_gac30d655aed4f8fba75efd6badd941278"><div class="ttname"><a href="group___g_p_i_o___driver.html#gac30d655aed4f8fba75efd6badd941278">gpio_pin_int_mode_t</a></div><div class="ttdeci">gpio_pin_int_mode_t</div><div class="ttdoc">Selecting the pin to sense high or low level, edge for pin input.</div><div class="ttdef"><b>Definition:</b> gpio.h:62</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_gad494be1412b2c525be4fbb9f3cc159fe"><div class="ttname"><a href="group___g_p_i_o___driver.html#gad494be1412b2c525be4fbb9f3cc159fe">gpio_isr_handler_t</a></div><div class="ttdeci">void(* gpio_isr_handler_t)(uint32_t pin, void *isr_param)</div><div class="ttdoc">GPIO interrupt service routine callback for user application.</div><div class="ttdef"><b>Definition:</b> gpio.h:87</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_gad619b154b0c3cda31993e3ba570ef9b5"><div class="ttname"><a href="group___g_p_i_o___driver.html#gad619b154b0c3cda31993e3ba570ef9b5">MAX_NUMBER_OF_PINS</a></div><div class="ttdeci">#define MAX_NUMBER_OF_PINS</div><div class="ttdef"><b>Definition:</b> gpio.h:28</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_gad9c721f3c3e21c8fba58e36916a369f3"><div class="ttname"><a href="group___g_p_i_o___driver.html#gad9c721f3c3e21c8fba58e36916a369f3">gpio_register_isr</a></div><div class="ttdeci">void gpio_register_isr(uint32_t pin, gpio_isr_handler_t app_gpio_callback, void *param)</div><div class="ttdoc">Register user interrupt ISR callback function.</div><div class="ttdef"><b>Definition:</b> gpio.c:90</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_gafd99512eeea1d8061a0737352ad0937b"><div class="ttname"><a href="group___g_p_i_o___driver.html#gafd99512eeea1d8061a0737352ad0937b">gpio_pin_write</a></div><div class="ttdeci">__STATIC_INLINE void gpio_pin_write(uint32_t pin_number, uint32_t value)</div><div class="ttdoc">Set gpio pin output value.</div><div class="ttdef"><b>Definition:</b> gpio.h:195</div></div>
-<div class="ttc" id="agroup___g_p_i_o___driver_html_gafdad2eb3884f642fa45f7e3c13c320ac"><div class="ttname"><a href="group___g_p_i_o___driver.html#gafdad2eb3884f642fa45f7e3c13c320ac">gpio_debounce_disable</a></div><div class="ttdeci">__STATIC_INLINE void gpio_debounce_disable(uint32_t pin)</div><div class="ttdoc">Disable gpio pin debounce function.</div><div class="ttdef"><b>Definition:</b> gpio.h:308</div></div>
+<div class="ttc" id="agroup___g_p_i_o___driver_html_gafdad2eb3884f642fa45f7e3c13c320ac"><div class="ttname"><a href="group___g_p_i_o___driver.html#gafdad2eb3884f642fa45f7e3c13c320ac">gpio_debounce_disable</a></div><div class="ttdeci">__STATIC_INLINE void gpio_debounce_disable(uint32_t pin)</div><div class="ttdoc">Disable gpio pin debounce function.</div><div class="ttdef"><b>Definition:</b> gpio.h:307</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_gga2222c56d5d7112faa00c91e578169b7ba093b8020851b7aaf170326da81f603f1"><div class="ttname"><a href="group___g_p_i_o___driver.html#gga2222c56d5d7112faa00c91e578169b7ba093b8020851b7aaf170326da81f603f1">GPIO_PIN_DIR_INPUT</a></div><div class="ttdeci">@ GPIO_PIN_DIR_INPUT</div><div class="ttdef"><b>Definition:</b> gpio.h:52</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_gga2222c56d5d7112faa00c91e578169b7ba684981c7f3e435b3ddc5af02b0b6b4b8"><div class="ttname"><a href="group___g_p_i_o___driver.html#gga2222c56d5d7112faa00c91e578169b7ba684981c7f3e435b3ddc5af02b0b6b4b8">GPIO_PIN_DIR_OUTPUT</a></div><div class="ttdeci">@ GPIO_PIN_DIR_OUTPUT</div><div class="ttdef"><b>Definition:</b> gpio.h:53</div></div>
 <div class="ttc" id="agroup___g_p_i_o___driver_html_ggac30d655aed4f8fba75efd6badd941278a2343e87aadb6314d1d72fe94e9edc876"><div class="ttname"><a href="group___g_p_i_o___driver.html#ggac30d655aed4f8fba75efd6badd941278a2343e87aadb6314d1d72fe94e9edc876">GPIO_PIN_INT_LEVEL_LOW</a></div><div class="ttdeci">@ GPIO_PIN_INT_LEVEL_LOW</div><div class="ttdef"><b>Definition:</b> gpio.h:64</div></div>
