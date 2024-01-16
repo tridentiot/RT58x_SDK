@@ -20,7 +20,7 @@ Development Board
  Rafael RT58x SDK is specifically designed for Rafael’s SoC with the ability to perform high-performance Cortex-M microcontroller and support to driver powerful RF and peripheral features.
  
  ```bash
-git clone --recursive-submodules https://github.com/RafaelMicro/RT58x_SDK.git
+git clone --recursive https://github.com/RafaelMicro/RT58x_SDK.git
 ```
 
  The following item shows the related files and directories in the Rafael RT58x SDK. 
