@@ -26,8 +26,8 @@ git clone --recursive https://github.com/RafaelMicro/RT58x_SDK.git
 ```
 
   ##### Download reposiory Zip
-Downloading the repository as a ZIP file will not include the submodules along with the rest of the firmware. 
-Therefore, if you encounter this issue, you can manually download the submodules separately and add them to the firmware.
+Downloading the repository as a ZIP file will not include the submodules along with the rest of the firmware.
+Therefore, you will need to manually download the submodules separately and add them to the firmware.
 
  ## SDK Folder Struct
  
