@@ -19,13 +19,13 @@ Development Board
  Rafael RT58x SDK is a complete software development kit for application development such as BLE, Zigbee, Mesh, and Sub-G.
  Rafael RT58x SDK is specifically designed for Rafael’s SoC with the ability to perform high-performance Cortex-M microcontroller and support to driver powerful RF and peripheral features.
 
-### git clone option as shown in the example below.
+   ###### Git clone option as shown in the example below.
  
  ```bash
 git clone --recursive https://github.com/RafaelMicro/RT58x_SDK.git
 ```
 
-### Download reposiory Zip
+  ###### Download reposiory Zip
 Downloading the repository as a ZIP file will not include the submodules along with the rest of the firmware. 
 Therefore, if you encounter this issue, you can manually download the submodules separately and add them to the firmware.
 
