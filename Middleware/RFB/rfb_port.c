@@ -533,7 +533,8 @@ RFB_EVENT_STATUS rfb_port_subg_rx_config_set(uint8_t data_rate, uint16_t preambl
         }
 
         /* For subg, the sfd length is 2 bytes and sfd content is 0x00007209*/
-        event_status = rfb_comm_fsk_sfd_set(0x00007209);
+        //event_status = rfb_comm_fsk_sfd_set(0x00007209);
+        event_status = rfb_comm_fsk_sfd_set(0);
         if (event_status != RFB_EVENT_SUCCESS)
         {
             printf("[W] rfb_comm_fsk_sfd_set fail, status:%d\n", event_status);
@@ -617,7 +618,8 @@ RFB_EVENT_STATUS rfb_port_subg_tx_config_set(tx_power_level_t tx_power, uint8_t 
         }
 
         /* For subg, the sfd length is 2 bytes and sfd content is 0x00007209*/
-        event_status = rfb_comm_fsk_sfd_set(0x00007209);
+        //event_status = rfb_comm_fsk_sfd_set(0x00007209);
+        event_status = rfb_comm_fsk_sfd_set(0);
         if (event_status != RFB_EVENT_SUCCESS)
         {
             printf("[W] rfb_comm_fsk_sfd_set fail, status:%d\n", event_status);
