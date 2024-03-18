@@ -984,7 +984,7 @@ typedef struct rfb_ble_ctrl_s
  *    TYPEDEFS
  *************************************************************************************************/
 #if (defined RFB_SUBG_ENABLED && RFB_SUBG_ENABLED == 1)
-#define FSK_MAX_RF_LEN 2063 //2047+16
+#define FSK_MAX_RF_LEN 268 //255+13
 #define OQPSK_MAX_RF_LEN 142 //127+15
 #define MAX_RF_LEN FSK_MAX_RF_LEN
 #elif (defined RFB_BLE_ENABLED && RFB_BLE_ENABLED == 1)
